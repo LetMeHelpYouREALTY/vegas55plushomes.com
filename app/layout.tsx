@@ -99,7 +99,7 @@ export default function RootLayout({
         <Script
           id="local-business-schema"
           type="application/ld+json"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
