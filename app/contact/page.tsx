@@ -140,8 +140,8 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:info@vegas55plushomes.com" className="text-muted-foreground hover:text-foreground">
-                      info@vegas55plushomes.com
+                    <a href="mailto:DrDuffySells@Vegas55PlusHomes.com" className="text-muted-foreground hover:text-foreground">
+                      DrDuffySells@Vegas55PlusHomes.com
                     </a>
                   </div>
                 </div>

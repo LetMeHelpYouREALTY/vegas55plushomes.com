@@ -83,8 +83,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@vegas55plushomes.com" className="hover:text-foreground">
-                  info@vegas55plushomes.com
+                <a href="mailto:DrDuffySells@Vegas55PlusHomes.com" className="hover:text-foreground">
+                  DrDuffySells@Vegas55PlusHomes.com
                 </a>
               </li>
               <li className="mt-4">

@@ -208,7 +208,7 @@ export default function ScheduleTourPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <a href="mailto:info@vegas55plushomes.com" className="hover:text-foreground">info@vegas55plushomes.com</a>
+                  <a href="mailto:DrDuffySells@Vegas55PlusHomes.com" className="hover:text-foreground">DrDuffySells@Vegas55PlusHomes.com</a>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-primary mt-0.5" />
