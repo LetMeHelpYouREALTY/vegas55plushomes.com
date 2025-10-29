@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
-import DeployBanner from '../components/deploy-banner'
+// import DeployBanner from '../components/deploy-banner'
+import Navigation from '../components/navigation'
+import Footer from '../components/footer'
 import './globals.css'
 
 const geistSans = Geist({
@@ -19,9 +21,9 @@ const siteUrl = 'https://www.vegas55plushomes.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Simple v0',
-  description: 'The simplest way to use v0 - just prompt and see your app',
-  keywords: ['v0', 'AI', 'app builder', 'code generation', 'Next.js'],
+  title: 'Las Vegas 55+ Real Estate | Vegas 55 Plus Homes | Realtor®',
+  description: 'Your trusted Las Vegas 55+ real estate specialists. Find your dream home in premier 55+ communities including Sun City Summerlin, Sun City Anthem, and more. Expert guidance for active adults seeking luxury retirement living in Las Vegas.',
+  keywords: ['Las Vegas 55+ homes', 'Las Vegas 55+ communities', 'Las Vegas real estate', '55+ communities Las Vegas', 'retirement homes Las Vegas', 'Sun City Summerlin', 'Sun City Anthem', 'active adult communities Las Vegas', 'Las Vegas senior living', 'Las Vegas realtor 55+'],
   authors: [{ name: 'Vegas 55 Plus Homes' }],
   creator: 'Vegas 55 Plus Homes',
   publisher: 'Vegas 55 Plus Homes',
@@ -32,22 +34,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Simple v0',
-    title: 'Simple v0',
-    description: 'The simplest way to use v0 - just prompt and see your app',
+    siteName: 'Vegas 55 Plus Homes',
+    title: 'Las Vegas 55+ Real Estate | Vegas 55 Plus Homes',
+    description: 'Your trusted Las Vegas 55+ real estate specialists. Find your dream home in premier 55+ communities in Las Vegas.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Simple v0',
+        alt: 'Vegas 55 Plus Homes - Las Vegas 55+ Real Estate',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Simple v0',
-    description: 'The simplest way to use v0 - just prompt and see your app',
+    title: 'Las Vegas 55+ Real Estate | Vegas 55 Plus Homes',
+    description: 'Your trusted Las Vegas 55+ real estate specialists. Find your dream home in premier 55+ communities in Las Vegas.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -100,8 +102,9 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
-          <DeployBanner />
+          <Navigation />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
