@@ -75,7 +75,7 @@ export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | nu
           
           return {
             title: item.title || 'Untitled',
-            link: item.link ||暖 '#',
+            link: item.link || '#',
             pubDate: item.pubDate || item.isoDate || new Date().toISOString(),
             contentSnippet: item.contentSnippet || itemDescription || undefined,
             content: item.content || contentEncoded || itemDescription || undefined,
