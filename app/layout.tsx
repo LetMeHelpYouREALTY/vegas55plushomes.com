@@ -38,9 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-JCQTZFS0DN"
           strategy="afterInteractive"
@@ -53,6 +51,10 @@ export default function RootLayout({
             gtag('config', 'G-JCQTZFS0DN');
           `}
         </Script>
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
