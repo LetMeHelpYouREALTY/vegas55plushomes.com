@@ -22,7 +22,7 @@ const siteUrl = 'https://www.vegas55plushomes.com'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Del Webb Lake Las Vegas 55+ REALTOR® | Award-Winning Realtor Dr. Jan Duffy',
-  description: 'Award-winning realtor Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist and buyer's representative. Expert guidance for active adults seeking homes in premier 55+ communities including Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and more.',
+  description: 'Award-winning realtor Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist and buyer\'s representative. Expert guidance for active adults seeking homes in premier 55+ communities including Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and more.',
   keywords: ['Del Webb Lake Las Vegas 55+', 'Dr. Jan Duffy realtor', 'Las Vegas 55+ homes', 'Las Vegas 55+ communities', 'Las Vegas real estate', '55+ communities Las Vegas', 'retirement homes Las Vegas', 'Sun City Summerlin', 'Sun City Anthem', 'active adult communities Las Vegas', 'Las Vegas senior living', 'Las Vegas realtor 55+'],
   authors: [{ name: 'Dr. Jan Duffy' }],
   creator: 'Dr. Jan Duffy',

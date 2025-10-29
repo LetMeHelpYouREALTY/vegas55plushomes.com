@@ -25,22 +25,22 @@ export default function FAQPage() {
     },
     {
       question: 'Are there homeowner association fees?',
-      answer: 'Yes, Sun City Summerlin has homeowner association (HOA) fees that cover maintenance of common areas, landscaping, exterior maintenance, amenities, security, and some utilities. The fees vary depending on the type of home and location within the community. Understanding what's included in HOA fees helps residents evaluate the value proposition and total cost of living in the community.',
+      answer: 'Yes, Sun City Summerlin has homeowner association (HOA) fees that cover maintenance of common areas, landscaping, exterior maintenance, amenities, security, and some utilities. The fees vary depending on the type of home and location within the community. Understanding what\'s included in HOA fees helps residents evaluate the value proposition and total cost of living in the community.',
       category: 'Fees & Costs',
     },
     {
       question: 'Is Sun City Summerlin pet-friendly?',
-      answer: 'Yes, Sun City Summerlin is pet-friendly with certain restrictions. Typically, residents are allowed to have pets, but there may be limits on the number and size of pets. Specific pet policies should be verified with the HOA, as policies may vary and it's important to understand all restrictions before purchasing a home in the community.',
+      answer: 'Yes, Sun City Summerlin is pet-friendly with certain restrictions. Typically, residents are allowed to have pets, but there may be limits on the number and size of pets. Specific pet policies should be verified with the HOA, as policies may vary and it\'s important to understand all restrictions before purchasing a home in the community.',
       category: 'Policies',
     },
     {
       question: 'What is the resale value like in Sun City Summerlin?',
-      answer: 'Sun City Summerlin has maintained strong property values due to its desirable location in Summerlin, extensive amenities, well-maintained homes, and established reputation. The community's combination of location, amenities, and active lifestyle appeal contributes to consistent demand in the Las Vegas real estate market. Property values have historically been stable or appreciating, making it a sound investment for active adults.',
+      answer: 'Sun City Summerlin has maintained strong property values due to its desirable location in Summerlin, extensive amenities, well-maintained homes, and established reputation. The community\'s combination of location, amenities, and active lifestyle appeal contributes to consistent demand in the Las Vegas real estate market. Property values have historically been stable or appreciating, making it a sound investment for active adults.',
       category: 'Investment & Value',
     },
     {
       question: 'Can I customize or remodel my home?',
-      answer: 'Yes, homeowners can customize and remodel their homes, subject to HOA approval for exterior changes. Interior modifications typically have more flexibility, but it's always best to check with the HOA for specific guidelines before beginning work. The HOA approval process ensures that changes maintain community standards while allowing residents to personalize their homes.',
+      answer: 'Yes, homeowners can customize and remodel their homes, subject to HOA approval for exterior changes. Interior modifications typically have more flexibility, but it\'s always best to check with the HOA for specific guidelines before beginning work. The HOA approval process ensures that changes maintain community standards while allowing residents to personalize their homes.',
       category: 'Homeownership',
     },
     {
