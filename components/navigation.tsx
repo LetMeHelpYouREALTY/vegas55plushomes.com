@@ -4,19 +4,18 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
+import { lasVegasCommunities } from '@/lib/communities-data'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 4)
 
   const navLinks = [
     {
       label: 'Las Vegas 55+ Communities',
       href: '/communities',
       dropdown: [
-        { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
-        { label: 'Sun City Anthem', href: '/communities/sun-city-anthem' },
-        { label: 'Siena', href: '/communities/siena' },
-        { label: 'Desert Shores', href: '/communities/desert-shores' },
+        ...featuredCommunities.map(c => ({ label: c.name, href: `/communities/${c.slug}` })),
         { label: 'All Communities', href: '/communities' },
       ],
     },

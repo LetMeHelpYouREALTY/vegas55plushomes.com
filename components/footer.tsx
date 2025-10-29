@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import { lasVegasCommunities } from '@/lib/communities-data'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 4)
 
   return (
     <footer className="border-t bg-muted/50">
@@ -30,8 +32,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/las-vegas-55-guide" className="text-muted-foreground hover:text-foreground">
+                  Las Vegas 55+ Guide
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-muted-foreground hover:text-foreground">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-muted-foreground hover:text-foreground">
+                  Blog
                 </Link>
               </li>
               <li>
@@ -44,26 +56,18 @@ export default function Footer() {
 
           {/* Communities */}
           <div>
-            <h4 className="text-sm font-semibold mb-4">Communities</h4>
+            <h4 className="text-sm font-semibold mb-4">Featured Communities</h4>
             <ul className="space-y-2 text-sm">
+              {featuredCommunities.map((community) => (
+                <li key={community.slug}>
+                  <Link href={`/communities/${community.slug}`} className="text-muted-foreground hover:text-foreground">
+                    {community.name}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link href="/communities/sun-city-summerlin" className="text-muted-foreground hover:text-foreground">
-                  Sun City Summerlin
-                </Link>
-              </li>
-              <li>
-                <Link href="/communities/sun-city-anthem" className="text-muted-foreground hover:text-foreground">
-                  Sun City Anthem
-                </Link>
-              </li>
-              <li>
-                <Link href="/communities/siena" className="text-muted-foreground hover:text-foreground">
-                  Siena
-                </Link>
-              </li>
-              <li>
-                <Link href="/communities/desert-shores" className="text-muted-foreground hover:text-foreground">
-                  Desert Shores
+                <Link href="/communities" className="text-muted-foreground hover:text-foreground font-medium">
+                  View All Communities →
                 </Link>
               </li>
             </ul>
@@ -83,6 +87,9 @@ export default function Footer() {
                   info@vegas55plushomes.com
                 </a>
               </li>
+              <li className="mt-4">
+                <p className="text-xs">Serving Las Vegas & Henderson</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -99,4 +106,3 @@ export default function Footer() {
     </footer>
   )
 }
-
