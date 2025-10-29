@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Home, Search, MapPin, DollarSign, Bed, Bath, Filter } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import HomeSearchFilters from '@/components/home-search-filters'
 
 export const metadata = {
   title: 'Las Vegas 55+ Homes For Sale | Search Active Adult Communities | Vegas 55 Plus Homes',
@@ -27,53 +28,7 @@ export default function HomesForSalePage() {
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
           <h2 className="text-3xl font-bold mb-6">Search Las Vegas 55+ Homes for Sale</h2>
-          <div className="rounded-lg border bg-card p-8 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <Search className="h-6 w-6 text-primary" />
-              <h3 className="text-2xl font-semibold">Advanced Home Search</h3>
-            </div>
-            <p className="text-muted-foreground mb-6">
-              Use our search filters to find homes that match your specific criteria. Filter by community, price range, bedrooms, and more to narrow down your options and find your perfect Las Vegas 55+ home.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Community</label>
-                <select className="w-full px-4 py-2 border rounded-md bg-background" aria-label="Community">
-                  <option>All Communities</option>
-                  {allCommunities.slice(0, 10).map((community) => (
-                    <option key={community.slug}>{community.name}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Price Range</label>
-                <select className="w-full px-4 py-2 border rounded-md bg-background" aria-label="Price Range">
-                  <option>Any Price</option>
-                  <option>$200,000 - $400,000</option>
-                  <option>$400,000 - $600,000</option>
-                  <option>$600,000 - $800,000</option>
-                  <option>$800,000 - $1,000,000</option>
-                  <option>$1,000,000+</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Bedrooms</label>
-                <select className="w-full px-4 py-2 border rounded-md bg-background" aria-label="Bedrooms">
-                  <option>Any</option>
-                  <option>1+</option>
-                  <option>2+</option>
-                  <option>3+</option>
-                  <option>4+</option>
-                </select>
-              </div>
-            </div>
-            <div className="mt-6">
-              <Button size="lg" className="w-full md:w-auto">
-                <Search className="mr-2 h-4 w-4" />
-                Search Homes
-              </Button>
-            </div>
-          </div>
+          <HomeSearchFilters />
         </section>
 
         <section>

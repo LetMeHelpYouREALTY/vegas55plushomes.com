@@ -31,7 +31,7 @@ export default function CommunitiesPage() {
           <div className="p-6 rounded-lg border bg-card">
             <Trophy className="h-8 w-8 text-primary mb-4" />
             <h3 className="text-xl font-semibold mb-3">World-Class Amenities</h3>
-            <p className="text-muted-foreground訓練">
+            <p className="text-muted-foreground">
               Las Vegas 55+ communities feature amenities that rival luxury resorts, including championship golf courses, state-of-the-art fitness centers, swimming pools, tennis and pickleball courts, and comprehensive clubhouses.
             </p>
           </div>

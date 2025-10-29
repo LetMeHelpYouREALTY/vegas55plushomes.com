@@ -1,24 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
 import { Mail, Phone, MapPin, Clock, MessageSquare, CheckCircle } from 'lucide-react'
-import { lasVegasCommunities } from '@/lib/communities-data'
+import EnhancedContactForm from '@/components/enhanced-contact-form'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    community: '',
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Form submission logic would go here
-    alert('Thank you for your message! We will contact you soon.')
-  }
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -36,89 +21,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="rounded-lg border bg-card p-8">
-              <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-md bg-background"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-md bg-background"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-md bg-background"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="community" className="block text-sm font-medium mb-2">
-                    Interested Community
-                  </label>
-                  <select
-                    id="community"
-                    value={formData.community}
-                    onChange={(e) => setFormData({ ...formData, community: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-md bg-background"
-                  >
-                    <option value="">Select a community</option>
-                    {lasVegasCommunities.map((community) => (
-                      <option key={community.slug} value={community.slug}>
-                        {community.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-md bg-background"
-                    placeholder="Tell us about your 55+ home search needs, questions, or how we can help..."
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full">
-                  Send Message
-                </Button>
-              </form>
-            </div>
+            <EnhancedContactForm />
           </div>
 
           {/* Contact Information */}
