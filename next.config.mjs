@@ -14,8 +14,10 @@ const nextConfig = {
   compress: true,
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-*'],
   },
+  // Optimize bundle
+  swcMinify: true,
   // Headers for better caching
   async headers() {
     return [

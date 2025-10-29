@@ -1,9 +1,22 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Home, Shield, Users, MapPin, Heart, Trophy, Calendar, CheckCircle } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
-import RSSFeed from '@/components/rss-feed'
 import CommunityCard from '@/components/community-card'
+
+// Lazy load RSS feed (below the fold, non-critical)
+const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
+  ssr: false,
+  loading: () => (
+    <div className="rounded-lg border bg-card p-6">
+      <div className="animate-pulse space-y-4">
+        <div className="h-4 bg-muted rounded w-3/4"></div>
+        <div className="h-4 bg-muted rounded w-1/2"></div>
+      </div>
+    </div>
+  ),
+})
 
 export const metadata = {
   title: 'Las Vegas 55+ Real Estate | Award-Winning Buyer\'s Representative Dr. Jan Duffy',
