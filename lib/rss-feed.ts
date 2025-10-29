@@ -38,6 +38,7 @@ export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | nu
       next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; RSS Feed Reader)',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
       },
     })
 
@@ -47,23 +48,34 @@ export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | nu
     }
 
     const xml = await response.text()
+    
+    if (!xml || xml.trim().length === 0) {
+      console.error('RSS feed returned empty content')
+      return null
+    }
+
     const feed = await parser.parseString(xml)
+
+    if (!feed || !feed.items || feed.items.length === 0) {
+      console.error('RSS feed has no items')
+      return null
+    }
 
     // Transform the feed to our interface
     const feedData: RSSFeedData = {
       title: feed.title || undefined,
       description: feed.description || undefined,
       link: feed.link || undefined,
-      items: (feed.items || [])
+      items: feed.items
         .slice(0, limit)
         .map((item) => ({
           title: item.title || 'Untitled',
           link: item.link || '#',
           pubDate: item.pubDate || item.isoDate || new Date().toISOString(),
-          contentSnippet: item.contentSnippet || undefined,
-          content: item.content || item['content:encoded'] || undefined,
+          contentSnippet: item.contentSnippet || item.description || undefined,
+          content: item.content || item['content:encoded'] || item.description || undefined,
           categories: item.categories || undefined,
-          guid: item.guid || undefined,
+          guid: item.guid || item.id || undefined,
           isoDate: item.isoDate || undefined,
         })),
     }
@@ -71,6 +83,13 @@ export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | nu
     return feedData
   } catch (error) {
     console.error('Error fetching RSS feed:', error)
+    // Log more details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('RSS Feed Error Details:', {
+        url: RSS_FEED_URL,
+        error: error instanceof Error ? error.message : String(error),
+      })
+    }
     return null
   }
 }

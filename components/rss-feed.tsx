@@ -10,16 +10,31 @@ interface RSSFeedProps {
 }
 
 export default async function RSSFeed({ limit = 5, title = 'Latest News & Market Insights', showTitle = true, className = '' }: RSSFeedProps) {
-  const feedData = await fetchRSSFeed(limit)
+  let feedData: Awaited<ReturnType<typeof fetchRSSFeed>> = null
+  
+  try {
+    feedData = await fetchRSSFeed(limit)
+  } catch (error) {
+    console.error('RSS Feed Component Error:', error)
+  }
 
   if (!feedData || !feedData.items || feedData.items.length === 0) {
-    return (
-      <div className={`rounded-lg border bg-card p-6 ${className}`}>
-        <p className="text-muted-foreground text-center">
-          No articles available at this time. Please check back later.
-        </p>
-      </div>
-    )
+    // In development, show a helpful message
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <div className={`rounded-lg border bg-card p-6 ${className}`}>
+          <p className="text-muted-foreground text-center mb-2">
+            RSS Feed: No articles available at this time.
+          </p>
+          <p className="text-xs text-muted-foreground text-center">
+            Check console for errors. Feed URL: https://www.simplifyingthemarket.com/en/feed?a=956758-ef2edda2f940e018328655620ea05f18
+          </p>
+        </div>
+      )
+    }
+    
+    // In production, return null to not show anything
+    return null
   }
 
   return (
