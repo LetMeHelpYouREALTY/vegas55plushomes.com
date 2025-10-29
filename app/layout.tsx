@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 // import DeployBanner from '../components/deploy-banner'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
@@ -147,6 +149,8 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Footer />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

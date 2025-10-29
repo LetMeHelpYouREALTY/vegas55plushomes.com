@@ -50,7 +50,7 @@ export default function FAQPage() {
     },
     {
       question: 'What makes Sun City Summerlin different from other Las Vegas 55+ communities?',
-      answer: 'Sun City Summerlin's size and comprehensive amenities set it apart. With 7,700+ homes across 2,400+ acres, three championship golf courses, and four recreation centers, the community offers unmatched scale and diversity of amenities. The Summerlin location provides access to master-plan amenities while maintaining the specialized focus of a 55+ community, creating a unique combination that appeals to many active adults.',
+      answer: 'Sun City Summerlin\'s size and comprehensive amenities set it apart. With 7,700+ homes across 2,400+ acres, three championship golf courses, and four recreation centers, the community offers unmatched scale and diversity of amenities. The Summerlin location provides access to master-plan amenities while maintaining the specialized focus of a 55+ community, creating a unique combination that appeals to many active adults.',
       category: 'Community Comparison',
     },
     {
