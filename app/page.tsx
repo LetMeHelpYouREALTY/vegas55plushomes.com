@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Home, Shield, Users, MapPin, Heart, Trophy, Calendar, CheckCircle } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import RSSFeed from '@/components/rss-feed'
 
 export const metadata = {
   title: 'Las Vegas 55+ Real Estate | Award-Winning Buyer\'s Representative Dr. Jan Duffy',
@@ -266,6 +267,15 @@ export default function HomePage() {
                 Climate is another major advantage of Las Vegas living. With over 300 days of sunshine annually and mild winters, you can enjoy outdoor activities year-round. This makes the golf courses, walking trails, outdoor pools, and patio living spaces that are hallmarks of 55+ communities particularly enjoyable.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RSS Feed Section - Latest Market News */}
+      <section className="py-16 lg:py-24 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <RSSFeed limit={3} title="Latest Real Estate News & Market Insights" showTitle={true} />
           </div>
         </div>
       </section>

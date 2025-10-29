@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
+import RSSFeed from '@/components/rss-feed'
 
 export const metadata = {
   title: 'Blog | Las Vegas 55+ Real Estate News & Insights | Vegas 55 Plus Homes',
@@ -68,6 +69,13 @@ export default function BlogPage() {
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
           <h2 className="text-3xl font-bold mb-6">Latest Articles and Insights</h2>
+          
+          {/* RSS Feed Integration */}
+          <div className="mb-12">
+            <RSSFeed limit={5} title="" showTitle={false} className="mb-8" />
+          </div>
+          
+          <h3 className="text-2xl font-bold mb-6 mt-12">Featured Community Guides</h3>
           <div className="space-y-8">
             {posts.map((post) => (
               <Link
