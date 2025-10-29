@@ -22,7 +22,7 @@ export interface RSSFeedData {
 
 const parser = new Parser({
   customFields: {
-    item: ['content:encoded', 'dc:creator'],
+    item: ['content:encoded', 'dc:creator', 'description'],
   },
   timeout: 10000, // 10 second timeout
 })
@@ -68,16 +68,22 @@ export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | nu
       link: feed.link || undefined,
       items: feed.items
         .slice(0, limit)
-        .map((item) => ({
-          title: item.title || 'Untitled',
-          link: item.link || '#',
-          pubDate: item.pubDate || item.isoDate || new Date().toISOString(),
-          contentSnippet: item.contentSnippet || item.description || undefined,
-          content: item.content || item['content:encoded'] || item.description || undefined,
-          categories: item.categories || undefined,
-          guid: item.guid || item.id || undefined,
-          isoDate: item.isoDate || undefined,
-        })),
+        .map((item) => {
+          // Handle description field with proper type checking
+          const itemDescription = (item as any).description || undefined
+          const contentEncoded = item['content:encoded'] || undefined
+          
+          return {
+            title: item.title || 'Untitled',
+            link: item.link ||暖 '#',
+            pubDate: item.pubDate || item.isoDate || new Date().toISOString(),
+            contentSnippet: item.contentSnippet || itemDescription || undefined,
+            content: item.content || contentEncoded || itemDescription || undefined,
+            categories: item.categories || undefined,
+            guid: item.guid || (item as any).id || undefined,
+            isoDate: item.isoDate || undefined,
+          }
+        }),
     }
 
     return feedData
