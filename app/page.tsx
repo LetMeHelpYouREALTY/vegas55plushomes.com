@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Home, Shield, Users, MapPin, Heart, Trophy, Calendar, CheckCircle } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import RSSFeed from '@/components/rss-feed'
+import CommunityCard from '@/components/community-card'
 
 export const metadata = {
   title: 'Las Vegas 55+ Real Estate | Award-Winning Buyer\'s Representative Dr. Jan Duffy',
@@ -13,14 +14,6 @@ export default function HomePage() {
   const featuredCommunities = lasVegasCommunities
     .filter(c => c.featured)
     .slice(0, 3)
-    .map(c => ({
-      name: c.name,
-      description: c.description,
-      href: `/communities/${c.slug}`,
-      image: `/communities/${c.slug}.jpg`,
-      location: c.location,
-      homesForSale: c.homesForSale,
-    }))
 
   const services = [
     {
@@ -162,28 +155,9 @@ export default function HomePage() {
               Explore premier active adult communities designed for your ideal retirement lifestyle. Each community offers unique amenities, architectural styles, and social opportunities.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {featuredCommunities.map((community) => (
-              <Link
-                key={community.href}
-                href={community.href}
-                className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                <div className="aspect-video bg-muted flex items-center justify-center">
-                  <Home className="h-16 w-16 text-muted-foreground" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <MapPin className="h-4 w-4" />
-                    <span>{community.location}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {community.name}
-                  </h3>
-                  <p className="text-muted-foreground mb-3">{community.description}</p>
-                  <p className="text-sm text-primary font-medium">{community.homesForSale} Homes Currently Available</p>
-                </div>
-              </Link>
+              <CommunityCard key={community.slug} community={community} featured={true} />
             ))}
           </div>
 

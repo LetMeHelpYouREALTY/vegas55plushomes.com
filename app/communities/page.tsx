@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Home, MapPin, Shield, Trophy, Heart, Users } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import CommunityCard from '@/components/community-card'
 
 export const metadata = {
   title: 'Las Vegas 55+ Communities | Complete Guide to Premier Active Adult Communities',
@@ -102,29 +103,7 @@ export default function CommunitiesPage() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {allCommunities.map((community) => (
-            <Link
-              key={community.slug}
-              href={`/communities/${community.slug}`}
-              className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <Home className="h-16 w-16 text-muted-foreground" />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>{community.location}</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {community.name}
-                </h3>
-                <p className="text-muted-foreground mb-3">{community.description}</p>
-                <p className="text-sm text-primary font-medium">{community.homesForSale} Homes Available</p>
-                {community.priceRange && (
-                  <p className="text-sm text-muted-foreground mt-2">From {community.priceRange}</p>
-                )}
-              </div>
-            </Link>
+            <CommunityCard key={community.slug} community={community} />
           ))}
         </div>
       </section>
