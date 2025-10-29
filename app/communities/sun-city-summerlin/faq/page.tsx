@@ -45,7 +45,7 @@ export default function FAQPage() {
     },
     {
       question: 'How do I schedule a tour of Sun City Summerlin?',
-      answer: 'You can schedule a tour by contacting our team through the contact form on this website, calling us at (702) 555-1234, or emailing DrDuffySells@Vegas55PlusHomes.com. We offer personalized tours of available homes and community amenities. Tours typically include visits to recreation centers, golf courses, and available homes, helping you experience the community firsthand.',
+      answer: 'You can schedule a tour by contacting our team through the contact form on this website, calling us at (702) 996-3758, or emailing DrDuffySells@Vegas55PlusHomes.com. We offer personalized tours of available homes and community amenities. Tours typically include visits to recreation centers, golf courses, and available homes, helping you experience the community firsthand.',
       category: 'Tours & Visits',
     },
     {

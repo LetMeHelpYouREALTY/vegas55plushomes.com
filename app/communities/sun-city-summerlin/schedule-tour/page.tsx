@@ -204,7 +204,7 @@ export default function ScheduleTourPage() {
               <div className="space-y-3 text-muted-foreground">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary" />
-                  <a href="tel:7025551234" className="hover:text-foreground">(702) 555-1234</a>
+                  <a href="tel:7029963758" className="hover:text-foreground">(702) 996-3758</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />

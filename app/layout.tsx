@@ -104,7 +104,7 @@ export default function RootLayout({
               name: 'Dr. Jan Duffy - Del Webb Lake Las Vegas 55+ REALTOR®',
               description: 'Dr. Jan Duffy - Las Vegas 55+ real estate specialist serving Sun City Summerlin, Del Webb Lake Las Vegas, and all active adult communities',
               url: siteUrl,
-              telephone: '+17025551234',
+              telephone: '+17029963758',
               email: 'DrDuffySells@Vegas55PlusHomes.com',
               address: {
                 '@type': 'PostalAddress',
