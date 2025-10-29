@@ -15,19 +15,57 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const siteUrl = 'https://www.vegas55plushomes.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Simple v0',
   description: 'The simplest way to use v0 - just prompt and see your app',
+  keywords: ['v0', 'AI', 'app builder', 'code generation', 'Next.js'],
+  authors: [{ name: 'Vegas 55 Plus Homes' }],
+  creator: 'Vegas 55 Plus Homes',
+  publisher: 'Vegas 55 Plus Homes',
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteUrl,
+    siteName: 'Simple v0',
     title: 'Simple v0',
     description: 'The simplest way to use v0 - just prompt and see your app',
-    images: ['/og-image.png'],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Simple v0',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Simple v0',
     description: 'The simplest way to use v0 - just prompt and see your app',
     images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification code here
+    // Get this code from Google Search Console > Settings > Ownership verification
+    // google: 'your-verification-code',
+    // You can also verify via: yandex, bing, etc.
   },
 }
 
