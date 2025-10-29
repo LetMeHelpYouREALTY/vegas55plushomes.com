@@ -150,10 +150,11 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Office</h3>
-                    <p className="text-muted-foreground">
-                      Las Vegas, Nevada<br />
+                    <address className="text-muted-foreground not-italic">
+                      28 Lake Oasis St<br />
+                      Henderson, NV 89011<br />
                       Serving Las Vegas & Henderson
-                    </p>
+                    </address>
                   </div>
                 </div>
               </div>

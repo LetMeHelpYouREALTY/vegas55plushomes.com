@@ -15,7 +15,7 @@ export default function FAQPage() {
     },
     {
       question: 'What types of homes are available in Sun City Summerlin?',
-      answer: 'Sun City Summerlin offers a variety of home types including single-family detached homes, attached villas, and condominiums. Home sizes range from approximately 1,200 square feet to over 3,500 square feet, with 17 distinct floor plans to choose from. The community's diverse home options ensure that residents can find homes that match their preferences for size, style, and maintenance level while enjoying access to all community amenities.',
+      answer: 'Sun City Summerlin offers a variety of home types including single-family detached homes, attached villas, and condominiums. Home sizes range from approximately 1,200 square feet to over 3,500 square feet, with 17 distinct floor plans to choose from. The community\'s diverse home options ensure that residents can find homes that match their preferences for size, style, and maintenance level while enjoying access to all community amenities.',
       category: 'Home Options',
     },
     {

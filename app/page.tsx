@@ -4,8 +4,8 @@ import { Home, Shield, Users, MapPin, Heart, Trophy, Calendar, CheckCircle } fro
 import { lasVegasCommunities } from '@/lib/communities-data'
 
 export const metadata = {
-  title: 'Las Vegas 55+ Real Estate | Find Your Dream Home in Premier Active Adult Communities',
-  description: 'Your trusted Las Vegas 55+ real estate specialists. Find your perfect home in premier active adult communities including Sun City Summerlin, Sun City Anthem, Siena, and more. Expert guidance for active adults seeking luxury retirement living.',
+  title: 'Las Vegas 55+ Real Estate | Award-Winning Buyer\'s Representative Dr. Jan Duffy',
+  description: 'Award-winning realtor Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist and buyer\'s representative. Expert guidance for active adults seeking homes in premier communities including Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and more.',
 }
 
 export default function HomePage() {
@@ -54,7 +54,7 @@ export default function HomePage() {
               Find Your Las Vegas 55+ Dream Home | Premier Active Adult Communities
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Your trusted Las Vegas 55+ real estate specialists. Discover premier active adult communities including Sun City Summerlin, Sun City Anthem, Siena, Desert Shores, and more. Expert guidance for active adults seeking luxury retirement living in the Las Vegas area.
+              Award-winning realtor Dr. Jan Duffy - Your trusted buyer's representative for Las Vegas 55+ real estate. Expert guidance for active adults seeking homes in premier active adult communities including Del Webb Lake Las Vegas, Sun City Summerlin, Sun City Anthem, and more.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
@@ -90,9 +90,9 @@ export default function HomePage() {
       <section className="py-16 lg:py-24 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Vegas 55 Plus Homes as Your Real Estate Partner</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Award-Winning Buyer's Representative Dr. Jan Duffy</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Our specialized expertise in Las Vegas 55+ communities ensures you receive personalized guidance throughout your home search journey. We understand that buying in a 55+ community is more than a real estate transaction—it's a lifestyle choice that will shape your retirement years.
+              As an award-winning realtor and dedicated buyer's representative, Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in Las Vegas 55+ communities. Our specialized expertise ensures you receive personalized, expert guidance throughout your home search journey, protecting your interests and saving you money.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">

@@ -169,7 +169,7 @@ export default function CommunitiesPage() {
 
       {/* Additional Information */}
       <section>
-        <h=X2 className="text-3xl font-bold mb-6">Get Started Exploring Las Vegas 55+ Communities</h2>
+        <h2 className="text-3xl font-bold mb-6">Get Started Exploring Las Vegas 55+ Communities</h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-3xl">
           Ready to find your perfect Las Vegas 55+ community? Our team of specialists is here to help you navigate your options, schedule tours, and find the community that best matches your lifestyle and budget. Contact us today to begin your journey toward exceptional active adult living.
         </p>

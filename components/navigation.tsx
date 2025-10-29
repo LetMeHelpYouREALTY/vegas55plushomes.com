@@ -28,6 +28,10 @@ export default function Navigation() {
       href: '/las-vegas-55-guide',
     },
     {
+      label: 'Why Hire an Agent',
+      href: '/why-hire-an-agent',
+    },
+    {
       label: 'About',
       href: '/about',
     },
@@ -56,7 +60,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <span className="text-xl font-bold text-foreground">
-                Vegas 55 Plus Homes
+                Dr. Jan Duffy
               </span>
             </Link>
           </div>

@@ -11,9 +11,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Vegas 55 Plus Homes</h3>
+            <h3 className="text-lg font-semibold">Dr. Jan Duffy</h3>
             <p className="text-sm text-muted-foreground">
-              Your trusted Las Vegas 55+ real estate specialists. Find your dream home in premier 55+ communities.
+              Del Webb Lake Las Vegas 55+ REALTOR®. Your trusted Las Vegas 55+ real estate specialist.
             </p>
           </div>
 
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© {currentYear} Vegas 55 Plus Homes. All rights reserved.</p>
+          <p>© {currentYear} Dr. Jan Duffy. All rights reserved.</p>
           <p className="mt-2">
             <Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link>
             {' | '}

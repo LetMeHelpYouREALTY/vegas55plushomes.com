@@ -139,7 +139,7 @@ export default function MapPage() {
               When evaluating community locations, active adults should consider several factors beyond simply the area name. Proximity to healthcare, shopping convenience, access to entertainment, and relationship to natural attractions all impact daily life and long-term satisfaction.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Healthcare Access</h3>
-            <p管理人>
+            <p>
               Easy access to quality healthcare facilities becomes increasingly important as active adults age. Consider proximity to major hospitals, specialist clinics, and emergency services when evaluating community locations. Many Las Vegas 55+ communities are strategically located near medical centers, but understanding exact distances and travel times helps you make informed location decisions.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Shopping and Services</h3>

@@ -1,186 +1,220 @@
 import Link from 'next/link'
+import { Shield, Users, Home, Award, CheckCircle, ArrowRight, Briefcase, Trophy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Trophy, Users, Shield, Heart, CheckCircle, Award } from 'lucide-react'
 
 export const metadata = {
-  title: 'About Us | Las Vegas 55+ Real Estate Specialists | Vegas 55 Plus Homes',
-  description: 'Learn about Vegas 55 Plus Homes, your trusted Las Vegas 55+ real estate specialists. Expert guidance for active adults seeking their perfect home in premier active adult communities.',
-  keywords: ['Las Vegas 55+ real estate specialists', 'Vegas 55 Plus Homes', 'active adult real estate Las Vegas', '55+ real estate agent Las Vegas'],
+  title: 'About Dr. Jan Duffy | Award-Winning Buyer\'s Representative for Del Webb Lake Las Vegas 55+ Homes',
+  description: 'Meet award-winning realtor Dr. Jan Duffy, your dedicated buyer\'s representative specializing in new construction homes at Del Webb Lake Las Vegas and other Las Vegas 55+ communities. Recognized excellence in real estate.',
+  keywords: ['Dr. Jan Duffy', 'Del Webb Lake Las Vegas buyer\'s agent', 'new construction buyer representation', 'Las Vegas 55+ realtor', 'buyer\'s representative Del Webb'],
 }
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">About Vegas 55 Plus Homes | Las Vegas 55+ Real Estate Specialists</h1>
-        
-        <div className="prose prose-lg dark:prose-invert max-w-none mb-12 space-y-8">
-          <section className="text-xl text-muted-foreground">
-            <p className="mb-6">
-              Vegas 55 Plus Homes is your trusted partner for finding the perfect 55+ home in Las Vegas. We specialize exclusively in Las Vegas active adult communities, providing expert guidance to help you make the best real estate decisions for your active retirement years. Our team combines deep local market knowledge with specialized expertise in 55+ community living to ensure you find not just a home, but a lifestyle that matches your vision for retirement.
+      <div className="mb-12">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link href="/" className="hover:text-foreground">Home</Link> / About
+        </nav>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">About Dr. Jan Duffy | Award-Winning Buyer's Representative for Del Webb Lake Las Vegas</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
+          Dr. Jan Duffy is an award-winning buyer's representative specializing exclusively in new construction homes at Del Webb Lake Las Vegas and premier Las Vegas 55+ communities. As an accomplished real estate professional recognized for excellence, Dr. Duffy works exclusively for your interests, ensuring you receive expert guidance, save money, and have strong advocacy throughout your home purchase journey.
+        </p>
+        <p className="text-lg text-muted-foreground max-w-3xl">
+          Unlike agents who represent builders or work as dual agents, Dr. Jan Duffy is a dedicated buyer's representative who puts your interests first. This means expert negotiations, thorough contract review, quality assurance inspections, and comprehensive protection throughout the new construction purchase process.
+        </p>
+      </div>
+
+      <div className="max-w-6xl space-y-12 mb-12">
+        <section>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Your Dedicated Buyer's Representative</h2>
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in Las Vegas 55+ communities, with particular expertise in Del Webb Lake Las Vegas. This specialization means you receive expert guidance tailored specifically to your needs as a buyer of new construction active adult homes.
+                </p>
+                <p>
+                  As a buyer's representative, Dr. Duffy works exclusively for your interests throughout the entire purchase process. This is fundamentally different from builder representatives who work for the builder, or dual agents who attempt to represent both sides. Your buyer's representative is your dedicated advocate, negotiator, and protector.
+                </p>
+                <p>
+                  This exclusive buyer representation ensures you receive honest advice, expert negotiations, thorough contract review, and comprehensive protection that prioritizes your interests above all else.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg border bg-card p-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Trophy className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-semibold">Award-Winning Realtor</h3>
+                    <p className="text-sm text-muted-foreground">Recognized for excellence in real estate</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Shield className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-semibold">Dedicated Buyer Representation</h3>
+                    <p className="text-sm text-muted-foreground">Works exclusively for your interests</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Home className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-semibold">Del Webb Lake Las Vegas Specialist</h3>
+                    <p className="text-sm text-muted-foreground">Deep expertise in this premier community</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Briefcase className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-semibold">New Construction Focus</h3>
+                    <p className="text-sm text-muted-foreground">Specialized in new home purchases</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Users className="h-6 w-6 text-primary" />
+                  <div>
+                    <h3 className="font-semibold">55+ Community Expertise</h3>
+                    <p className="text-sm text-muted-foreground">Understanding active adult living</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-6">Why Buyer Representation Matters for New Construction</h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>
+              Many buyers mistakenly believe they don't need representation when purchasing new construction, thinking the builder's sales representative will guide them. However, the builder's representative works exclusively for the builder's interests, not yours. Having a dedicated buyer's representative like Dr. Jan Duffy ensures your interests are protected throughout the entire purchase process.
             </p>
-            <p className="mb-6">
-              With years of experience serving active adults throughout the Las Vegas Valley, we understand that purchasing a home in a 55+ community is fundamentally different from traditional real estate transactions. These communities offer unique amenities, lifestyle restrictions, homeowner association structures, and social opportunities that require specialized knowledge and guidance. Our mission is to help you navigate these complexities with confidence and find a community where you can thrive.
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-semibold mb-3">Contract Protection</h3>
+                <p className="text-sm">
+                  Builder contracts are complex legal documents designed to protect builders. Your buyer's representative reviews every clause, negotiates favorable terms, and ensures your interests are adequately protected.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-semibold mb-3">Cost Savings</h3>
+                <p className="text-sm">
+                  Experienced buyer's representatives negotiate builder incentives, closing cost credits, and upgrade pricing that saves you money. This representation typically costs you nothing—builders pay commissions—yet saves thousands.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-semibold mb-3">Quality Assurance</h3>
+                <p className="text-sm">
+                  Professional inspections at critical construction stages identify defects before they're hidden. Your representative ensures quality standards are met and defects are corrected before closing.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-card p-6">
+                <h3 className="text-xl font-semibold mb-3">Expert Guidance</h3>
+                <p className="text-sm">
+                  From design center selections to financing coordination and closing procedures, your buyer's representative guides you through complex processes, avoiding costly mistakes and ensuring smooth completion.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-6">Del Webb Lake Las Vegas Specialization</h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>
+              Dr. Jan Duffy maintains deep expertise specifically in Del Webb Lake Las Vegas, Las Vegas's premier 55+ community. This specialization provides you with insider knowledge that general-purpose agents simply cannot match.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Floor Plan Expertise</p>
+                  <p className="text-sm text-muted-foreground">Understanding of all available floor plans and their features</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Upgrade Knowledge</p>
+                  <p className="text-sm text-muted-foreground">Insight into which upgrades provide value versus post-closing options</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Community Insights</p>
+                  <p className="text-sm text-muted-foreground">Knowledge of amenities, HOA considerations, and lifestyle benefits</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Builder Relationships</p>
+                  <p className="text-sm text-muted-foreground">Established relationships facilitating smoother transactions</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Incentive Knowledge</p>
+                  <p className="text-sm text-muted-foreground">Understanding of available builder incentives and how to secure them</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
+                <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-foreground">Construction Process</p>
+                  <p className="text-sm text-muted-foreground">Familiarity with timelines, processes, and what to expect</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-6">Our Commitment to You</h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>
+              As an award-winning realtor and dedicated buyer's representative, Dr. Jan Duffy is committed to protecting your interests, saving you money, and ensuring a smooth, successful home purchase experience. Her recognized excellence means you receive the highest level of professional service: honest advice, expert negotiations, thorough protection, and comprehensive guidance throughout your journey.
             </p>
             <p>
-              Whether you're relocating from another state, downsizing from a larger home, or seeking to upgrade to a more active lifestyle, our team is here to guide you through every step of the process. We work exclusively with Las Vegas area 55+ communities, allowing us to provide unmatched expertise and insider knowledge that helps our clients make informed decisions.
+              We understand that purchasing a new construction home at Del Webb Lake Las Vegas or another 55+ community represents a significant investment and life decision. Our role is to ensure you make informed decisions, receive optimal value, and have complete protection throughout the process.
             </p>
-          </section>
+            <p>
+              Unlike agents who may have conflicts of interest or limited expertise, Dr. Jan Duffy's award-winning track record and exclusive focus on buyer representation for new construction 55+ homes ensures you receive the specialized expertise and dedicated advocacy you deserve.
+            </p>
+          </div>
+        </section>
 
-          <section>
-            <h2 className="text-3xl font-bold mt-8 mb-6">Our Mission: Helping Active Adults Find Their Perfect Las Vegas Home</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Our mission is to help active adults find their dream home in Las Vegas's premier 55+ communities. We understand that purchasing a home in a 55+ community is more than just a real estate transaction—it's a lifestyle choice that will shape your retirement years, your social connections, your daily activities, and your overall quality of life.
-              </p>
-              <p>
-                We believe that finding the right 55+ community requires more than just touring homes. It requires understanding the community's culture, social scene, amenity usage patterns, homeowner association dynamics, and long-term maintenance plans. Our comprehensive approach ensures that our clients don't just find a house—they find a home where they can truly thrive as active adults.
-              </p>
-              <p>
-                Every client receives personalized attention tailored to their unique needs, preferences, budget, and vision for retirement living. We take the time to understand what matters most to you, whether that's championship golf courses, state-of-the-art fitness facilities, vibrant social calendars, peaceful retreats, or something entirely unique. Our goal is to match you with a community that will enhance your retirement years.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mt-8 mb-6">Why Choose Vegas 55 Plus Homes as Your Real Estate Partner</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="p-6 rounded-lg border bg-card">
-                <Trophy className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Specialized 55+ Community Expertise</h3>
-                <p className="text-muted-foreground">
-                  We focus exclusively on Las Vegas 55+ communities, giving us unmatched knowledge of community amenities, lifestyles, homeowner association structures, and market trends specific to active adult living. This specialization means we can answer questions about golf course access, club memberships, activity calendars, and community culture that general real estate agents simply cannot.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <Users className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Deep Local Market Knowledge</h3>
-                <p className="text-muted-foreground">
-                  Our team possesses extensive knowledge of the Las Vegas real estate market, including pricing trends, neighborhood characteristics, and investment potential. We understand the nuances of different areas, from Summerlin's master-planned sophistication to Henderson's suburban charm, helping you make location decisions that align with your preferences.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <Heart className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Personalized Service Approach</h3>
-                <p className="text-muted-foreground">
-                  Every client receives individualized attention tailored to their specific needs, preferences, and budget. We take time to understand your vision for retirement living, your lifestyle priorities, and your financial considerations, ensuring we guide you toward communities that truly fit your unique situation.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <Shield className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Comprehensive Transaction Support</h3>
-                <p className="text-muted-foreground">
-                  From initial search through closing and beyond, we provide comprehensive support that ensures a smooth, stress-free experience. We handle negotiations, coordinate inspections, guide you through homeowner association processes, and maintain clear communication every step of the way.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Additional Advantages of Working with Our Team</h3>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Beyond our specialized expertise, we offer several advantages that set us apart in the Las Vegas 55+ real estate market. Our extensive network of community contacts means we identify new listings quickly, often before they hit the public market. We maintain relationships with homeowner association managers, community activity directors, and even current residents, providing you with insider insights that help you make informed decisions.
-              </p>
-              <p>
-                We understand the unique considerations of relocating to Las Vegas from other states. We can help you navigate Nevada's tax benefits, understand the climate and lifestyle adjustments, and connect you with resources for everything from healthcare providers to favorite restaurants. For long-distance buyers, we offer virtual tours, comprehensive video walkthroughs, and detailed community documentation that helps you evaluate options from afar.
-              </p>
-              <p>
-                Our commitment to transparency means you'll always understand the full picture—from homeowner association fees and what they include to community rules and restrictions. We believe informed clients make the best decisions, so we provide comprehensive information about every aspect of community living, from amenity usage fees to maintenance schedules to social activity calendars.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mt-8 mb-6">Our Expertise: Comprehensive Knowledge of Las Vegas 55+ Communities</h2>
-            <div className="space-y-4 text-muted-foreground mb-6">
-              <p>
-                We specialize in Las Vegas's premier 55+ communities including Sun City Summerlin, Sun City Anthem, Siena, Desert Shores, Heritage communities, Del Webb communities, and many others. Our team understands the unique features, amenities, and lifestyle each community offers, allowing us to provide nuanced guidance that helps you find your perfect match.
-              </p>
-              <p>
-                Our knowledge extends beyond basic amenity lists. We understand community cultures, social dynamics, typical resident demographics, activity participation rates, and even seasonal patterns that affect community life. This depth of knowledge helps us identify communities where you're likely to find neighbors who share your interests and values.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Mega Communities: Sun City Summerlin and Sun City Anthem</h3>
-            <div className="space-y-4 text-muted-foreground mb-6">
-              <p>
-                Sun City Summerlin and Sun City Anthem represent Las Vegas's largest and most established 55+ communities, each with over 7,000 homes and extensive amenity packages. We have deep experience helping clients navigate these mega-communities, from understanding their multiple recreation centers and golf courses to identifying neighborhoods that match specific lifestyle preferences.
-              </p>
-              <p>
-                These communities offer incredible diversity in home styles, price points, and neighborhood characteristics. Our team can help you understand the differences between various neighborhoods within these large communities, ensuring you find a location that matches both your housing preferences and your desired lifestyle pace.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Mid-Size and Premium Communities</h3>
-            <div className="space-y-4 text-muted-foreground mb-6">
-              <p>
-                We're equally knowledgeable about mid-size communities like Siena, Regency at Summerlin, and newer developments like Heritage at Cadence and Del Webb at Lake Las Vegas. These communities often offer more intimate atmospheres, premium amenities, and specific architectural styles that appeal to different buyer preferences.
-              </p>
-              <p>
-                Our understanding of these communities includes knowledge of builder reputations, construction quality, resale value trends, and how each community has evolved over time. This historical perspective helps us guide clients toward communities that have proven track records of maintaining property values and resident satisfaction.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Value and Budget-Friendly Options</h3>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                We also work extensively with value-oriented communities like Los Prados, Tropicana Palms, and other affordable options that provide quality 55+ living at accessible price points. Our expertise helps budget-conscious buyers identify communities that offer the best combination of amenities, location, and price without compromising on the active adult lifestyle experience.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mt-8 mb-6">Our Comprehensive Service Approach</h2>
-            <div className="space-y-4 text-muted-foreground mb-6">
-              <p>
-                Our service approach is designed specifically for active adults navigating the 55+ community market. We begin with comprehensive consultations that help us understand your vision for retirement living, your priorities for amenities and lifestyle, and your financial considerations. This foundation allows us to identify communities that truly match your needs rather than simply showing you every available listing.
-              </p>
-              <p>
-                We provide detailed community comparisons that highlight differences in amenity packages, homeowner association fees, community cultures, and location advantages. Our goal is to help you make informed comparisons between communities, understanding not just what homes are available but how each community's lifestyle might fit your retirement vision.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Home Search and Selection</h3>
-            <div className="space-y-4 text-muted-foreground mb-6">
-              <p>
-                Our home search process goes beyond simple MLS queries. We create custom search parameters based on your specific needs—whether you prioritize single-story layouts, specific architectural styles, golf course views, or low-maintenance exteriors. We preview homes to ensure listings match your criteria before scheduling your valuable time, and we provide comprehensive property reports that help you evaluate each option efficiently.
-              </p>
-              <p>
-                When you find a home you're interested in, we provide detailed market analysis including comparable sales, pricing trends for that specific neighborhood or floor plan, and insights into how that home fits within the broader community market. This data-driven approach ensures you make purchase decisions based on solid market intelligence rather than emotion alone.
-              </p>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-4 mt-8">Transaction Management and Support</h3>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Once you've selected a home, our support intensifies. We coordinate all aspects of the transaction, from initial negotiations through inspections and final closing. We work closely with homeowner associations to ensure smooth transitions, coordinate with lenders familiar with 55+ community financing, and guide you through any community-specific requirements or restrictions.
-              </p>
-              <p>
-                For out-of-state buyers, we provide additional support including recommendations for temporary housing, moving companies familiar with Las Vegas, utility connections, and community orientation. We understand that relocating can be stressful, and our goal is to minimize that stress by handling as many details as possible on your behalf.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mt-8 mb-6">Contact Us: Begin Your Las Vegas 55+ Home Search Journey</h2>
-            <div className="space-y-4 text-muted-foreground mb-8">
-              <p>
-                Ready to start your Las Vegas 55+ home search? Contact us today to schedule a consultation and learn how we can help you find your perfect home in one of Las Vegas's premier active adult communities. Whether you're just beginning to explore options or you're ready to make an offer, we're here to provide expert guidance every step of the way.
-              </p>
-              <p>
-                We offer both in-person and virtual consultations to accommodate your schedule and location. During your consultation, we'll discuss your vision for retirement living, answer questions about Las Vegas 55+ communities, and begin developing a customized search strategy tailored to your unique needs and preferences.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg">
-                <Link href="/contact">Contact Our Team</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/communities">Explore Communities</Link>
-              </Button>
-            </div>
-          </section>
-        </div>
+        <section>
+          <h2 className="text-3xl font-bold mb-6">Contact Dr. Jan Duffy</h2>
+          <div className="space-y-4 text-muted-foreground mb-8">
+            <p>
+              Ready to experience the benefits of dedicated buyer representation? Contact Dr. Jan Duffy today to learn more about how buyer representation protects your interests and saves you money during your Del Webb Lake Las Vegas home purchase.
+            </p>
+            <p>
+              Our initial consultation is complimentary, and we'll explain how buyer representation differs from working directly with builder representatives, what you can expect throughout the process, and how we'll protect your interests every step of the way.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button asChild size="lg">
+              <Link href="/contact">
+                Schedule a Consultation <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/why-hire-an-agent">
+                Learn Why You Need an Agent
+              </Link>
+            </Button>
+          </div>
+        </section>
       </div>
     </div>
   )
 }
+
+
+
+
+
