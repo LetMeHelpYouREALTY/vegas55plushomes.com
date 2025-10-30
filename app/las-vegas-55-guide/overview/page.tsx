@@ -67,7 +67,7 @@ export default function OverviewPage() {
                 <Trophy className="h-6 w-6 text-primary mb-3" />
                 <h3 className="text-xl font-semibold mb-3">Amenities That Match Your Interests</h3>
                 <p>
-                  Look for communities with amenities that align with your lifestyle priorities. Golf enthusiasts will appreciate championship nearcourses, while fitness-focused residents might prioritize state-of-the-art gym facilities. Social butterflies should consider communities with active club scenes and busy event calendars. Make sure amenities you care about are truly accessible and included in your fees.
+                  Look for communities with amenities that align with your lifestyle priorities. Golf enthusiasts will appreciate championship courses, while fitness-focused residents might prioritize state-of-the-art gym facilities. Social butterflies should consider communities with active club scenes and busy event calendars. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">gated communities</Link> and <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">communities with pickleball courts</Link> to match your interests. Make sure amenities you care about are truly accessible and included in your fees.
                 </p>
               </div>
               <div className="p-6 rounded-lg border bg-card">

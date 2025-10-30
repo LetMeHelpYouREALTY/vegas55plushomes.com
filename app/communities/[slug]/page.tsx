@@ -101,7 +101,7 @@ export default async function CommunityPage({
           <h2 className="text-3xl font-bold mb-6">Location & Lifestyle at {community.name}</h2>
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
             <p>
-              {community.name} is strategically located in {community.city}, offering residents the perfect balance of active adult community living and access to all that the Las Vegas area has to offer. The community's location provides easy access to world-class healthcare facilities, shopping centers, entertainment venues, and the natural beauty of the Nevada desert landscape.
+              {community.name} is strategically located in {community.city}, offering residents the perfect balance of active adult community living and access to all that the Las Vegas area has to offer. <Link href="/communities" className="text-primary hover:underline">Explore other Las Vegas 55+ communities</Link> or learn more about <Link href="/las-vegas-55-guide" className="text-primary hover:underline">Las Vegas 55+ living</Link>. The community's location provides easy access to world-class healthcare facilities, shopping centers, entertainment venues, and the natural beauty of the Nevada desert landscape.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Convenient Access to Las Vegas Amenities</h3>
             <p>
