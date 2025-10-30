@@ -31,7 +31,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold mb-6">Your Dedicated Buyer's Representative</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in Las Vegas 55+ communities, with particular expertise in Del Webb Lake Las Vegas. This specialization means you receive expert guidance tailored specifically to your needs as a buyer of new construction active adult homes.
+                  Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in <Link href="/communities" className="text-primary hover:underline">Las Vegas 55+ communities</Link>, with particular expertise in <Link href="/communities/del-webb-lake-las-vegas" className="text-primary hover:underline">Del Webb Lake Las Vegas</Link>. This specialization means you receive expert guidance tailored specifically to your needs as a buyer of new construction active adult homes.
                 </p>
                 <p>
                   As a buyer's representative, Dr. Duffy works exclusively for your interests throughout the entire purchase process. This is fundamentally different from builder representatives who work for the builder, or dual agents who attempt to represent both sides. Your buyer's representative is your dedicated advocate, negotiator, and protector.
@@ -122,7 +122,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-6">Del Webb Lake Las Vegas Specialization</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              Dr. Jan Duffy maintains deep expertise specifically in Del Webb Lake Las Vegas, Las Vegas's premier 55+ community. This specialization provides you with insider knowledge that general-purpose agents simply cannot match.
+              Dr. Jan Duffy maintains deep expertise specifically in <Link href="/communities/del-webb-lake-las-vegas" className="text-primary hover:underline">Del Webb Lake Las Vegas</Link>, Las Vegas's premier 55+ community. Explore all <Link href="/communities" className="text-primary hover:underline">Las Vegas 55+ communities</Link> we serve, including <Link href="/communities/sun-city-summerlin" className="text-primary hover:underline">Sun City Summerlin</Link> and <Link href="/communities/sun-city-anthem" className="text-primary hover:underline">Sun City Anthem</Link>. This specialization provides you with insider knowledge that general-purpose agents simply cannot match.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
@@ -205,6 +205,11 @@ export default function AboutPage() {
             <Button asChild variant="outline" size="lg">
               <Link href="/why-hire-an-agent">
                 Learn Why You Need an Agent
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" size="lg">
+              <Link href="/communities">
+                View All Communities
               </Link>
             </Button>
           </div>

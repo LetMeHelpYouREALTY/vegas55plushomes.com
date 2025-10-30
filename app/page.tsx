@@ -87,7 +87,7 @@ export default function HomePage() {
               The Las Vegas metropolitan area, including Henderson and North Las Vegas, is home to some of the nation's finest 55+ active adult communities. These master-planned communities are specifically designed for residents 55 and better, offering resort-style amenities, championship golf courses, state-of-the-art fitness centers, and endless opportunities for social engagement and active living.
             </p>
             <p className="text-lg text-muted-foreground mb-6">
-              Whether you're seeking a luxury lifestyle in a gated community like Siena, an active retirement in Sun City Summerlin, or a peaceful haven in Henderson's Sun City Anthem, Las Vegas offers diverse options to match every preference and budget. Our team specializes exclusively in helping active adults find their perfect home in these exceptional communities.
+              Whether you're seeking a luxury lifestyle in a gated community like <Link href="/communities/siena" className="text-primary hover:underline">Siena</Link>, an active retirement in <Link href="/communities/sun-city-summerlin" className="text-primary hover:underline">Sun City Summerlin</Link>, or a peaceful haven in Henderson's <Link href="/communities/sun-city-anthem" className="text-primary hover:underline">Sun City Anthem</Link>, Las Vegas offers diverse options to match every preference and budget. Our team specializes exclusively in helping active adults find their perfect home in these exceptional communities. Learn more in our <Link href="/las-vegas-55-guide" className="text-primary hover:underline">comprehensive Las Vegas 55+ guide</Link>.
             </p>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function HomePage() {
                   Community Expertise
                 </h4>
                 <p className="text-muted-foreground">
-                  We possess intimate knowledge of each Las Vegas 55+ community's unique characteristics, from amenity packages and lifestyle offerings to homeowner association structures and investment potential.
+                  We possess intimate knowledge of each Las Vegas 55+ community's unique characteristics, from amenity packages and lifestyle offerings to homeowner association structures and investment potential. <Link href="/communities" className="text-primary hover:underline">Explore all communities</Link> or learn about <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">gated communities</Link> and <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball communities</Link>.
                 </p>
               </div>
               <div className="p-6 rounded-lg border bg-card">
@@ -182,7 +182,7 @@ export default function HomePage() {
                 Las Vegas 55+ communities represent the pinnacle of active adult living, offering residents an unparalleled combination of luxury amenities, social engagement opportunities, and low-maintenance lifestyles. These master-planned communities are designed specifically for active adults who want to maximize their retirement years through fitness, recreation, social connections, and cultural enrichment.
               </p>
               <p>
-                From championship golf courses to state-of-the-art fitness centers, from pickleball courts to arts and crafts studios, Las Vegas 55+ communities provide everything you need to maintain an active, fulfilling lifestyle. Many communities feature multiple recreation centers, swimming pools, restaurants, libraries, and computer labs, all within walking distance or a short golf cart ride from your home.
+                From championship golf courses to state-of-the-art fitness centers, from <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball courts</Link> to arts and crafts studios, Las Vegas 55+ communities provide everything you need to maintain an active, fulfilling lifestyle. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">premier gated communities</Link> offering enhanced security and exclusive amenities. Many communities feature multiple recreation centers, swimming pools, restaurants, libraries, and computer labs, all within walking distance or a short golf cart ride from your home.
               </p>
               <p>
                 The architectural diversity across Las Vegas 55+ communities is equally impressive. Whether you prefer single-story attached villas for maintenance-free living, spacious detached homes for entertaining, or luxury estate-style residences, you'll find options to match your preferences. Many communities offer homes designed with accessibility in mind, featuring single-level living, wide doorways, and thoughtful layouts that accommodate changing needs.
@@ -278,7 +278,7 @@ export default function HomePage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Explore Communities Online</h3>
                   <p className="text-muted-foreground">
-                    Begin by browsing our comprehensive guide to Las Vegas 55+ communities. Learn about amenities, home types, locations, and pricing. Our detailed community pages provide virtual tours, floor plans, and market updates to help you narrow your search.
+                    Begin by browsing our <Link href="/las-vegas-55-guide" className="text-primary hover:underline">comprehensive guide to Las Vegas 55+ communities</Link>. Learn about amenities, home types, locations, and pricing. Our <Link href="/communities" className="text-primary hover:underline">detailed community pages</Link> provide virtual tours, floor plans, and market updates to help you narrow your search.
                   </p>
                 </div>
               </div>

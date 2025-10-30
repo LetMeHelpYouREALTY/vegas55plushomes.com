@@ -97,14 +97,14 @@ export default function CommunitiesPage() {
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-3">Location and Neighborhood</h3>
             <p>
-              Each area of Las Vegas offers distinct advantages. Summerlin provides a master-planned community atmosphere with mountain views and extensive amenities. Henderson offers a more suburban feel with excellent shopping and dining. Consider proximity to healthcare, shopping, entertainment, and airports when evaluating locations.
+              Each area of Las Vegas offers distinct advantages. <Link href="/summerlin-55-homes" className="text-primary hover:underline">Summerlin</Link> provides a master-planned community atmosphere with mountain views and extensive amenities. <Link href="/henderson-55-homes" className="text-primary hover:underline">Henderson</Link> offers a more suburban feel with excellent shopping and dining. Consider proximity to healthcare, shopping, entertainment, and airports when evaluating locations. Use our <Link href="/las-vegas-55-guide/map" className="text-primary hover:underline">interactive map</Link> to explore community locations.
             </p>
           </div>
 
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-3">Amenities and Lifestyle</h3>
             <p>
-              Different communities emphasize different amenities. Golf enthusiasts will appreciate communities with championship courses, while fitness-focused residents might prioritize state-of-the-art gym facilities. Social butterflies should consider communities with active club scenes and busy event calendars.
+              Different communities emphasize different amenities. Golf enthusiasts will appreciate communities with championship courses, while fitness-focused residents might prioritize state-of-the-art gym facilities. Social butterflies should consider communities with active club scenes and busy event calendars. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">gated communities</Link> for enhanced security or <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">communities with pickleball courts</Link> for active recreation.
             </p>
           </div>
 
@@ -142,6 +142,12 @@ export default function CommunitiesPage() {
             className="inline-flex items-center justify-center px-6 py-3 border rounded-md hover:bg-accent transition-colors"
           >
             View Complete Guide
+          </Link>
+          <Link
+            href="/homes-for-sale"
+            className="inline-flex items-center justify-center px-6 py-3 border rounded-md hover:bg-accent transition-colors"
+          >
+            Search Homes For Sale
           </Link>
         </div>
       </section>
