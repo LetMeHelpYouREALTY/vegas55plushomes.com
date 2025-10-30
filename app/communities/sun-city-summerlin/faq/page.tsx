@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import Script from 'next/script'
 import { ChevronDown, ChevronUp, Info, HelpCircle } from 'lucide-react'
+import { generateFAQPageSchema } from '@/lib/structured-data'
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -108,6 +110,22 @@ export default function FAQPage() {
             ))}
           </div>
         </section>
+
+        {/* FAQ Structured Data */}
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateFAQPageSchema(
+                faqs.map((faq) => ({
+                  question: faq.question,
+                  answer: faq.answer,
+                }))
+              )
+            ),
+          }}
+        />
 
         <section>
           <h2 className="text-3xl font-bold mb-6">Understanding Sun City Summerlin: Additional Information</h2>

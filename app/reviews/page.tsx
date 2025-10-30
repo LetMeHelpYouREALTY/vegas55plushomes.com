@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import Script from 'next/script'
 import { Button } from '@/components/ui/button'
 import { Star, MapPin, Heart, Quote } from 'lucide-react'
+import { generateReviewSchema } from '@/lib/structured-data'
 
 export const metadata = {
   title: 'Client Reviews | Las Vegas 55+ Real Estate | Vegas 55 Plus Homes',
@@ -152,6 +154,20 @@ export default function ReviewsPage() {
             </Button>
           </div>
         </section>
+
+        {/* Review AggregateRating Schema */}
+        <Script
+          id="review-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateReviewSchema({
+                ratingValue: 5,
+                reviewCount: reviews.length,
+              })
+            ),
+          }}
+        />
       </div>
     </div>
   )

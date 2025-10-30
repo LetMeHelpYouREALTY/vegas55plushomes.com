@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import Script from 'next/script'
 import { TrendingUp, Calendar, BarChart3, MapPin, Lightbulb } from 'lucide-react'
+import { generateArticleSchema } from '@/lib/structured-data'
 
 export const metadata = {
   title: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights | Vegas 55 Plus Homes',
@@ -393,6 +395,23 @@ export default function GoogleTrendsInsightsPage() {
             </Link>
           </div>
         </section>
+
+        {/* Article Structured Data */}
+        <Script
+          id="article-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              generateArticleSchema({
+                headline: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights',
+                description:
+                  'Discover trending search terms and insights for Las Vegas 55+ real estate communities. Use Google Trends data to understand market interest, seasonal patterns, and regional search behavior.',
+                datePublished: '2025-10-30',
+                url: '/blog/google-trends-insights',
+              })
+            ),
+          }}
+        />
       </div>
     </div>
   )

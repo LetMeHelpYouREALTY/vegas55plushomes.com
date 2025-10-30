@@ -96,8 +96,9 @@ export default function RootLayout({
             gtag('config', 'G-JCQTZFS0DN');
           `}
         </Script>
+        {/* RealEstateAgent Schema */}
         <Script
-          id="local-business-schema"
+          id="real-estate-agent-schema"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
@@ -135,6 +136,49 @@ export default function RootLayout({
                 longitude: '-115.1398',
               },
               priceRange: '$$',
+            }),
+          }}
+        />
+        {/* Organization Schema */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
+              url: siteUrl,
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+17029963758',
+                contactType: 'Sales',
+                areaServed: ['US'],
+                availableLanguage: ['English'],
+              },
+            }),
+          }}
+        />
+        {/* WebSite Schema with SearchAction */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
+              url: siteUrl,
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: `${siteUrl}/homes-for-sale?search={search_term_string}`,
+                },
+                'query-input': 'required name=search_term_string',
+              },
             }),
           }}
         />
