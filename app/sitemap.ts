@@ -77,6 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/blog/google-trends-insights`,
+      lastModified: new Date(),
+      changeFrequency: '_outly' as const,
+      priority: 0.6,
+    },
   ]
 
   const guidePages = [
