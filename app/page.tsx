@@ -7,7 +7,6 @@ import CommunityCard from '@/components/community-card'
 
 // Lazy load RSS feed (below the fold, non-critical)
 const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
-  ssr: false,
   loading: () => (
     <div className="rounded-lg border bg-card p-6">
       <div className="animate-pulse space-y-4">
