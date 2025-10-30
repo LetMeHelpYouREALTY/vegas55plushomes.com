@@ -23,7 +23,7 @@ export default function CommunityCard({ community, featured = false }: Community
       )}
 
       <div className="aspect-video bg-gradient-to-br from-primary/20 via-primary/10 to-muted relative overflow-hidden" aria-label={`${community.name} community image`}>
-        <div className="absolute inset-elescope flex items-center justify-center" aria-hidden="true">
+        <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
           <Home className="h-20 w-20 text-muted-foreground/50" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
