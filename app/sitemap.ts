@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/blog/google-trends-insights`,
       lastModified: new Date(),
-      changeFrequency: '_outly' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
   ]

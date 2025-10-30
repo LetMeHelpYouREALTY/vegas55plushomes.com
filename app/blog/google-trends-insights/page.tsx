@@ -102,7 +102,7 @@ export default function GoogleTrendsInsightsPage() {
                   <h3 className="text-xl font-semibold">{term.term}</h3>
                   <div className="flex gap-2">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      term.interest === 'High' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'Самоотверженно
+                      term.interest === 'High' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                       : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
                     }`}>
                       {term.interest}
@@ -178,7 +178,7 @@ export default function GoogleTrendsInsightsPage() {
               <p className="text-sm text-muted-foreground mb-3">High Interest</p>
               <p className="text-sm text-muted-foreground">
                 Local Nevadans show strong interest in Las Vegas 55+ communities, particularly in Henderson and Summerlin areas. Consistent year-round interest.
-              </p Coastal
+              </p>
             </div>
             <div className="rounded-lg border bg-card p-6">
               <h3 className="text-lg font-semibold mb-2">Arizona</h3>
@@ -256,7 +256,7 @@ export default function GoogleTrendsInsightsPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <TrendingUp className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
-                  <span>Buyer's agent for new construction</span etap>
+                  <span>Buyer's agent for new construction</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <TrendingUp className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
@@ -379,7 +379,6 @@ export default function GoogleTrendsInsightsPage() {
             >
               View All Communities
             </Link>
-           eynscht
             <Link
               href="/las-vegas-55-guide"
               className="inline-flex items-center justify-center px-6 py-3 border rounded-md hover:bg-accent transition-colors"
