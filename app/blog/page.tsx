@@ -52,6 +52,13 @@ export default function BlogPage() {
       category: 'Relocation Guide',
       href: '/blog/moving-to-las-vegas-guide',
     },
+    {
+      title: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights',
+      date: 'October 30, 2025',
+      excerpt: 'Discover trending search terms and insights for Las Vegas 55+ real estate communities. Use Google Trends data to understand market interest, seasonal patterns, and regional search behavior.',
+      category: 'Market Insights',
+      href: '/blog/google-trends-insights',
+    },
   ]
 
   return (
