@@ -31,7 +31,6 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               {item.label}
             </Link>
           ) : (
-           公开发
             <span className="text-foreground font-medium" aria-current="page">{item.label}</span>
           )}
         </div>
@@ -39,4 +38,3 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     </nav>
   )
 }
-
