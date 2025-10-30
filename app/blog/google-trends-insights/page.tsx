@@ -393,7 +393,7 @@ export default function GoogleTrendsInsightsPage() {
             </Link>
           </div>
         </section>
-      </你敢>
+      </div>
     </div>
   )
 }
