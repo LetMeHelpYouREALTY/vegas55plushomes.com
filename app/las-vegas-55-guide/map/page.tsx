@@ -2,13 +2,22 @@ import Link from 'next/link'
 import { MapPin, Home, Search, Compass, Info } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import SitePhoto from '@/components/site-photo'
-import { siteImages } from '@/lib/site-images'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { getCommunityImage, siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data'
+import { mapFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Communities Map | Interactive Map of Active Adult Communities | Location Guide',
-  description: 'Explore Las Vegas 55+ communities on an interactive map. Find communities by location, area, and discover amenities near each community. Comprehensive location guide for active adult communities.',
-  keywords: ['Las Vegas 55+ map', '55+ communities map', 'active adult communities location', 'Las Vegas retirement communities map'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Communities Map | Summerlin, Henderson & Valley',
+  description:
+    'Find 55+ communities by area: Summerlin, Henderson, Las Vegas, and North Las Vegas. Call Dr. Jan Duffy at (702) 996-3758 for a location-based tour plan.',
+  path: '/las-vegas-55-guide/map',
+  image: siteImages.summerlin,
+  keywords: ['Las Vegas 55+ map', 'Henderson 55+ communities location', 'Summerlin 55+ neighborhoods'],
+})
 
 export default function MapPage() {
   // Organize communities by area
@@ -45,12 +54,49 @@ export default function MapPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="map-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Las Vegas 55+ Communities Map',
+          description:
+            'Location guide grouping 55+ communities in Summerlin, Henderson, Las Vegas, and North Las Vegas.',
+          path: '/las-vegas-55-guide/map',
+          image: siteImages.summerlin,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+            { name: 'Map', url: '/las-vegas-55-guide/map' },
+          ],
+          faqs: mapFaqs,
+          extra: [
+            generateItemListSchema({
+              name: 'Las Vegas Valley 55+ community areas',
+              description: 'Geographic groupings for 55+ homebuyers.',
+              items: [
+                { name: 'Summerlin 55+ communities', url: '/summerlin-55-homes', image: siteImages.summerlin },
+                { name: 'Henderson 55+ communities', url: '/henderson-55-homes', image: siteImages.henderson },
+                { name: 'All 55+ communities', url: '/communities', image: siteImages.heroHome },
+              ],
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.summerlin}
+        title="Las Vegas 55+ Communities Map"
+        subtitle="Group communities by Summerlin, Henderson, Las Vegas, and North Las Vegas, then tour with Dr. Jan Duffy at (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
+          { label: 'Map' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Plan a location tour' }}
+        secondaryCTA={{ href: '/communities', text: 'See every community' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/las-vegas-55-guide" className="hover:text-foreground">Las Vegas 55+ Guide</Link> / Map
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Communities Map | Location Guide for Active Adult Communities</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Explore the locations of Las Vegas's premier 55+ communities with our comprehensive map guide. Understanding community locations helps you evaluate proximity to services, healthcare, shopping, entertainment, and natural attractions, all important factors in choosing your perfect active adult community.
         </p>
@@ -109,8 +155,14 @@ export default function MapPage() {
                 <Link
                   key={community.slug}
                   href={`/communities/${community.slug}`}
-                  className="group rounded-lg border bg-card p-6 hover:shadow-lg transition-shadow"
+                  className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
                 >
+                  <SitePhoto
+                    image={getCommunityImage(community)}
+                    alt={`${community.name} 55+ homes in ${community.city}, Nevada`}
+                    className="aspect-video"
+                  />
+                  <div className="p-6">
                   <div className="flex items-start gap-3 mb-3">
                     <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                     <div>
@@ -127,6 +179,7 @@ export default function MapPage() {
                   {community.homesForSale && (
                     <p className="text-xs text-muted-foreground mt-2">{community.homesForSale} Homes Available</p>
                   )}
+                  </div>
                 </Link>
               ))}
             </div>
@@ -180,6 +233,8 @@ export default function MapPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={mapFaqs} />
     </div>
   )
 }

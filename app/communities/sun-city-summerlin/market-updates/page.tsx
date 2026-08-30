@@ -1,11 +1,21 @@
 import Link from 'next/link'
 import { TrendingUp, Calendar, DollarSign, BarChart, Home, ArrowRight } from 'lucide-react'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateArticleSchema, generatePageGraph } from '@/lib/structured-data'
+import { marketUpdateFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Sun City Summerlin Real Estate Market Updates | Current Trends & Statistics | Las Vegas 55+',
-  description: 'Stay informed with the latest Sun City Summerlin real estate market updates, trends, pricing information, and statistics. Expert analysis for buyers and sellers in Las Vegas\' premier 55+ community.',
-  keywords: ['Sun City Summerlin market updates', 'Las Vegas 55+ real estate trends', 'Sun City Summerlin home prices', 'active adult real estate market'],
-}
+export const metadata = buildMetadata({
+  title: 'Sun City Summerlin Market Updates | Las Vegas 55+ | Dr. Jan Duffy',
+  description:
+    'Monthly notes on Sun City Summerlin 55+ inventory and buyer demand. Verify live prices with Dr. Jan Duffy at (702) 996-3758—this is not an MLS feed.',
+  path: '/communities/sun-city-summerlin/market-updates',
+  image: siteImages.golf,
+  keywords: ['Sun City Summerlin market updates', 'Las Vegas 55+ real estate trends', 'Summerlin 55+ homes'],
+})
 
 export default function SunCitySummerlinMarketUpdatesPage() {
   const updates = [
@@ -13,29 +23,68 @@ export default function SunCitySummerlinMarketUpdatesPage() {
       date: 'October 2025', 
       title: 'October 2025 – Sun City Summerlin Real Estate Market Update', 
       excerpt: 'October market analysis shows steady demand with inventory levels holding steady. Average days on market remains competitive, and pricing trends continue to favor sellers while remaining accessible to buyers. New listings continue to enter the market at a healthy pace, providing options across various price points and floor plans.',
-      keyMetrics: '24 homes currently active | Average price: $485,000 | Average days on market: 32'
+      keyMetrics: 'Verify current active count, list prices, and days on market with Dr. Jan Duffy before you offer.'
     },
     { 
       date: 'September 2025', 
       title: 'September 2025 – Sun City Summerlin Real Estate Market Update', 
       excerpt: 'September market activity reflected typical seasonal patterns with strong buyer interest continuing throughout the month. Inventory levels remained balanced, and homes in desirable locations and floor plans continued to receive multiple offers. Price appreciation trends remained moderate and sustainable.',
-      keyMetrics: '28 homes currently active | Average price: $478,000 | Average days on market: 28'
+      keyMetrics: 'Ask for September 2025 comps and active inventory—do not rely on a published average.'
     },
     { 
       date: 'August 2025', 
       title: 'August 2025 – Sun City Summerlin Real Estate Market Update', 
       excerpt: 'Summer market activity remained strong with continued interest from both local and out-of-state buyers. The community\'s reputation and amenities continued to drive demand, particularly for updated homes and desirable floor plans. Market conditions favored well-priced, well-maintained properties.',
-      keyMetrics: '26 homes currently active | Average price: $472,000 | Average days on market: 30'
+      keyMetrics: 'Ask for August 2025 comps and active inventory—do not rely on a published average.'
     },
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="scs-market-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Sun City Summerlin Real Estate Market Updates',
+          description:
+            'Historical monthly notes for Sun City Summerlin 55+ buyers. Confirm live MLS numbers with Dr. Jan Duffy.',
+          path: '/communities/sun-city-summerlin/market-updates',
+          image: siteImages.golf,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Communities', url: '/communities' },
+            { name: 'Sun City Summerlin', url: '/communities/sun-city-summerlin' },
+            { name: 'Market Updates', url: '/communities/sun-city-summerlin/market-updates' },
+          ],
+          faqs: marketUpdateFaqs,
+          extra: [
+            generateArticleSchema({
+              headline: 'Sun City Summerlin 55+ market notes',
+              description:
+                'How to use monthly Sun City Summerlin observations while verifying current inventory with a buyer’s agent.',
+              datePublished: '2025-10-01',
+              dateModified: '2026-08-30',
+              image: siteImages.golf,
+              url: '/communities/sun-city-summerlin/market-updates',
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.golf}
+        title="Sun City Summerlin Market Updates"
+        subtitle="Use these notes as context, then verify active listings, HOA dues, and days on market with Dr. Jan Duffy at (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
+          { label: 'Market Updates' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Get a current CMA' }}
+        secondaryCTA={{ href: '/communities/sun-city-summerlin/homes-for-sale', text: 'Homes for sale' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/communities" className="hover:text-foreground">Communities</Link> / <Link href="/communities/sun-city-summerlin" className="hover:text-foreground">Sun City Summerlin</Link> / Market Updates
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Sun City Summerlin Real Estate Market Updates | Current Trends & Statistics</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Stay informed with the latest real estate market updates, trends, and statistics for Sun City Summerlin. Our monthly market analysis provides valuable insights for buyers, sellers, and anyone interested in understanding current market conditions in Las Vegas's premier 55+ community.
         </p>
@@ -63,8 +112,8 @@ export default function SunCitySummerlinMarketUpdatesPage() {
                   <BarChart className="h-4 w-4" />
                   <span>{update.keyMetrics}</span>
                 </div>
-                <Link href="#" className="text-primary hover:underline text-sm font-medium mt-4 inline-flex items-center gap-1">
-                  Read Full Analysis <ArrowRight className="h-4 w-4" />
+                <Link href="/contact" className="text-primary hover:underline text-sm font-medium mt-4 inline-flex items-center gap-1">
+                  Request a current analysis <ArrowRight className="h-4 w-4" />
                 </Link>
               </article>
             ))}
@@ -181,6 +230,8 @@ export default function SunCitySummerlinMarketUpdatesPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={marketUpdateFaqs} />
     </div>
   )
 }

@@ -1,11 +1,21 @@
 import Link from 'next/link'
 import { Home, Shield, Users, Trophy, Heart, MapPin, CheckCircle, ArrowRight, Award } from 'lucide-react'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateResidenceCommunitySchema } from '@/lib/structured-data'
+import { whySunCityFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Why Sun City Summerlin? | Top Reasons to Choose This Premier Las Vegas 55+ Community',
-  description: 'Discover why Sun City Summerlin is one of Las Vegas\'s most desirable 55+ communities. Learn about premier location, world-class amenities, active lifestyle, gated security, and exceptional value in this comprehensive guide.',
-  keywords: ['why Sun City Summerlin', 'Las Vegas 55+ community', 'active adult living Summerlin', 'premier retirement community'],
-}
+export const metadata = buildMetadata({
+  title: 'Why Sun City Summerlin? | Las Vegas 55+ Community Guide | Dr. Jan Duffy',
+  description:
+    'Why buyers choose Sun City Summerlin: Summerlin location, three golf courses, four recreation centers, and gated 55+ living. Call (702) 996-3758.',
+  path: '/communities/sun-city-summerlin/why-sun-city-summerlin',
+  image: siteImages.golf,
+  keywords: ['why Sun City Summerlin', 'Las Vegas 55+ community', 'Summerlin active adult living'],
+})
 
 export default function WhySunCitySummerlinPage() {
   const reasons = [
@@ -16,8 +26,8 @@ export default function WhySunCitySummerlinPage() {
     },
     {
       icon: <Shield className="h-8 w-8" />,
-      title: 'Gated Security & Privacy',
-      description: '24/7 gated security provides peace of mind and privacy in a safe, secure environment designed specifically for active adults. The gated community setting ensures residents enjoy tranquility and security while maintaining easy access to surrounding areas.',
+      title: 'Gated Access & Privacy',
+      description: 'Controlled-access entries and on-site staffing at the gates. Confirm guest, vendor, and HOA access rules when you tour so you know how daily arrivals work.',
     },
     {
       icon: <Trophy className="h-8 w-8" />,
@@ -42,12 +52,56 @@ export default function WhySunCitySummerlinPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="why-scs-graph"
+        data={generatePageGraph({
+          pageType: 'WebPage',
+          name: 'Why Sun City Summerlin',
+          description:
+            'Location, golf, recreation centers, and gated 55+ living in Summerlin, Las Vegas.',
+          path: '/communities/sun-city-summerlin/why-sun-city-summerlin',
+          image: siteImages.golf,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Communities', url: '/communities' },
+            { name: 'Sun City Summerlin', url: '/communities/sun-city-summerlin' },
+            { name: 'Why Sun City Summerlin', url: '/communities/sun-city-summerlin/why-sun-city-summerlin' },
+          ],
+          faqs: whySunCityFaqs,
+          extra: [
+            generateResidenceCommunitySchema({
+              name: 'Sun City Summerlin',
+              description:
+                'Largest Las Vegas 55+ community, with golf, four recreation centers, and a Summerlin location near Red Rock Canyon.',
+              url: '/communities/sun-city-summerlin',
+              image: siteImages.golf,
+              city: 'Las Vegas',
+              amenities: [
+                'Three championship golf courses',
+                'Four recreation centers',
+                'Gated entries',
+                '80+ clubs',
+              ],
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.golf}
+        title="Why Sun City Summerlin?"
+        subtitle="About 7,700 homes, three golf courses, and four recreation centers in Summerlin, Las Vegas. Tour with Dr. Jan Duffy at (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
+          { label: 'Why Sun City Summerlin' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Ask about Sun City Summerlin' }}
+        secondaryCTA={{ href: '/communities/sun-city-summerlin/homes-for-sale', text: 'Homes for sale' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/communities" className="hover:text-foreground">Communities</Link> / <Link href="/communities/sun-city-summerlin" className="hover:text-foreground">Sun City Summerlin</Link> / Why Sun City Summerlin
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Why Sun City Summerlin? | Top Reasons to Choose This Premier 55+ Community</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Sun City Summerlin stands out as one of Las Vegas's premier 55+ communities, offering an unmatched combination of location, amenities, lifestyle, and value. Discover why so many active adults choose to call this exceptional community home.
         </p>
@@ -183,6 +237,8 @@ export default function WhySunCitySummerlinPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={whySunCityFaqs} />
     </div>
   )
 }

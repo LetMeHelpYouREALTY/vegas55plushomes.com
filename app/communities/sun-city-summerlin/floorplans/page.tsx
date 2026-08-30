@@ -1,13 +1,27 @@
 import Link from 'next/link'
 import { Home, Bed, Bath, Square, ArrowRight } from 'lucide-react'
 import SitePhoto from '@/components/site-photo'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
 import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import {
+  generateHowToSchema,
+  generateItemListSchema,
+  generatePageGraph,
+  generateResidenceCommunitySchema,
+} from '@/lib/structured-data'
+import { floorplanFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Sun City Summerlin Floorplans | Complete Guide to Home Options | Las Vegas 55+',
-  description: 'Explore all floorplans available in Sun City Summerlin. From spacious detached homes to cozy attached villas, discover 17 distinct floor plans ranging from 1,200 to 3,500+ square feet.',
-  keywords: ['Sun City Summerlin floorplans', 'Las Vegas 55+ home plans', 'Sun City Summerlin home designs', 'active adult floorplans'],
-}
+export const metadata = buildMetadata({
+  title: 'Sun City Summerlin Floorplans | Las Vegas 55+ Home Layouts | Dr. Jan Duffy',
+  description:
+    'Single-story Sun City Summerlin floorplan types from attached villas to larger detached homes. Confirm the actual plan on each listing with Dr. Jan Duffy at (702) 996-3758.',
+  path: '/communities/sun-city-summerlin/floorplans',
+  image: siteImages.interior,
+  keywords: ['Sun City Summerlin floorplans', 'Las Vegas 55+ home plans', 'single-story 55+ layouts'],
+})
 
 export default function SunCitySummerlinFloorplansPage() {
   const floorplans = [
@@ -62,12 +76,81 @@ export default function SunCitySummerlinFloorplansPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="scs-floorplans-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Sun City Summerlin Floorplans',
+          description:
+            'Representative single-story 55+ layouts historically offered in Sun City Summerlin. Confirm the plan name on each resale listing.',
+          path: '/communities/sun-city-summerlin/floorplans',
+          image: siteImages.interior,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Communities', url: '/communities' },
+            { name: 'Sun City Summerlin', url: '/communities/sun-city-summerlin' },
+            { name: 'Floorplans', url: '/communities/sun-city-summerlin/floorplans' },
+          ],
+          faqs: floorplanFaqs,
+          extra: [
+            generateResidenceCommunitySchema({
+              name: 'Sun City Summerlin',
+              description: '55+ community in Summerlin, Las Vegas with multiple single-story floorplan types.',
+              url: '/communities/sun-city-summerlin',
+              image: siteImages.golf,
+              city: 'Las Vegas',
+              amenities: ['Golf', 'Recreation centers', 'Single-story homes'],
+            }),
+            generateHowToSchema({
+              name: 'How to choose a Sun City Summerlin floorplan',
+              description: 'Steps 55+ buyers use to match a layout to daily living needs.',
+              steps: [
+                {
+                  name: 'List space needs',
+                  text: 'Note bedroom count, office, and whether guests need a separate suite.',
+                },
+                {
+                  name: 'Decide attached vs. detached',
+                  text: 'Villas typically have lower exterior maintenance; detached homes have larger lots.',
+                },
+                {
+                  name: 'Match the listing to a named plan',
+                  text: 'Plan names on marketing materials may differ from the tax record. Verify square footage and garage count on the listing.',
+                },
+                {
+                  name: 'Tour with a buyer’s agent',
+                  text: 'Walk comparable plans with Dr. Jan Duffy at (702) 996-3758 before you write an offer.',
+                },
+              ],
+            }),
+            generateItemListSchema({
+              name: 'Sun City Summerlin floorplan types',
+              description: 'Named layouts commonly discussed with 55+ buyers. Availability is listing-specific.',
+              items: floorplans.map((plan) => ({
+                name: `${plan.name} — ${plan.type}`,
+                url: '/communities/sun-city-summerlin/floorplans',
+                image: siteImages.interior,
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.interior}
+        title="Sun City Summerlin Floorplans"
+        subtitle="Single-story villas and detached homes. Confirm the actual plan, square footage, and upgrades on each listing with Dr. Jan Duffy at (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
+          { label: 'Floorplans' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Match a floorplan to listings' }}
+        secondaryCTA={{ href: '/communities/sun-city-summerlin/homes-for-sale', text: 'Homes for sale' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/communities" className="hover:text-foreground">Communities</Link> / <Link href="/communities/sun-city-summerlin" className="hover:text-foreground">Sun City Summerlin</Link> / Floorplans
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Sun City Summerlin Floorplans | Complete Guide to Home Options</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Explore all available floorplans in Sun City Summerlin. From spacious detached homes to cozy attached villas, discover 17 distinct floor plans designed specifically for active adult living, ranging from approximately 1,200 square feet to over 3,500 square feet.
         </p>
@@ -196,6 +279,8 @@ export default function SunCitySummerlinFloorplansPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={floorplanFaqs} />
     </div>
   )
 }

@@ -1,23 +1,97 @@
 import Link from 'next/link'
 import { Home, MapPin, Trophy, Heart, Shield, Sun } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { getCommunityImage, siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import {
+  generateHowToSchema,
+  generateItemListSchema,
+  generatePageGraph,
+} from '@/lib/structured-data'
+import { overviewFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Communities Overview | Complete Guide to Active Adult Living',
-  description: 'Complete overview of Las Vegas 55+ active adult communities. Learn about amenities, lifestyle, climate, and why Las Vegas is ideal for active adults seeking premier retirement living.',
-  keywords: ['Las Vegas 55+ communities overview', 'active adult living Las Vegas', 'Las Vegas retirement communities', '55+ living Nevada'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Communities Overview | Active Adult Living Guide',
+  description:
+    'Overview of Las Vegas, Henderson, and Summerlin 55+ communities: amenities, climate, and how to choose a neighborhood. Call Dr. Jan Duffy at (702) 996-3758.',
+  path: '/las-vegas-55-guide/overview',
+  image: siteImages.heroHome,
+  keywords: ['Las Vegas 55+ communities overview', 'active adult living Las Vegas', 'Henderson 55+ communities'],
+})
 
 export default function OverviewPage() {
   const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 6)
 
   return (
+    <div>
+      <JsonLd
+        id="overview-graph"
+        data={generatePageGraph({
+          pageType: 'WebPage',
+          name: 'Las Vegas 55+ Communities Overview',
+          description:
+            'Guide to 55+ communities in Las Vegas, Henderson, and Summerlin, including amenities, climate, and how to choose a neighborhood.',
+          path: '/las-vegas-55-guide/overview',
+          image: siteImages.heroHome,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+            { name: 'Overview', url: '/las-vegas-55-guide/overview' },
+          ],
+          faqs: overviewFaqs,
+          extra: [
+            generateHowToSchema({
+              name: 'How to choose a Las Vegas 55+ community',
+              description:
+                'Steps 55+ homebuyers use to compare Las Vegas Valley age-restricted communities.',
+              steps: [
+                {
+                  name: 'List must-have amenities',
+                  text: 'Decide whether golf, pickleball, a large clubhouse, or waterfront access matters most.',
+                },
+                {
+                  name: 'Compare locations',
+                  text: 'Tour Summerlin, Henderson, and North Las Vegas neighborhoods and note drive times to healthcare and shopping.',
+                },
+                {
+                  name: 'Review HOA services and home type',
+                  text: 'Confirm single-story vs. villa layouts, exterior maintenance, and age-restriction rules.',
+                },
+                {
+                  name: 'Tour with a buyer’s representative',
+                  text: 'Call Dr. Jan Duffy at (702) 996-3758 before visiting builder models so representation is in place.',
+                },
+              ],
+            }),
+            generateItemListSchema({
+              name: 'Featured Las Vegas 55+ communities',
+              description: 'Age-restricted neighborhoods highlighted in this overview.',
+              items: featuredCommunities.map((community) => ({
+                name: community.name,
+                url: `/communities/${community.slug}`,
+                image: getCommunityImage(community),
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.heroHome}
+        title="Las Vegas 55+ Communities Overview"
+        subtitle="Compare amenities, climate, and locations across Las Vegas, Henderson, and Summerlin 55+ neighborhoods with Dr. Jan Duffy."
+        breadcrumbs={[
+          { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
+          { label: 'Overview' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Plan a community tour' }}
+        secondaryCTA={{ href: '/communities', text: 'See all communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/las-vegas-55-guide" className="hover:text-foreground">Las Vegas 55+ Guide</Link> / Overview
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Communities: Complete Overview | Your Guide to Active Adult Living</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Las Vegas has emerged as one of America's premier destinations for active adults seeking an exceptional retirement lifestyle. This comprehensive overview explores why the Las Vegas Valley offers unmatched opportunities for 55+ living, from world-class amenities and year-round sunshine to diverse community options and exceptional value.
         </p>
@@ -175,6 +249,8 @@ export default function OverviewPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={overviewFaqs} />
     </div>
   )
 }

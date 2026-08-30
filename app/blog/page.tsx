@@ -1,12 +1,22 @@
 import Link from 'next/link'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
 import RSSFeed from '@/components/rss-feed'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data'
+import { blogFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Blog | Las Vegas 55+ Real Estate News & Insights | Vegas 55 Plus Homes',
-  description: 'Stay updated with the latest Las Vegas 55+ real estate news, market insights, community updates, and helpful tips for active adults seeking their perfect home.',
-  keywords: ['Las Vegas 55+ real estate blog', 'active adult real estate news', 'Las Vegas 55+ market updates', 'retirement real estate insights'],
-}
+export const metadata = buildMetadata({
+  title: 'Blog | Las Vegas 55+ Homes News | Dr. Jan Duffy',
+  description:
+    'Las Vegas 55+ market notes, community guides, and buyer tips from Dr. Jan Duffy. Call (702) 996-3758.',
+  path: '/blog',
+  image: siteImages.golf,
+  keywords: ['Las Vegas 55+ real estate blog', 'Sun City Summerlin news'],
+})
 
 export default function BlogPage() {
   const posts = [
@@ -62,9 +72,45 @@ export default function BlogPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="blog-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Las Vegas 55+ Real Estate Blog',
+          description:
+            'Market notes, community guides, and buyer tips for Las Vegas, Henderson, and Summerlin 55+ homes from Dr. Jan Duffy.',
+          path: '/blog',
+          image: siteImages.golf,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Blog', url: '/blog' },
+          ],
+          faqs: blogFaqs,
+          extra: [
+            generateItemListSchema({
+              name: 'Las Vegas 55+ blog articles',
+              description: 'Guides and market notes for 55+ homebuyers in the Las Vegas Valley.',
+              items: posts.map((post) => ({
+                name: post.title,
+                url: post.href,
+                image: siteImages.golf,
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.golf}
+        title="Las Vegas 55+ Real Estate Blog"
+        subtitle="Market notes, gated-community guides, and buyer tips from Dr. Jan Duffy. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Blog' }]}
+        primaryCTA={{ href: '/contact', text: 'Talk with Dr. Duffy' }}
+        secondaryCTA={{ href: '/communities', text: 'Browse 55+ communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Real Estate Blog | News, Insights & Market Updates</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Stay updated with the latest Las Vegas 55+ real estate news, market insights, community updates, and helpful tips for active adults. Our blog provides comprehensive information to help you make informed decisions about Las Vegas active adult living.
         </p>
@@ -179,6 +225,8 @@ export default function BlogPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={blogFaqs} />
     </div>
   )
 }

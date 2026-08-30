@@ -117,7 +117,6 @@ export default function GoogleTrendsInsightsPage() {
       />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Real Estate Trends | Google Trends Insights</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Understanding search trends helps us create content that resonates with your interests. This page shares insights from Google Trends analysis to help you understand market interest in Las Vegas 55+ communities and real estate.
         </p>

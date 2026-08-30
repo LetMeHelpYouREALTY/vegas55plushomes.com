@@ -1,12 +1,22 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Home, MapPin, Heart, Star, Users } from 'lucide-react'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data'
+import { successStoriesFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Success Stories | Las Vegas 55+ Real Estate | Vegas 55 Plus Homes',
-  description: 'Read success stories from our clients who found their dream homes in Las Vegas 55+ communities. Real testimonials from satisfied buyers who worked with our Las Vegas 55+ real estate specialists.',
-  keywords: ['Las Vegas 55+ success stories', 'client testimonials', 'real estate success stories Las Vegas', 'active adult home buying stories'],
-}
+export const metadata = buildMetadata({
+  title: 'Success Stories | Las Vegas 55+ Buyer Representation | Dr. Jan Duffy',
+  description:
+    'Client journeys buying 55+ homes in Sun City Summerlin, Sun City Anthem, and Siena with Dr. Jan Duffy. Call (702) 996-3758.',
+  path: '/success-stories',
+  image: siteImages.interior,
+  keywords: ['Las Vegas 55+ success stories', 'Sun City Summerlin buyer stories', 'Henderson 55+ realtor'],
+})
 
 export default function SuccessStoriesPage() {
   const stories = [
@@ -28,15 +38,51 @@ export default function SuccessStoriesPage() {
       title: 'From California to Las Vegas: A Success Story',
       date: 'September 2024',
       community: 'Siena',
-      excerpt: 'A detailed account of how we helped a family from California relocate to Las Vegas and find their perfect home in Siena, navigating long-distance buying and community selection with expert guidance every step of the way.',
-      fullStory: 'This couple from California wanted to relocate to Las Vegas but couldn\'t visit communities in person initially. We provided comprehensive virtual tours, detailed community comparisons, and extensive documentation about Siena and other communities they were considering. When they were finally able to visit, we had narrowed their options to three communities, saving them time and travel costs. Our long-distance support continued through video walkthroughs, digital document signing, and coordination with local services. They chose Siena for its luxury amenities and location, and the entire process went smoothly despite the distance.',
+      excerpt: 'A detailed account of how we helped a couple from California relocate to Las Vegas and find a home in Siena, navigating long-distance buying and community selection with expert guidance every step of the way.',
+      fullStory: 'This couple from California wanted to relocate to Las Vegas but couldn\'t visit communities in person initially. We provided comprehensive virtual tours, detailed community comparisons, and extensive documentation about Siena and other communities they were considering. When they were finally able to visit, we had narrowed their options to three communities, saving them time and travel costs. Our long-distance support continued through video walkthroughs, digital document signing, and coordination with local services. They chose Siena for its recreation amenities and location, and the entire process went smoothly despite the distance.',
     },
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="success-stories-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Las Vegas 55+ Buyer Success Stories',
+          description:
+            'How Dr. Jan Duffy represented buyers relocating to Sun City Summerlin, Sun City Anthem, and Siena.',
+          path: '/success-stories',
+          image: siteImages.interior,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Success Stories', url: '/success-stories' },
+          ],
+          faqs: successStoriesFaqs,
+          extra: [
+            generateItemListSchema({
+              name: '55+ buyer journeys in Las Vegas',
+              description: 'Community-specific buyer representation outcomes.',
+              items: stories.map((story) => ({
+                name: story.title,
+                url: '/success-stories',
+                image: siteImages.interior,
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.interior}
+        title="55+ Buyer Success Stories"
+        subtitle="Relocations and resale purchases in Sun City Summerlin, Sun City Anthem, and Siena with a dedicated buyer’s representative. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Success Stories' }]}
+        primaryCTA={{ href: '/contact', text: 'Start your search' }}
+        secondaryCTA={{ href: '/communities', text: 'Explore communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Success Stories | Real Client Experiences with Las Vegas 55+ Homes</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Read success stories from our clients who found their dream homes in Las Vegas 55+ communities. Each success story represents a unique journey to homeownership, highlighting how our specialized expertise in Las Vegas 55+ real estate helps active adults achieve their retirement living goals.
         </p>
@@ -119,6 +165,8 @@ export default function SuccessStoriesPage() {
           </Button>
         </div>
       </section>
+    </div>
+      <FaqSection faqs={successStoriesFaqs} />
     </div>
   )
 }

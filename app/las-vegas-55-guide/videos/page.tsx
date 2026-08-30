@@ -2,12 +2,33 @@ import Link from 'next/link'
 import { PlayCircle, Home, MapPin, Award, Users, Activity } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import SitePhoto from '@/components/site-photo'
-import { getCommunityImage, siteImages } from '@/lib/site-images'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { getCommunityImage, siteImages, type SiteImage } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data'
+import { videosFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Communities Videos | Virtual Tours & Community Videos | Complete Collection',
-  description: 'Watch videos and virtual tours of Las Vegas 55+ communities. Explore communities through video before visiting in person. Comprehensive video collection showcasing active adult living.',
-  keywords: ['Las Vegas 55+ videos', 'virtual tours 55+ communities', 'Las Vegas active adult video tours', '55+ community walkthroughs'],
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Community Videos & Photo Tours | Dr. Jan Duffy',
+  description:
+    'Photo-led overviews of Sun City Summerlin, Sun City Anthem, Siena, and other Las Vegas 55+ communities. Schedule a live tour at (702) 996-3758.',
+  path: '/las-vegas-55-guide/videos',
+  image: siteImages.clubhouse,
+  keywords: ['Las Vegas 55+ videos', 'Sun City Summerlin tour', '55+ community walkthroughs'],
+})
+
+function videoStill(communityName: string, title: string): SiteImage {
+  const community = lasVegasCommunities.find((entry) => entry.name === communityName)
+  if (community) return getCommunityImage(community)
+  const haystack = `${communityName} ${title}`.toLowerCase()
+  if (haystack.includes('pickleball')) return siteImages.pickleball
+  if (haystack.includes('golf')) return siteImages.golf
+  if (haystack.includes('fitness') || haystack.includes('wellness') || haystack.includes('pool')) {
+    return siteImages.clubhouse
+  }
+  return siteImages.heroHome
 }
 
 export default function VideosPage() {
@@ -48,12 +69,51 @@ export default function VideosPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="videos-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Las Vegas 55+ Community Videos and Photo Tours',
+          description:
+            'Photo-led community overviews for 55+ neighborhoods in Las Vegas, Henderson, and Summerlin. Live video walkthroughs are scheduled with Dr. Jan Duffy.',
+          path: '/las-vegas-55-guide/videos',
+          image: siteImages.clubhouse,
+          dateModified: '2026-08-30',
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+            { name: 'Videos', url: '/las-vegas-55-guide/videos' },
+          ],
+          faqs: videosFaqs,
+          extra: [
+            generateItemListSchema({
+              name: 'Las Vegas 55+ community photo tours',
+              description: 'Linked overviews used as video stills for 55+ neighborhoods.',
+              items: videoCategories.flatMap((category) =>
+                category.videos.map((video) => ({
+                  name: video.title,
+                  url: video.href,
+                  image: videoStill(video.community, video.title),
+                })),
+              ),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.clubhouse}
+        title="Las Vegas 55+ Community Videos"
+        subtitle="Photo tours of clubhouses, golf, and homes. Use them to shortlist communities, then walk the property with Dr. Jan Duffy at (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
+          { label: 'Videos' },
+        ]}
+        primaryCTA={{ href: '/contact', text: 'Schedule a live tour' }}
+        secondaryCTA={{ href: '/communities', text: 'Browse communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/las-vegas-55-guide" className="hover:text-foreground">Las Vegas 55+ Guide</Link> / Videos
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Communities Videos | Virtual Tours & Community Collections</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Explore Las Vegas 55+ communities through our comprehensive video collection. Watch community tours, home walkthroughs, and lifestyle videos to help you find your perfect active adult community. Our video library provides detailed insights into communities, amenities, and the active adult lifestyle.
         </p>
@@ -112,8 +172,8 @@ export default function VideosPage() {
                 >
                   <div className="aspect-video relative">
                     <SitePhoto
-                      image={siteImages.clubhouse}
-                      alt={`${video.title} — Las Vegas 55+ community video still`}
+                      image={videoStill(video.community, video.title)}
+                      alt={`${video.title} — ${video.community} 55+ community photo`}
                       className="aspect-video"
                     />
                     <PlayCircle className="absolute inset-0 m-auto h-16 w-16 text-white drop-shadow" />
@@ -209,6 +269,8 @@ export default function VideosPage() {
           </div>
         </section>
       </div>
+    </div>
+      <FaqSection faqs={videosFaqs} />
     </div>
   )
 }

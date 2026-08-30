@@ -109,3 +109,120 @@ export const guideFaqs = [
       'Compare location (Summerlin, Henderson, North Las Vegas), amenities (golf, pickleball, clubhouse size), HOA services, home type, and current inventory. Dr. Jan Duffy tours communities with buyers and explains HOA rules, age restrictions, and new-construction vs. resale tradeoffs.',
   },
 ]
+
+export const blogFaqs = [
+  {
+    question: 'What topics does the Las Vegas 55+ blog cover?',
+    answer:
+      'Articles cover gated 55+ communities, pickleball amenities, HOA fees, relocating to Nevada, and market notes for Sun City Summerlin, Del Webb at Lake Las Vegas, and Henderson. Call (702) 996-3758 for a buyer consult.',
+  },
+  {
+    question: 'How often is the 55+ market content updated?',
+    answer:
+      'Guides are refreshed as inventory and community amenities change. Verify current list prices and HOA dues with Dr. Jan Duffy before making an offer—published ranges are not a live MLS feed.',
+  },
+]
+
+export const successStoriesFaqs = [
+  {
+    question: 'Do you represent out-of-state 55+ buyers relocating to Las Vegas?',
+    answer:
+      'Yes. Dr. Jan Duffy coordinates virtual tours, digital documents, and in-person visits for buyers moving from California and other states into Sun City Summerlin, Sun City Anthem, Siena, and Del Webb at Lake Las Vegas.',
+  },
+  {
+    question: 'What does a typical 55+ buyer representation outcome include?',
+    answer:
+      'A written search plan, community tours, contract review, inspections, and closing coordination. Representation is for the buyer, not the builder. Call (702) 996-3758 to start.',
+  },
+]
+
+export const overviewFaqs = [
+  {
+    question: 'Why do active adults move to Las Vegas 55+ communities?',
+    answer:
+      'Buyers often cite single-story homes, recreation centers, golf and pickleball, no state income tax on wages, and year-round outdoor living in Las Vegas, Henderson, and Summerlin. Compare HOA services and commute times to healthcare campuses before you choose a community.',
+  },
+  {
+    question: 'How many 55+ communities are in the Las Vegas Valley?',
+    answer:
+      'The valley has more than a dozen age-restricted neighborhoods, including mega communities such as Sun City Summerlin and Sun City Anthem plus smaller Del Webb and Heritage neighborhoods in Henderson and North Las Vegas.',
+  },
+]
+
+export const videosFaqs = [
+  {
+    question: 'Are these community videos a substitute for a live tour?',
+    answer:
+      'No. Videos help you shortlist communities. Walk clubhouses, golf, and model homes with Dr. Jan Duffy before you write an offer. Schedule a tour at (702) 996-3758.',
+  },
+  {
+    question: 'Which Las Vegas 55+ communities have video overviews?',
+    answer:
+      'This page links photo-led overviews for Sun City Summerlin, Sun City Anthem, Siena, Desert Shores, and Regency at Summerlin. Request a live walkthrough for any community you are considering.',
+  },
+]
+
+export const mapFaqs = [
+  {
+    question: 'Where are Las Vegas 55+ communities located?',
+    answer:
+      'Most sit in Summerlin (west valley near Red Rock Canyon), Henderson (including Anthem and Lake Las Vegas), central Las Vegas, and North Las Vegas. Distance to shopping, medical campuses, and McCarran/Harry Reid International Airport varies by neighborhood.',
+  },
+  {
+    question: 'Is Summerlin or Henderson better for 55+ buyers?',
+    answer:
+      'Summerlin 55+ homes sit near Red Rock Canyon and the Summerlin master plan. Henderson options include Sun City Anthem and Del Webb at Lake Las Vegas. The better fit depends on budget, amenities, and how far you want to drive—tour both with a buyer’s agent.',
+  },
+]
+
+export const floorplanFaqs = [
+  {
+    question: 'How many floor plans are in Sun City Summerlin?',
+    answer:
+      'Sun City Summerlin marketed about 17 distinct single-story plans historically, from attached villas near 1,200 square feet to larger detached homes over 3,500 square feet. Available resale plans change with inventory—confirm the specific elevation on a listing with Dr. Jan Duffy.',
+  },
+  {
+    question: 'Are Sun City Summerlin homes single-story?',
+    answer:
+      'Most homes are single-story with two bedrooms or more, two baths, and two-car or three-car garages. Attached villas and a smaller number of other layouts also appear. Verify stairs, lot size, and HOA rules on each property.',
+  },
+]
+
+export const marketUpdateFaqs = [
+  {
+    question: 'Where can I get current Sun City Summerlin home prices?',
+    answer:
+      'Asking prices and days-on-market change with MLS inventory. Call Dr. Jan Duffy at (702) 996-3758 for a current Sun City Summerlin search. Figures published in past market notes are historical snapshots, not a live feed.',
+  },
+  {
+    question: 'How often are Sun City Summerlin market notes published?',
+    answer:
+      'This page summarizes monthly observations for buyers and sellers. For a property-specific CMA, request a consultation rather than relying on averages.',
+  },
+]
+
+export const whySunCityFaqs = [
+  {
+    question: 'Why do buyers choose Sun City Summerlin?',
+    answer:
+      'It is the largest Las Vegas 55+ community, with about 7,700 homes, three golf courses, four recreation centers, and a Summerlin location near Red Rock Canyon. Buyers compare it with Sun City Anthem and Siena on HOA fees, lot size, and commute.',
+  },
+  {
+    question: 'Is Sun City Summerlin gated?',
+    answer:
+      'Yes. The community has controlled-access entries and on-site staffing. Confirm guest and contractor procedures with the HOA when you tour.',
+  },
+]
+
+export const sunCityHomesFaqs = [
+  {
+    question: 'How do I see current Sun City Summerlin homes for sale?',
+    answer:
+      'Contact Dr. Jan Duffy at (702) 996-3758 for a live MLS search, new-construction availability if any, and a tour plan. This page is a starting point, not a complete listing feed.',
+  },
+  {
+    question: 'What home types sell in Sun City Summerlin?',
+    answer:
+      'Resale inventory typically includes attached villas and detached single-story homes across a wide square-footage range. Exact beds, baths, and list prices must be verified on the listing.',
+  },
+]
