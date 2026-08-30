@@ -189,3 +189,9 @@
     flex-direction: column !important;
   }
 }
+
+realscout-office-listings {
+  display: block;
+  width: 100%;
+  --rs-listing-divider-color: rgb(226, 232, 240);
+}

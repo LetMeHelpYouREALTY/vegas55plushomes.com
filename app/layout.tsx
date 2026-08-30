@@ -16,6 +16,7 @@ import {
   generateWebSiteSchema,
 } from '@/lib/structured-data'
 import { siteImages } from '@/lib/site-images'
+import { REALSCOUT_SCRIPT_SRC } from '@/lib/realscout'
 import './globals.css'
 
 const geistSans = Geist({
@@ -93,6 +94,8 @@ export default function RootLayout({
         {/* Preconnect to Google Analytics for faster loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://em.realscout.com" />
+        <link rel="preconnect" href="https://www.realscout.com" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-JCQTZFS0DN"
           strategy="lazyOnload"
@@ -134,6 +137,11 @@ export default function RootLayout({
           <Footer />
           <Analytics />
           <SpeedInsights />
+          <Script
+            src={REALSCOUT_SCRIPT_SRC}
+            type="module"
+            strategy="afterInteractive"
+          />
         </ThemeProvider>
       </body>
     </html>
