@@ -96,6 +96,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://em.realscout.com" />
         <link rel="preconnect" href="https://www.realscout.com" />
+        {/* Native module tag: next/script only preloads this UMD in Next 16 and the
+            custom element never upgrades. Load once here, not per page. */}
+        <script src={REALSCOUT_SCRIPT_SRC} type="module" async />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-JCQTZFS0DN"
           strategy="lazyOnload"
@@ -137,11 +140,6 @@ export default function RootLayout({
           <Footer />
           <Analytics />
           <SpeedInsights />
-          <Script
-            src={REALSCOUT_SCRIPT_SRC}
-            type="module"
-            strategy="afterInteractive"
-          />
         </ThemeProvider>
       </body>
     </html>
