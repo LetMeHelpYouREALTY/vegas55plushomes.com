@@ -64,8 +64,9 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               // RealScout: em.realscout.com (widget script) + www.realscout.com (API). Both in script-src and connect-src.
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://va.vercel-analytics.com https://vitals.vercel-insights.com https://vercel.live https://em.realscout.com https://www.realscout.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live wss://ws-us3.pusher.com https://em.realscout.com https://www.realscout.com https://*.realscout.com",
+              // cdn.tailwindcss.com: used by the generated-app preview iframe (srcdoc inherits this CSP).
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://va.vercel-analytics.com https://vitals.vercel-insights.com https://vercel.live https://em.realscout.com https://www.realscout.com https://cdn.tailwindcss.com",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live wss://ws-us3.pusher.com https://em.realscout.com https://www.realscout.com https://*.realscout.com https://cdn.tailwindcss.com",
               "img-src 'self' data: blob: https: https://images.vegas55plushomes.com https://imagedelivery.net https://em.realscout.com https://www.realscout.com https://vercel.live https://vercel.com",
               "style-src 'self' 'unsafe-inline' https://em.realscout.com https://vercel.live",
               "font-src 'self' data: https://em.realscout.com https://vercel.live https://assets.vercel.com",
