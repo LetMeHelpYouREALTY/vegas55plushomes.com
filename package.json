@@ -9,7 +9,10 @@
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx}\"",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "images:sync": "node scripts/sync-images-to-r2.mjs",
+    "images:worker": "npx wrangler deploy --config cloudflare/images-cdn/wrangler.jsonc",
+    "images:bucket": "npx wrangler r2 bucket create vegas55plus-images --location wnam"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -50,7 +53,8 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.127.1"
   },
   "prettier": {
     "semi": false,

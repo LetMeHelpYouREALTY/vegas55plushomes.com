@@ -54,7 +54,7 @@ export function generateImageObjectSchema(image: SiteImage) {
     description: image.description,
     width: image.width,
     height: image.height,
-    encodingFormat: image.src.endsWith('.png') ? 'image/png' : 'image/jpeg',
+    encodingFormat: image.localSrc.endsWith('.png') ? 'image/png' : 'image/jpeg',
     representativeOfPage: true,
     creator: {
       '@type': 'Organization',
