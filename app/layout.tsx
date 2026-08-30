@@ -7,6 +7,15 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 // import DeployBanner from '../components/deploy-banner'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import LocalNapBar from '../components/local-nap-bar'
+import JsonLd from '../components/json-ld'
+import {
+  generateOrganizationSchema,
+  generatePersonSchema,
+  generateRealEstateAgentSchema,
+  generateWebSiteSchema,
+} from '@/lib/structured-data'
+import { siteImages } from '@/lib/site-images'
 import './globals.css'
 
 const geistSans = Geist({
@@ -41,10 +50,10 @@ export const metadata: Metadata = {
     description: 'Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist. Expert guidance for active adults seeking homes in premier 55+ communities.',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Dr. Jan Duffy - Del Webb Lake Las Vegas 55+ REALTOR®',
+        url: siteImages.og.src,
+        width: siteImages.og.width,
+        height: siteImages.og.height,
+        alt: siteImages.og.alt,
       },
     ],
   },
@@ -52,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
     description: 'Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist. Expert guidance for active adults seeking homes in premier 55+ communities.',
-    images: ['/og-image.png'],
+    images: [siteImages.og.src],
   },
   robots: {
     index: true,
@@ -96,90 +105,16 @@ export default function RootLayout({
             gtag('config', 'G-JCQTZFS0DN');
           `}
         </Script>
-        {/* RealEstateAgent Schema */}
-        <Script
-          id="real-estate-agent-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'RealEstateAgent',
-              name: 'Dr. Jan Duffy - Del Webb Lake Las Vegas 55+ REALTOR®',
-              description: 'Dr. Jan Duffy - Las Vegas 55+ real estate specialist serving Sun City Summerlin, Del Webb Lake Las Vegas, and all active adult communities',
-              url: siteUrl,
-              telephone: '+17029963758',
-              email: 'DrDuffySells@Vegas55PlusHomes.com',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '28 Lake Oasis St',
-                addressLocality: 'Henderson',
-                addressRegion: 'NV',
-                postalCode: '89011',
-                addressCountry: 'US',
-              },
-              areaServed: [
-                {
-                  '@type': 'City',
-                  name: 'Las Vegas',
-                  postalCode: '89134',
-                },
-                {
-                  '@type': 'City',
-                  name: 'Henderson',
-                  postalCode: '89011',
-                },
-              ],
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: '36.1699',
-                longitude: '-115.1398',
-              },
-              priceRange: '$$',
-            }),
-          }}
-        />
-        {/* Organization Schema */}
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
-              url: siteUrl,
-              contactPoint: {
-                '@type': 'ContactPoint',
-                telephone: '+17029963758',
-                contactType: 'Sales',
-                areaServed: ['US'],
-                availableLanguage: ['English'],
-              },
-            }),
-          }}
-        />
-        {/* WebSite Schema with SearchAction */}
-        <Script
-          id="website-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
-              url: siteUrl,
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: `${siteUrl}/homes-for-sale?search={search_term_string}`,
-                },
-                'query-input': 'required name=search_term_string',
-              },
-            }),
+        <JsonLd
+          id="site-entity-graph"
+          data={{
+            '@context': 'https://schema.org',
+            '@graph': [
+              generateOrganizationSchema(),
+              generatePersonSchema(),
+              generateRealEstateAgentSchema(),
+              generateWebSiteSchema(),
+            ],
           }}
         />
       </head>
@@ -195,6 +130,7 @@ export default function RootLayout({
         >
           <Navigation />
           {children}
+          <LocalNapBar />
           <Footer />
           <Analytics />
           <SpeedInsights />

@@ -1,29 +1,64 @@
 import Link from 'next/link'
-import { Home, MapPin, Shield, Trophy, Heart, Users } from 'lucide-react'
+import { Shield, Trophy, Heart, Users } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import CommunityCard from '@/components/community-card'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data'
+import { communityIndexFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Communities | Complete Guide to Premier Active Adult Communities',
-  description: 'Explore premier Las Vegas 55+ communities including Sun City Summerlin, Sun City Anthem, Siena, Desert Shores, and more. Find your perfect active adult community with our comprehensive guide.',
-  keywords: ['Las Vegas 55+ communities', 'active adult communities Las Vegas', 'retirement communities Las Vegas', '55 plus communities Nevada'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Communities | Sun City, Del Webb, Siena | Dr. Jan Duffy',
+  description:
+    'Compare Las Vegas 55+ communities including Sun City Summerlin, Sun City Anthem, Siena, and Del Webb Lake Las Vegas. Single-story homes, golf, pickleball, and HOA amenities.',
+  path: '/communities',
+  image: siteImages.heroHome,
+  keywords: ['Las Vegas 55+ communities', 'active adult communities Las Vegas', 'Sun City Summerlin', 'Del Webb Lake Las Vegas'],
+})
 
 const featuredCommunities = lasVegasCommunities.filter(c => c.featured)
 const allCommunities = lasVegasCommunities
 
 export default function CommunitiesPage() {
+  const pageGraph = generatePageGraph({
+    pageType: 'CollectionPage',
+    name: 'Las Vegas 55+ Communities',
+    description:
+      'Compare 55+ communities in Las Vegas, Henderson, and Summerlin, including Sun City Summerlin, Sun City Anthem, and Del Webb Lake Las Vegas.',
+    path: '/communities',
+    image: siteImages.heroHome,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Las Vegas 55+ Communities', url: '/communities' },
+    ],
+    faqs: communityIndexFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Las Vegas 55+ Communities',
+        description: 'Active adult communities represented by Dr. Jan Duffy.',
+        items: allCommunities.map((community) => ({
+          name: community.name,
+          url: `/communities/${community.slug}`,
+        })),
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id="communities-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.heroHome}
+        title="Las Vegas 55+ Communities"
+        subtitle="Compare Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, Siena, and 20+ active adult neighborhoods across Las Vegas, Henderson, and Summerlin."
+        breadcrumbs={[{ label: 'Communities' }]}
+        primaryCTA={{ text: 'Search Homes For Sale', href: '/homes-for-sale' }}
+        secondaryCTA={{ text: 'Contact Dr. Jan Duffy', href: '/contact' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Communities: Your Complete Guide</h1>
-        <p className="text-lg text-muted-foreground max-w-3xl mb-6">
-          Discover premier active adult communities throughout Las Vegas, Henderson, and the surrounding valley. Each community offers unique amenities, floor plans, and lifestyles specifically designed for active adults 55 and better who want to maximize their retirement years through active living, social engagement, and low-maintenance convenience.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Our comprehensive guide helps you explore what makes each Las Vegas 55+ community special, from world-class golf courses and fitness centers to vibrant social scenes and resort-style amenities. Whether you're seeking luxury living, an active lifestyle, or peaceful retirement, Las Vegas offers exceptional options to match your vision.
-        </p>
-      </div>
 
       {/* Why Las Vegas 55+ Communities Section */}
       <section className="mb-16">
@@ -151,6 +186,8 @@ export default function CommunitiesPage() {
           </Link>
         </div>
       </section>
+      <FaqSection faqs={communityIndexFaqs} />
+    </div>
     </div>
   )
 }

@@ -1,14 +1,20 @@
 import Link from 'next/link'
-import Script from 'next/script'
 import { Button } from '@/components/ui/button'
 import { Star, MapPin, Heart, Quote } from 'lucide-react'
-import { generateReviewSchema } from '@/lib/structured-data'
+import { generateReviewSchema, generatePageGraph, generateIndividualReviewSchema } from '@/lib/structured-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
 
-export const metadata = {
-  title: 'Client Reviews | Las Vegas 55+ Real Estate | Vegas 55 Plus Homes',
-  description: 'Read reviews from our satisfied clients who found their perfect Las Vegas 55+ homes. Real testimonials from active adults who worked with our specialized Las Vegas 55+ real estate team.',
-  keywords: ['Las Vegas 55+ real estate reviews', 'client testimonials', 'real estate agent reviews Las Vegas', '55+ community realtor reviews'],
-}
+export const metadata = buildMetadata({
+  title: 'Client Reviews | Las Vegas 55+ Buyer\'s Representative Dr. Jan Duffy',
+  description:
+    'Read client reviews of Dr. Jan Duffy for 55+ home purchases in Sun City Summerlin, Sun City Anthem, Siena, and Henderson. Call (702) 996-3758.',
+  path: '/reviews',
+  image: siteImages.interior,
+  keywords: ['Las Vegas 55+ real estate reviews', 'Dr. Jan Duffy reviews'],
+})
 
 export default function ReviewsPage() {
   const reviews = [
@@ -57,16 +63,44 @@ export default function ReviewsPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="reviews-page-graph"
+        data={generatePageGraph({
+          pageType: 'WebPage',
+          name: 'Client Reviews | Dr. Jan Duffy',
+          description:
+            'Client reviews of Dr. Jan Duffy for 55+ home purchases in Las Vegas, Henderson, and Summerlin.',
+          path: '/reviews',
+          image: siteImages.interior,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Reviews', url: '/reviews' },
+          ],
+          extra: [
+            generateReviewSchema({
+              ratingValue: 5,
+              reviewCount: reviews.length,
+            }),
+            ...reviews.map((review) =>
+              generateIndividualReviewSchema({
+                author: review.name,
+                rating: review.rating,
+                reviewBody: review.review,
+                datePublished: '2025-01-01',
+              }),
+            ),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.interior}
+        title="Client Reviews"
+        subtitle="Buyers who worked with Dr. Jan Duffy on 55+ homes in Sun City Summerlin, Sun City Anthem, Siena, and Henderson. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Reviews' }]}
+        primaryCTA={{ text: 'Contact Dr. Duffy', href: '/contact' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Client Reviews | What Our Las Vegas 55+ Homebuyers Say</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Read reviews from our satisfied clients who found their perfect homes in Las Vegas 55+ communities. These real testimonials from active adults who worked with our specialized Las Vegas 55+ real estate team demonstrate our commitment to client success and exceptional service.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Our clients consistently praise our specialized knowledge of Las Vegas 55+ communities, personalized service, and comprehensive support throughout the home buying process. These reviews reflect real experiences from buyers who have successfully found their dream homes with our assistance.
-        </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
@@ -154,21 +188,8 @@ export default function ReviewsPage() {
             </Button>
           </div>
         </section>
-
-        {/* Review AggregateRating Schema */}
-        <Script
-          id="review-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              generateReviewSchema({
-                ratingValue: 5,
-                reviewCount: reviews.length,
-              })
-            ),
-          }}
-        />
       </div>
+    </div>
     </div>
   )
 }

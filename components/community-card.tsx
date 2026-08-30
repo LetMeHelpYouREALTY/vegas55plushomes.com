@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Home, ArrowRight, Sparkles } from 'lucide-react'
 import { Community } from '@/lib/communities-data'
+import { getCommunityImage } from '@/lib/site-images'
 
 interface CommunityCardProps {
   community: Community
@@ -8,6 +10,8 @@ interface CommunityCardProps {
 }
 
 export default function CommunityCard({ community, featured = false }: CommunityCardProps) {
+  const image = getCommunityImage(community)
+
   return (
     <Link
       href={`/communities/${community.slug}`}
@@ -22,10 +26,14 @@ export default function CommunityCard({ community, featured = false }: Community
         </div>
       )}
 
-      <div className="aspect-video bg-gradient-to-br from-primary/20 via-primary/10 to-muted relative overflow-hidden" aria-label={`${community.name} community image`}>
-        <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-          <Home className="h-20 w-20 text-muted-foreground/50" />
-        </div>
+      <div className="aspect-video relative overflow-hidden">
+        <Image
+          src={image.src}
+          alt={`${community.name} 55+ homes in ${community.city}, Nevada — ${image.alt}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
       </div>
 
@@ -65,4 +73,3 @@ export default function CommunityCard({ community, featured = false }: Community
     </Link>
   )
 }
-

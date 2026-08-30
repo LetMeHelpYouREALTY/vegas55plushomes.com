@@ -1,29 +1,63 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Home, Search, MapPin, DollarSign, Bed, Bath, Filter } from 'lucide-react'
+import { Home, Search, MapPin, Filter } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import HomeSearchFilters from '@/components/home-search-filters'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
+import { homesForSaleFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Homes For Sale | Search Active Adult Communities | Vegas 55 Plus Homes',
-  description: 'Search Las Vegas 55+ homes for sale in premier active adult communities. Find your perfect home in Sun City Summerlin, Sun City Anthem, Siena, and more. Expert guidance for active adult homebuyers.',
-  keywords: ['Las Vegas 55+ homes for sale', 'active adult homes Las Vegas', '55+ homes for sale', 'Las Vegas retirement homes', 'Sun City Summerlin homes'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Homes For Sale | Sun City, Del Webb, Henderson',
+  description:
+    'Search 55+ homes for sale in Las Vegas, Henderson, and Summerlin. Dr. Jan Duffy represents buyers in Sun City Summerlin, Sun City Anthem, Siena, and Del Webb Lake Las Vegas. Call (702) 996-3758.',
+  path: '/homes-for-sale',
+  image: siteImages.newConstruction,
+  keywords: ['Las Vegas 55+ homes for sale', 'Sun City Summerlin homes', 'Del Webb Lake Las Vegas homes'],
+})
 
 export default function HomesForSalePage() {
   const allCommunities = lasVegasCommunities
+  const pageGraph = generatePageGraph({
+    pageType: 'SearchResultsPage',
+    name: 'Las Vegas 55+ Homes For Sale',
+    description:
+      'Search 55+ homes for sale in Las Vegas, Henderson, and Summerlin with buyer representation from Dr. Jan Duffy.',
+    path: '/homes-for-sale',
+    image: siteImages.newConstruction,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Homes For Sale', url: '/homes-for-sale' },
+    ],
+    faqs: homesForSaleFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Las Vegas 55+ communities with homes for sale',
+        description: 'Communities where Dr. Jan Duffy represents 55+ homebuyers.',
+        items: allCommunities.slice(0, 12).map((community) => ({
+          name: community.name,
+          url: `/communities/${community.slug}`,
+        })),
+      }),
+    ],
+  })
 
   return (
+    <div>
+      <JsonLd id="homes-for-sale-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.newConstruction}
+        title="Las Vegas 55+ Homes For Sale"
+        subtitle="Search single-story homes in Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and other 55+ communities. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Homes For Sale' }]}
+        primaryCTA={{ text: 'Contact a Buyer\'s Agent', href: '/contact' }}
+        secondaryCTA={{ text: 'Browse Communities', href: '/communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Homes For Sale | Search Premier Active Adult Communities</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Search for your perfect 55+ home in Las Vegas. Our comprehensive home search helps you find homes in premier active adult communities throughout the Las Vegas Valley, from Sun City Summerlin to Sun City Anthem, Siena, and beyond.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Whether you're seeking a luxury home in a gated community or an affordable option in a value-oriented community, Las Vegas offers diverse 55+ home options to match every preference and budget. Use our search tools and expert guidance to find your ideal active adult home.
-        </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
@@ -182,6 +216,8 @@ export default function HomesForSalePage() {
           </div>
         </section>
       </div>
+      <FaqSection faqs={homesForSaleFaqs} />
+    </div>
     </div>
   )
 }

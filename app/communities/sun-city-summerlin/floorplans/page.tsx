@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { Home, Bed, Bath, Square, ArrowRight } from 'lucide-react'
+import SitePhoto from '@/components/site-photo'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata = {
   title: 'Sun City Summerlin Floorplans | Complete Guide to Home Options | Las Vegas 55+',
@@ -80,9 +82,11 @@ export default function SunCitySummerlinFloorplansPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {floorplans.map((plan) => (
               <div key={plan.name} className="rounded-lg border bg-card p-6 hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-muted rounded mb-4 flex items-center justify-center">
-                  <Home className="h-16 w-16 text-muted-foreground" />
-                </div>
+                <SitePhoto
+                  image={siteImages.interior}
+                  alt={`${plan.name} single-story 55+ floor plan style home interior in Sun City Summerlin, Las Vegas`}
+                  className="aspect-video rounded mb-4"
+                />
                 <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
                 <div className="space-y-2 text-sm text-muted-foreground mb-3">
                   <div className="flex items-center gap-2">

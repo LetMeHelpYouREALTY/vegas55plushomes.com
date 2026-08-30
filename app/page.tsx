@@ -1,9 +1,16 @@
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
-import { Home, Shield, Users, MapPin, Heart, Trophy, Calendar, CheckCircle } from 'lucide-react'
+import { Home, Shield, Users, MapPin, Heart, Trophy, CheckCircle } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import CommunityCard from '@/components/community-card'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generateItemListSchema, generateHowToSchema, generatePageGraph } from '@/lib/structured-data'
+import { homeFaqs } from '@/lib/page-faqs'
 
 // Lazy load RSS feed (below the fold, non-critical)
 const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
@@ -17,10 +24,20 @@ const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
   ),
 })
 
-export const metadata = {
-  title: 'Las Vegas 55+ Real Estate | Award-Winning Buyer\'s Representative Dr. Jan Duffy',
-  description: 'Award-winning realtor Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist and buyer\'s representative. Expert guidance for active adults seeking homes in premier communities including Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and more.',
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
+  description:
+    'Dr. Jan Duffy represents buyers of 55+ homes in Las Vegas, Henderson, and Summerlin — Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and more. Call (702) 996-3758.',
+  path: '/',
+  image: siteImages.heroHome,
+  keywords: [
+    'Las Vegas 55+ homes',
+    'Sun City Summerlin',
+    'Del Webb Lake Las Vegas',
+    'Henderson 55+ homes',
+    'Dr. Jan Duffy realtor',
+  ],
+})
 
 export default function HomePage() {
   const featuredCommunities = lasVegasCommunities
@@ -50,29 +67,56 @@ export default function HomePage() {
     },
   ]
 
+  const pageGraph = generatePageGraph({
+    pageType: 'WebPage',
+    name: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
+    description:
+      'Dr. Jan Duffy represents buyers of 55+ homes in Las Vegas, Henderson, and Summerlin, including Sun City Summerlin, Del Webb Lake Las Vegas, and Sun City Anthem.',
+    path: '/',
+    image: siteImages.heroHome,
+    breadcrumbs: [{ name: 'Home', url: '/' }],
+    faqs: homeFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Featured Las Vegas 55+ Communities',
+        description: 'Premier 55+ communities in Las Vegas, Henderson, and Summerlin represented by Dr. Jan Duffy.',
+        items: featuredCommunities.map((community) => ({
+          name: community.name,
+          url: `/communities/${community.slug}`,
+        })),
+      }),
+      generateHowToSchema({
+        name: 'How to start a Las Vegas 55+ home search',
+        description: 'Three steps to tour 55+ communities in Las Vegas, Henderson, and Summerlin with a buyer\'s representative.',
+        steps: [
+          {
+            name: 'Explore communities',
+            text: 'Compare 55+ communities online, including amenities, home types, and locations in Las Vegas, Henderson, and Summerlin.',
+          },
+          {
+            name: 'Schedule tours',
+            text: 'Book a virtual or in-person tour with Dr. Jan Duffy at (702) 996-3758.',
+          },
+          {
+            name: 'Write an offer with buyer representation',
+            text: 'Use a dedicated buyer\'s agent for contract review, inspections, and negotiations on resale or new construction.',
+          },
+        ],
+      }),
+    ],
+  })
+
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Find Your Las Vegas 55+ Dream Home | Premier Active Adult Communities
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Award-winning realtor Dr. Jan Duffy - Your trusted buyer's representative for Las Vegas 55+ real estate. Expert guidance for active adults seeking homes in premier active adult communities including Del Webb Lake Las Vegas, Sun City Summerlin, Sun City Anthem, and more.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
-                <Link href="/homes-for-sale">Search Homes For Sale</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/communities">Explore All Communities</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <JsonLd id="home-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.heroHome}
+        title="Find Your Las Vegas 55+ Home"
+        subtitle="Dr. Jan Duffy represents buyers in Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and 20+ active adult communities. Call (702) 996-3758."
+        primaryCTA={{ text: 'Search Homes For Sale', href: '/homes-for-sale' }}
+        secondaryCTA={{ text: 'Explore All Communities', href: '/communities' }}
+        priority
+      />
 
       {/* Introduction Section */}
       <section className="py-16 lg:py-24 bg-background">
@@ -318,6 +362,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FaqSection title="Las Vegas 55+ homebuyer questions" faqs={homeFaqs} />
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">

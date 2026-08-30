@@ -1,12 +1,22 @@
 import Link from 'next/link'
 import { Shield, DollarSign, FileCheck, AlertTriangle, Users, CheckCircle, Home, ArrowRight, Briefcase } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateServiceSchema, generateHowToSchema } from '@/lib/structured-data'
+import { whyHireFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Why You Need a Buyer\'s Agent for New Construction Homes | Dr. Jan Duffy',
-  description: 'Discover why hiring a buyer\'s representative is essential when purchasing new construction homes at Del Webb Lake Las Vegas and other 55+ communities. Dr. Jan Duffy explains the critical benefits of buyer representation.',
-  keywords: ['buyer\'s agent new construction', 'why hire real estate agent new homes', 'new home buyer representation', 'Del Webb buyer\'s agent', '55+ community buyer representation'],
-}
+export const metadata = buildMetadata({
+  title: 'Why Hire a Buyer\'s Agent for New Construction 55+ Homes | Dr. Jan Duffy',
+  description:
+    'Builder sales staff represent the builder. Dr. Jan Duffy represents 55+ buyers on new construction at Del Webb Lake Las Vegas and resale homes in Las Vegas, Henderson, and Summerlin. Call (702) 996-3758.',
+  path: '/why-hire-an-agent',
+  image: siteImages.newConstruction,
+  keywords: ['buyer\'s agent new construction', 'Del Webb buyer\'s agent', '55+ community buyer representation'],
+})
 
 export default function WhyHireAnAgentPage() {
   const reasons = [
@@ -42,20 +52,48 @@ export default function WhyHireAnAgentPage() {
     },
   ]
 
+  const pageGraph = generatePageGraph({
+    pageType: 'WebPage',
+    name: 'Why Hire a Buyer\'s Agent for New Construction 55+ Homes',
+    description:
+      'Dr. Jan Duffy represents 55+ buyers on new construction so the builder\'s on-site agent is not your only advisor.',
+    path: '/why-hire-an-agent',
+    image: siteImages.newConstruction,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Why Hire an Agent', url: '/why-hire-an-agent' },
+    ],
+    faqs: whyHireFaqs,
+    extra: [
+      generateServiceSchema({
+        name: 'New Construction Buyer Representation',
+        description:
+          'Contract review, inspections, and negotiations for Del Webb and other Las Vegas 55+ new homes.',
+      }),
+      generateHowToSchema({
+        name: 'How to hire a 55+ buyer\'s agent before touring models',
+        description: 'Register with a buyer\'s representative before visiting a Las Vegas builder model park.',
+        steps: [
+          { name: 'Call or email first', text: 'Contact Dr. Jan Duffy at (702) 996-3758 before your first builder visit.' },
+          { name: 'Tour with representation', text: 'Tour Del Webb Lake Las Vegas and other 55+ communities with your agent of record.' },
+          { name: 'Review the builder contract', text: 'Have your agent review deposits, upgrades, and inspection contingencies before you sign.' },
+        ],
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id="why-hire-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.newConstruction}
+        title="Why Hire a Buyer’s Agent for New Construction"
+        subtitle="The on-site sales desk works for the builder. Dr. Jan Duffy works for you on Del Webb Lake Las Vegas and other 55+ purchases. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Why Hire an Agent' }]}
+        primaryCTA={{ text: 'Contact Dr. Duffy', href: '/contact' }}
+        secondaryCTA={{ text: 'About Buyer Representation', href: '/about' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / Why Hire an Agent for New Homes
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Why You Need a Buyer's Agent for New Construction Homes | Essential Protection & Benefits</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Purchasing a new construction home involves unique challenges and complexities that differ significantly from buying resale homes. Having a dedicated buyer's representative like Dr. Jan Duffy is essential to protect your interests, save money, and ensure a smooth home buying experience at Del Webb Lake Las Vegas and other 55+ communities.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Many buyers mistakenly believe they don't need an agent when purchasing new construction, thinking the builder's sales representative will guide them. However, the builder's representative works exclusively for the builder's interests, not yours. A buyer's agent is your independent advocate dedicated solely to protecting and advancing your interests.
-        </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
@@ -247,6 +285,8 @@ export default function WhyHireAnAgentPage() {
           </div>
         </section>
       </div>
+      <FaqSection faqs={whyHireFaqs} />
+    </div>
     </div>
   )
 }

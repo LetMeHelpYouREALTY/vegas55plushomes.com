@@ -1,11 +1,19 @@
 import Link from 'next/link'
 import { Trophy, Activity, Heart, Users, Award, Sparkles } from 'lucide-react'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph } from '@/lib/structured-data'
 
-export const metadata = {
-  title: 'Sun City Summerlin Amenities | World-Class Facilities & Recreation | Las Vegas 55+ Community',
-  description: 'Discover comprehensive world-class amenities at Sun City Summerlin including three championship golf courses, four recreation centers, state-of-the-art fitness facilities, and resort-style pools. Explore everything this premier Las Vegas 55+ community offers.',
-  keywords: ['Sun City Summerlin amenities', 'Las Vegas 55+ community facilities', 'golf courses Summerlin', 'active adult amenities'],
-}
+export const metadata = buildMetadata({
+  title: 'Sun City Summerlin Amenities | Golf, Pools, Pickleball | Dr. Jan Duffy',
+  description:
+    'Sun City Summerlin amenities include three golf courses, four recreation centers, pickleball, pools, and 80+ clubs in Summerlin, Las Vegas. Call (702) 996-3758.',
+  path: '/communities/sun-city-summerlin/amenities',
+  image: siteImages.clubhouse,
+  keywords: ['Sun City Summerlin amenities', 'Sun City Summerlin golf', 'Sun City Summerlin pickleball'],
+})
 
 export default function SunCitySummerlinAmenitiesPage() {
   const amenityCategories = [
@@ -48,19 +56,36 @@ export default function SunCitySummerlinAmenitiesPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="scs-amenities-graph"
+        data={generatePageGraph({
+          pageType: 'WebPage',
+          name: 'Sun City Summerlin Amenities',
+          description:
+            'Golf courses, recreation centers, pickleball, pools, and clubs at Sun City Summerlin in Las Vegas.',
+          path: '/communities/sun-city-summerlin/amenities',
+          image: siteImages.clubhouse,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Communities', url: '/communities' },
+            { name: 'Sun City Summerlin', url: '/communities/sun-city-summerlin' },
+            { name: 'Amenities', url: '/communities/sun-city-summerlin/amenities' },
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.clubhouse}
+        title="Sun City Summerlin Amenities"
+        subtitle="Three golf courses, four recreation centers, pickleball, pools, and 80+ clubs in Summerlin, Las Vegas. Call (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
+          { label: 'Amenities' },
+        ]}
+        primaryCTA={{ text: 'Schedule a Tour', href: '/communities/sun-city-summerlin/schedule-tour' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/communities" className="hover:text-foreground">Communities</Link> / <Link href="/communities/sun-city-summerlin" className="hover:text-foreground">Sun City Summerlin</Link> / Amenities
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Sun City Summerlin Amenities | World-Class Facilities for Active Adults</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Sun City Summerlin offers residents an unparalleled lifestyle with world-class amenities designed specifically for active adults. From three championship golf courses to four comprehensive recreation centers, from state-of-the-art fitness facilities to vibrant social spaces, discover everything this premier Las Vegas 55+ community has to offer.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          The extensive amenity package at Sun City Summerlin rivals luxury resorts, providing residents with everything needed for an active, engaged, and fulfilling retirement lifestyle. Whether you're passionate about golf, fitness, arts and crafts, or simply enjoying the company of neighbors, Sun City Summerlin's amenities support your interests and hobbies.
-        </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         {amenityCategories.map((category) => (
@@ -195,6 +220,7 @@ export default function SunCitySummerlinAmenitiesPage() {
           </div>
         </section>
       </div>
+    </div>
     </div>
   )
 }

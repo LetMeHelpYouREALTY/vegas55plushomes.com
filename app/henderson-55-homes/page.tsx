@@ -1,48 +1,81 @@
 import Link from 'next/link'
 import { Home, MapPin, Award, Shield, Heart, Trophy } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import SitePhoto from '@/components/site-photo'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
+import { hendersonFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Henderson 55+ Homes For Sale | Las Vegas Real Estate | Premier Active Adult Communities',
-  description: 'Find 55+ homes for sale in Henderson, Nevada. Explore premier active adult communities including Sun City Anthem, Solera at Anthem, Heritage at Cadence, and more in this safe, family-friendly city.',
-  keywords: ['Henderson 55+ homes', 'Henderson active adult communities', 'Henderson real estate 55+', 'Nevada Henderson retirement communities'],
-}
+export const metadata = buildMetadata({
+  title: 'Henderson 55+ Homes For Sale | Sun City Anthem, Del Webb | Dr. Jan Duffy',
+  description:
+    'Find 55+ homes in Henderson, Nevada — Sun City Anthem, Solera at Anthem, Heritage at Cadence, and Del Webb at Lake Las Vegas. Call Dr. Jan Duffy at (702) 996-3758. Office at 28 Lake Oasis St, Henderson, NV 89011.',
+  path: '/henderson-55-homes',
+  image: siteImages.henderson,
+  keywords: ['Henderson 55+ homes', 'Sun City Anthem', 'Del Webb Lake Las Vegas'],
+})
 
 export default function Henderson55HomesPage() {
   const hendersonCommunities = lasVegasCommunities.filter(c => c.city === 'Henderson')
 
+  const pageGraph = generatePageGraph({
+    pageType: 'CollectionPage',
+    name: 'Henderson 55+ Homes For Sale',
+    description:
+      '55+ homes in Henderson, Nevada, including Sun City Anthem, Solera at Anthem, and Del Webb at Lake Las Vegas.',
+    path: '/henderson-55-homes',
+    image: siteImages.henderson,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Henderson 55+ Homes', url: '/henderson-55-homes' },
+    ],
+    faqs: hendersonFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Henderson 55+ Communities',
+        description: 'Active adult communities in Henderson, Nevada.',
+        items: hendersonCommunities.map((community) => ({
+          name: community.name,
+          url: `/communities/${community.slug}`,
+        })),
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id="henderson-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.henderson}
+        title="Henderson 55+ Homes For Sale"
+        subtitle="Sun City Anthem, Del Webb at Lake Las Vegas, and Heritage at Cadence sit in Henderson, Nevada’s second-largest city. Call (702) 996-3758. Office: 28 Lake Oasis St."
+        breadcrumbs={[{ label: 'Henderson 55+ Homes' }]}
+        primaryCTA={{ text: 'Search Homes', href: '/homes-for-sale' }}
+        secondaryCTA={{ text: 'Del Webb Lake Las Vegas', href: '/communities/del-webb-lake-las-vegas' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / Henderson 55+ Homes
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Henderson 55+ Homes For Sale | Premier Active Adult Communities</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Discover premier 55+ active adult communities in Henderson, Nevada's second-largest city. Henderson consistently ranks as one of America's safest cities and offers residents a high quality of life with excellent amenities, beautiful parks, vibrant shopping and dining, and a strong sense of community that makes it ideal for active adult living.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Henderson's 55+ communities take advantage of this ideal setting, providing active adults with both specialized amenities within their communities and access to all that Henderson has to offer, creating a comprehensive lifestyle package for active retirement living.
-        </p>
-      </div>
 
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
           <h2 className="text-3xl font-bold mb-6">Why Choose Henderson for 55+ Living?</h2>
           <div className="space-y-4 text-muted-foreground">
-            <p>
-              Henderson has earned a reputation as one of America's safest and most desirable cities, consistently ranking at the top of national safety and quality of life rankings. This commitment to safety, combined with excellent infrastructure, quality services, and strong community values, makes Henderson particularly appealing to active adults seeking a secure, comfortable retirement environment.
+            <p className="answer-first" data-speakable="true">
+              Henderson is Nevada’s second-largest city, about 16 miles southeast of the Las Vegas Strip, with parks, trail systems, shopping, dining, and multiple 55+ communities including Sun City Anthem and Del Webb at Lake Las Vegas.
             </p>
             <p>
-              The city's proximity to the Las Vegas Strip entertainment while maintaining its own distinct community character creates the perfect balance for active adults. Residents can enjoy easy access to Las Vegas amenities, shows, and dining while living in a more peaceful, suburban environment with its own excellent shopping, restaurants, and services.
+              Residents can reach Strip entertainment, medical campuses, and McCarran/Harry Reid International Airport while living in a suburban setting with its own retail and recreation.
             </p>
-            <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Safety and Security</h3>
+            <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Parks, Trails, and City Services</h3>
             <p>
-              Henderson's reputation for safety is well-earned, with low crime rates, active community policing, and a commitment to maintaining safe neighborhoods. This safety record provides peace of mind for active adults, especially those living in 55+ communities who value security and tranquility in their retirement years.
+              Henderson maintains parks, trail systems, and recreation facilities used by 55+ community residents. Healthcare campuses and shopping centers sit along major corridors such as St. Rose Parkway and Horizon Ridge.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Quality of Life and Services</h3>
             <p>
-              Henderson offers excellent schools (beneficial for property values), beautiful parks, extensive trail systems, quality healthcare facilities, and a robust shopping and dining scene. The city's commitment to maintaining high-quality public services and infrastructure contributes to the overall quality of life that residents enjoy.
+              Henderson offers parks, trail systems, healthcare facilities, and a shopping and dining scene. The city’s public services and infrastructure support everyday living for 55+ homeowners.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Master-Planned Communities</h3>
             <p>
@@ -85,9 +118,11 @@ export default function Henderson55HomesPage() {
                   href="/communities/sun-city-anthem"
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center">
-                    <Home className="h-16 w-16 text-muted-foreground" />
-                  </div>
+                  <SitePhoto
+                    image={siteImages.henderson}
+                    alt="Sun City Anthem 55+ homes and amenities in Henderson, Nevada"
+                    className="aspect-video"
+                  />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       Sun City Anthem
@@ -99,9 +134,11 @@ export default function Henderson55HomesPage() {
                   href="/communities/solera-anthem"
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center">
-                    <Home className="h-16 w-16 text-muted-foreground" />
-                  </div>
+                  <SitePhoto
+                    image={siteImages.henderson}
+                    alt="Solera at Anthem 55+ homes in Henderson, Nevada"
+                    className="aspect-video"
+                  />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       Solera at Anthem
@@ -156,7 +193,7 @@ export default function Henderson55HomesPage() {
           <h2 className="text-3xl font-bold mb-6">Buying a 55+ Home in Henderson</h2>
           <div className="space-y-4 text-muted-foreground mb-8">
             <p>
-              Purchasing a home in a Henderson 55+ community means investing in one of Nevada's most desirable and safest cities with access to quality services, excellent amenities, and a strong community character. Henderson's combination of safety, quality of life, and proximity to Las Vegas creates exceptional value for active adults.
+              Purchasing a home in a Henderson 55+ community means access to parks, trail systems, shopping, healthcare, and a 16-mile drive to the Las Vegas Strip. Henderson’s 55+ inventory includes golf, waterfront, and newer Lennar/Del Webb products.
             </p>
             <p>
               Henderson's real estate market has demonstrated strong fundamentals with steady appreciation and consistent demand. The city's growth, quality planning, and desirable characteristics contribute to property values and long-term investment potential, making Henderson an excellent choice for active adults seeking both lifestyle fulfillment and sound real estate investment.
@@ -181,6 +218,8 @@ export default function Henderson55HomesPage() {
           </div>
         </section>
       </div>
+      <FaqSection faqs={hendersonFaqs} />
+    </div>
     </div>
   )
 }

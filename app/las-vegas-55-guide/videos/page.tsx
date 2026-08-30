@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { PlayCircle, Home, MapPin, Award, Users, Activity } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import SitePhoto from '@/components/site-photo'
+import { getCommunityImage, siteImages } from '@/lib/site-images'
 
 export const metadata = {
   title: 'Las Vegas 55+ Communities Videos | Virtual Tours & Community Videos | Complete Collection',
@@ -108,9 +110,13 @@ export default function VideosPage() {
                   href={video.href}
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow block"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center relative">
-                    <PlayCircle className="h-16 w-16 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+                  <div className="aspect-video relative">
+                    <SitePhoto
+                      image={siteImages.clubhouse}
+                      alt={`${video.title} — Las Vegas 55+ community video still`}
+                      className="aspect-video"
+                    />
+                    <PlayCircle className="absolute inset-0 m-auto h-16 w-16 text-white drop-shadow" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">{video.title}</h3>
@@ -139,8 +145,13 @@ export default function VideosPage() {
                   href={`/communities/${community.slug}`}
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow block"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center relative">
-                    <PlayCircle className="h-12 w-12 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <div className="aspect-video relative">
+                    <SitePhoto
+                      image={getCommunityImage(community)}
+                      alt={`${community.name} 55+ community in ${community.city}, Nevada`}
+                      className="aspect-video"
+                    />
+                    <PlayCircle className="absolute inset-0 m-auto h-12 w-12 text-white drop-shadow" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">{community.name}</h3>

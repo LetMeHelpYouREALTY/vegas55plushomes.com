@@ -1,12 +1,20 @@
 import Link from 'next/link'
 import { Activity, Trophy, Users, Heart } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
 
-export const metadata = {
-  title: 'Top 10 Las Vegas 55+ Communities with Pickleball Courts | Complete Guide',
-  description: 'Discover the top Las Vegas 55+ communities featuring pickleball courts. Pickleball has rapidly grown in popularity among active adults. Find communities with premier pickleball facilities.',
-  keywords: ['Las Vegas 55+ pickleball communities', 'pickleball courts Las Vegas', 'active adult communities pickleball', '55+ communities with pickleball'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Communities with Pickleball Courts | Dr. Jan Duffy',
+  description:
+    'Find Las Vegas 55+ communities with pickleball courts, including Sun City Summerlin and Del Webb Lake Las Vegas. Call (702) 996-3758.',
+  path: '/las-vegas-55-guide/top-10-pickleball',
+  image: siteImages.pickleball,
+  keywords: ['Las Vegas 55+ pickleball', 'pickleball courts Las Vegas 55+'],
+})
 
 export default function Top10PickleballPage() {
   // Filter communities that have pickleball in amenities
@@ -16,19 +24,43 @@ export default function Top10PickleballPage() {
     .map((c, index) => ({ ...c, rank: index + 1 }))
 
   return (
+    <div>
+      <JsonLd
+        id="pickleball-page-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Las Vegas 55+ Communities with Pickleball Courts',
+          description: '55+ communities in Las Vegas and Henderson that include pickleball courts.',
+          path: '/las-vegas-55-guide/top-10-pickleball',
+          image: siteImages.pickleball,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+            { name: 'Pickleball Communities', url: '/las-vegas-55-guide/top-10-pickleball' },
+          ],
+          extra: [
+            generateItemListSchema({
+              name: 'Las Vegas 55+ pickleball communities',
+              description: 'Communities with pickleball courts.',
+              items: pickleballCommunities.map((community) => ({
+                name: community.name,
+                url: `/communities/${community.slug}`,
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.pickleball}
+        title="Las Vegas 55+ Pickleball Communities"
+        subtitle="Outdoor pickleball courts are a common amenity in Las Vegas Valley 55+ communities. Call (702) 996-3758 to tour."
+        breadcrumbs={[
+          { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
+          { label: 'Pickleball' },
+        ]}
+        primaryCTA={{ text: 'Search Homes', href: '/homes-for-sale' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/las-vegas-55-guide" className="hover:text-foreground">Las Vegas 55+ Guide</Link> / Top 10 Pickleball Communities
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Top 10 Las Vegas 55+ Communities with Pickleball Courts | Premier Pickleball Facilities</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Pickleball has rapidly grown in popularity among active adults in Las Vegas's 55+ communities, becoming one of the most requested amenities. Whether you're an experienced player or just discovering this exciting sport, many of Las Vegas's premier 55+ communities now feature pickleball courts among their impressive amenity packages.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          This comprehensive guide explores the top Las Vegas 55+ communities that offer pickleball facilities, helping you find communities where you can enjoy this fast-growing sport as part of your active retirement lifestyle.
-        </p>
-      </div>
 
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
@@ -169,6 +201,7 @@ export default function Top10PickleballPage() {
           </div>
         </section>
       </div>
+    </div>
     </div>
   )
 }

@@ -4,6 +4,10 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Calendar, Clock, MapPin, Phone, Mail, Home, Trophy, Users, CheckCircle, ArrowRight } from 'lucide-react'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { generatePageGraph } from '@/lib/structured-data'
 
 export default function ScheduleTourPage() {
   const [formData, setFormData] = useState({
@@ -21,19 +25,42 @@ export default function ScheduleTourPage() {
   }
 
   return (
+    <div>
+      <JsonLd
+        id="scs-tour-graph"
+        data={generatePageGraph({
+          pageType: 'ContactPage',
+          name: 'Schedule a Tour of Sun City Summerlin',
+          description:
+            'Schedule a tour of Sun City Summerlin 55+ homes and amenities with Dr. Jan Duffy. Call (702) 996-3758.',
+          path: '/communities/sun-city-summerlin/schedule-tour',
+          image: siteImages.golf,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Communities', url: '/communities' },
+            { name: 'Sun City Summerlin', url: '/communities/sun-city-summerlin' },
+            { name: 'Schedule a Tour', url: '/communities/sun-city-summerlin/schedule-tour' },
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.golf}
+        title="Schedule a Sun City Summerlin Tour"
+        subtitle="Tour golf courses, recreation centers, and available 55+ homes. Call (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' },
+          { label: 'Schedule a Tour' },
+        ]}
+        primaryCTA={{ text: 'Call (702) 996-3758', href: 'tel:7029963758' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/communities" className="hover:text-foreground">Communities</Link> / <Link href="/communities/sun-city-summerlin" className="hover:text-foreground">Sun City Summerlin</Link> / Schedule Tour
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Schedule a Tour of Sun City Summerlin | Experience Premier 55+ Living</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
           Experience Sun City Summerlin in person. Schedule a personalized tour to explore homes, amenities, and discover why this is one of Las Vegas's premier 55+ communities. Our expert team will guide you through everything you need to know about living in this exceptional active adult community.
         </p>
         <p className="text-lg text-muted-foreground max-w-3xl">
           A personal tour of Sun City Summerlin allows you to experience the community's world-class amenities, diverse home options, and vibrant lifestyle firsthand. Seeing homes, recreation centers, golf courses, and neighborhood areas in person helps you determine if Sun City Summerlin matches your vision for active adult living.
         </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -267,6 +294,7 @@ export default function ScheduleTourPage() {
           </div>
         </section>
       </div>
+    </div>
     </div>
   )
 }

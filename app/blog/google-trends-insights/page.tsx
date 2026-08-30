@@ -1,13 +1,19 @@
 import Link from 'next/link'
-import Script from 'next/script'
 import { TrendingUp, Calendar, BarChart3, MapPin, Lightbulb } from 'lucide-react'
-import { generateArticleSchema } from '@/lib/structured-data'
+import { generateArticleSchema, generatePageGraph } from '@/lib/structured-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights | Vegas 55 Plus Homes',
-  description: 'Discover trending search terms and insights for Las Vegas 55+ real estate communities. Use Google Trends data to understand market interest and plan your content strategy.',
-  keywords: ['Las Vegas 55+ trends', 'real estate trends Las Vegas', 'Google Trends analysis', '55+ community search trends', 'Las Vegas retirement trends'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights | Dr. Jan Duffy',
+  description:
+    'Search-interest insights for Las Vegas 55+ communities including Sun City Summerlin and Del Webb Lake Las Vegas. Dated market context for homebuyers.',
+  path: '/blog/google-trends-insights',
+  image: siteImages.golf,
+  keywords: ['Las Vegas 55+ trends', 'Sun City Summerlin search interest'],
+})
 
 export default function GoogleTrendsInsightsPage() {
   const trendingTerms = [
@@ -76,6 +82,39 @@ export default function GoogleTrendsInsightsPage() {
   ]
 
   return (
+    <div>
+      <JsonLd
+        id="trends-page-graph"
+        data={generatePageGraph({
+          pageType: 'WebPage',
+          name: 'Las Vegas 55+ Real Estate Trends',
+          description:
+            'Search-interest insights for Las Vegas 55+ communities including Sun City Summerlin and Del Webb Lake Las Vegas.',
+          path: '/blog/google-trends-insights',
+          image: siteImages.golf,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: 'Google Trends Insights', url: '/blog/google-trends-insights' },
+          ],
+          extra: [
+            generateArticleSchema({
+              headline: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights',
+              description:
+                'Discover trending search terms and insights for Las Vegas 55+ real estate communities.',
+              datePublished: '2025-10-30',
+              url: '/blog/google-trends-insights',
+              image: siteImages.golf,
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.golf}
+        title="Las Vegas 55+ Real Estate Trends"
+        subtitle="Search-interest patterns for Sun City Summerlin, Del Webb Lake Las Vegas, and Henderson 55+ communities."
+        breadcrumbs={[{ label: 'Blog', href: '/blog' }, { label: 'Trends' }]}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Real Estate Trends | Google Trends Insights</h1>
@@ -395,24 +434,8 @@ export default function GoogleTrendsInsightsPage() {
             </Link>
           </div>
         </section>
-
-        {/* Article Structured Data */}
-        <Script
-          id="article-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              generateArticleSchema({
-                headline: 'Las Vegas 55+ Real Estate Trends | Google Trends Insights',
-                description:
-                  'Discover trending search terms and insights for Las Vegas 55+ real estate communities. Use Google Trends data to understand market interest, seasonal patterns, and regional search behavior.',
-                datePublished: '2025-10-30',
-                url: '/blog/google-trends-insights',
-              })
-            ),
-          }}
-        />
       </div>
+    </div>
     </div>
   )
 }

@@ -1,28 +1,57 @@
 import Link from 'next/link'
-import { Shield, Users, Home, Award, CheckCircle, ArrowRight, Briefcase, Trophy } from 'lucide-react'
+import { Shield, Users, Home, CheckCircle, ArrowRight, Briefcase, Trophy } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateServiceSchema } from '@/lib/structured-data'
+import { aboutFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'About Dr. Jan Duffy | Award-Winning Buyer\'s Representative for Del Webb Lake Las Vegas 55+ Homes',
-  description: 'Meet award-winning realtor Dr. Jan Duffy, your dedicated buyer\'s representative specializing in new construction homes at Del Webb Lake Las Vegas and other Las Vegas 55+ communities. Recognized excellence in real estate.',
-  keywords: ['Dr. Jan Duffy', 'Del Webb Lake Las Vegas buyer\'s agent', 'new construction buyer representation', 'Las Vegas 55+ realtor', 'buyer\'s representative Del Webb'],
-}
+export const metadata = buildMetadata({
+  title: 'About Dr. Jan Duffy | Las Vegas 55+ Buyer\'s Representative',
+  description:
+    'Dr. Jan Duffy (Nevada license S.0197614) represents buyers of new-construction and resale 55+ homes at Del Webb Lake Las Vegas, Sun City Summerlin, and Henderson communities. Office: 28 Lake Oasis St, Henderson, NV 89011.',
+  path: '/about',
+  image: siteImages.interior,
+  keywords: ['Dr. Jan Duffy', 'Del Webb Lake Las Vegas buyer\'s agent', 'Las Vegas 55+ realtor'],
+})
 
 export default function AboutPage() {
+  const pageGraph = generatePageGraph({
+    pageType: 'AboutPage',
+    name: 'About Dr. Jan Duffy',
+    description:
+      'Dr. Jan Duffy is a Nevada REALTOR® who represents 55+ homebuyers in Las Vegas, Henderson, and Summerlin.',
+    path: '/about',
+    image: siteImages.interior,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'About', url: '/about' },
+    ],
+    faqs: aboutFaqs,
+    extra: [
+      generateServiceSchema({
+        name: '55+ Buyer Representation',
+        description:
+          'Dedicated buyer representation for new construction and resale 55+ homes in Las Vegas, Henderson, and Summerlin.',
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id="about-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.interior}
+        title="About Dr. Jan Duffy"
+        subtitle="Nevada REALTOR® S.0197614. Dedicated buyer’s representative for Del Webb Lake Las Vegas and Las Vegas Valley 55+ communities. 28 Lake Oasis St, Henderson, NV 89011."
+        breadcrumbs={[{ label: 'About' }]}
+        primaryCTA={{ text: 'Contact Dr. Duffy', href: '/contact' }}
+        secondaryCTA={{ text: 'Why Hire a Buyer\'s Agent', href: '/why-hire-an-agent' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / About
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">About Dr. Jan Duffy | Award-Winning Buyer's Representative for Del Webb Lake Las Vegas</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Dr. Jan Duffy is an award-winning buyer's representative specializing exclusively in new construction homes at Del Webb Lake Las Vegas and premier Las Vegas 55+ communities. As an accomplished real estate professional recognized for excellence, Dr. Duffy works exclusively for your interests, ensuring you receive expert guidance, save money, and have strong advocacy throughout your home purchase journey.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Unlike agents who represent builders or work as dual agents, Dr. Jan Duffy is a dedicated buyer's representative who puts your interests first. This means expert negotiations, thorough contract review, quality assurance inspections, and comprehensive protection throughout the new construction purchase process.
-        </p>
-      </div>
 
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
@@ -215,6 +244,8 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
+      <FaqSection faqs={aboutFaqs} />
+    </div>
     </div>
   )
 }

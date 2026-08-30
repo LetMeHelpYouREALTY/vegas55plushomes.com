@@ -1,12 +1,20 @@
 import Link from 'next/link'
 import { Shield, Trophy, Lock, Award, Home } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
 
-export const metadata = {
-  title: 'Top 10 Gated 55+ Communities in Las Vegas | Complete Guide to Secure Active Adult Living',
-  description: 'Discover the top 10 gated 55+ communities in Las Vegas. Find secure, exclusive active adult communities with world-class amenities, enhanced security, and exceptional lifestyle options.',
-  keywords: ['gated 55+ communities Las Vegas', 'secure active adult communities', 'Las Vegas gated retirement communities', '55+ gated communities Nevada'],
-}
+export const metadata = buildMetadata({
+  title: 'Gated 55+ Communities in Las Vegas | Sun City, Siena | Dr. Jan Duffy',
+  description:
+    'Compare gated 55+ communities in Las Vegas and Henderson, including Sun City Summerlin and Siena. Controlled-access entries and HOA amenities. Call (702) 996-3758.',
+  path: '/las-vegas-55-guide/top-10-gated',
+  image: siteImages.gated,
+  keywords: ['gated 55+ communities Las Vegas', 'Sun City Summerlin gated'],
+})
 
 export default function Top10GatedPage() {
   // Filter featured and large communities that are likely gated
@@ -16,19 +24,43 @@ export default function Top10GatedPage() {
     .map((c, index) => ({ ...c, rank: index + 1 }))
 
   return (
+    <div>
+      <JsonLd
+        id="gated-page-graph"
+        data={generatePageGraph({
+          pageType: 'CollectionPage',
+          name: 'Gated 55+ Communities in Las Vegas',
+          description: 'Gated 55+ communities in Las Vegas and Henderson with controlled-access entries.',
+          path: '/las-vegas-55-guide/top-10-gated',
+          image: siteImages.gated,
+          breadcrumbs: [
+            { name: 'Home', url: '/' },
+            { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+            { name: 'Gated Communities', url: '/las-vegas-55-guide/top-10-gated' },
+          ],
+          extra: [
+            generateItemListSchema({
+              name: 'Gated Las Vegas 55+ communities',
+              description: 'Controlled-access 55+ communities in the Las Vegas Valley.',
+              items: gatedCommunities.map((community) => ({
+                name: community.name,
+                url: `/communities/${community.slug}`,
+              })),
+            }),
+          ],
+        })}
+      />
+      <PageHero
+        image={siteImages.gated}
+        title="Gated 55+ Communities in Las Vegas"
+        subtitle="Controlled-access 55+ neighborhoods in Summerlin and Henderson, including Sun City Summerlin and Siena. Call (702) 996-3758."
+        breadcrumbs={[
+          { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
+          { label: 'Gated Communities' },
+        ]}
+        primaryCTA={{ text: 'Browse Communities', href: '/communities' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / <Link href="/las-vegas-55-guide" className="hover:text-foreground">Las Vegas 55+ Guide</Link> / Top 10 Gated Communities
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Top 10 Gated 55+ Communities in Las Vegas | Secure Active Adult Living</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Las Vegas is an attractive destination for retirees due to its pleasant climate, beautiful landscapes, and numerous cultural and recreational activities. Gated 55+ communities are particularly popular, offering added security, privacy, exclusivity, and peace of mind that appeals to many active adults seeking retirement living.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          This comprehensive guide explores the top gated 55+ communities in Las Vegas, helping you understand what makes these communities exceptional and how they provide enhanced security and lifestyle options for active adults.
-        </p>
-      </div>
 
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
@@ -181,6 +213,7 @@ export default function Top10GatedPage() {
           </div>
         </section>
       </div>
+    </div>
     </div>
   )
 }

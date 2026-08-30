@@ -1,12 +1,23 @@
 import Link from 'next/link'
-import { Home, MapPin, Trophy, Mountain, TreePine, Award } from 'lucide-react'
+import { Home, MapPin, Trophy, Mountain } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import SitePhoto from '@/components/site-photo'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
+import { summerlinFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Summerlin 55+ Homes For Sale | Las Vegas Real Estate | Premier Active Adult Communities',
-  description: 'Find 55+ homes for sale in Summerlin, Las Vegas. Explore premier active adult communities including Sun City Summerlin, Siena, Regency at Summerlin, and more in this prestigious master-planned community.',
-  keywords: ['Summerlin 55+ homes', 'Summerlin active adult communities', 'Summerlin real estate 55+', 'Las Vegas Summerlin retirement communities'],
-}
+export const metadata = buildMetadata({
+  title: 'Summerlin 55+ Homes For Sale | Sun City Summerlin, Siena | Dr. Jan Duffy',
+  description:
+    'Find 55+ homes in Summerlin, Las Vegas — Sun City Summerlin, Siena, and Regency at Summerlin. Single-story homes near Red Rock Canyon. Call Dr. Jan Duffy at (702) 996-3758.',
+  path: '/summerlin-55-homes',
+  image: siteImages.summerlin,
+  keywords: ['Summerlin 55+ homes', 'Sun City Summerlin', 'Siena Las Vegas'],
+})
 
 export default function Summerlin55HomesPage() {
   const summerlinCommunities = lasVegasCommunities.filter(c => 
@@ -14,20 +25,42 @@ export default function Summerlin55HomesPage() {
     c.city === 'Las Vegas' && (c.slug.includes('summerlin') || c.name.includes('Summerlin'))
   )
 
+  const pageGraph = generatePageGraph({
+    pageType: 'CollectionPage',
+    name: 'Summerlin 55+ Homes For Sale',
+    description:
+      '55+ homes in Summerlin, Las Vegas, including Sun City Summerlin, Siena, and Regency at Summerlin.',
+    path: '/summerlin-55-homes',
+    image: siteImages.summerlin,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Summerlin 55+ Homes', url: '/summerlin-55-homes' },
+    ],
+    faqs: summerlinFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Summerlin 55+ Communities',
+        description: 'Active adult communities in Summerlin, Las Vegas.',
+        items: summerlinCommunities.map((community) => ({
+          name: community.name,
+          url: `/communities/${community.slug}`,
+        })),
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id="summerlin-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.summerlin}
+        title="Summerlin 55+ Homes For Sale"
+        subtitle="Sun City Summerlin, Siena, and Regency at Summerlin sit on the west side of the Las Vegas Valley near Red Rock Canyon. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Summerlin 55+ Homes' }]}
+        primaryCTA={{ text: 'Search Homes', href: '/homes-for-sale' }}
+        secondaryCTA={{ text: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' }}
+      />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <nav className="text-sm text-muted-foreground mb-4">
-          <Link href="/" className="hover:text-foreground">Home</Link> / Summerlin 55+ Homes
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Summerlin 55+ Homes For Sale | Premier Active Adult Communities</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Discover premier 55+ active adult communities in Summerlin, one of Las Vegas's most desirable master-planned communities. Summerlin offers residents beautiful desert scenery, excellent amenities, mountain views, and a vibrant lifestyle that makes it ideal for active adult living.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Summerlin's 55+ communities combine the benefits of specialized active adult living with access to all the amenities and resources of this prestigious master-planned community, creating a unique living experience that appeals to active adults seeking both community and convenience.
-        </p>
-      </div>
 
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
@@ -84,9 +117,11 @@ export default function Summerlin55HomesPage() {
                   href="/communities/sun-city-summerlin"
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center">
-                    <Home className="h-16 w-16 text-muted-foreground" />
-                  </div>
+                  <SitePhoto
+                    image={siteImages.golf}
+                    alt="Sun City Summerlin 55+ golf community in Summerlin, Las Vegas"
+                    className="aspect-video"
+                  />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       Sun City Summerlin
@@ -98,9 +133,11 @@ export default function Summerlin55HomesPage() {
                   href="/communities/regency-summerlin"
                   className="group rounded-lg border bg-card overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-video bg-muted flex items-center justify-center">
-                    <Home className="h-16 w-16 text-muted-foreground" />
-                  </div>
+                  <SitePhoto
+                    image={siteImages.gated}
+                    alt="Regency at Summerlin gated 55+ community in Las Vegas"
+                    className="aspect-video"
+                  />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       Regency at Summerlin
@@ -184,6 +221,8 @@ export default function Summerlin55HomesPage() {
           </div>
         </section>
       </div>
+      <FaqSection faqs={summerlinFaqs} />
+    </div>
     </div>
   )
 }

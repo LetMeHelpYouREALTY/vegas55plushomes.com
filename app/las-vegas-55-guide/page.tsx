@@ -2,12 +2,22 @@ import Link from 'next/link'
 import { MapPin, Home, Trophy, PlayCircle, Shield, Activity, Info, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { siteImages } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
+import { guideFaqs } from '@/lib/page-faqs'
 
-export const metadata = {
-  title: 'Las Vegas 55+ Guide | Complete Guide to Active Adult Communities | Vegas 55 Plus Homes',
-  description: 'Your complete guide to Las Vegas 55+ active adult communities. Explore the top communities, amenities, lifestyle options, and find your perfect active adult living experience in Las Vegas and Henderson.',
-  keywords: ['Las Vegas 55+ guide', 'active adult communities guide', 'Las Vegas retirement communities', '55+ living guide Las Vegas'],
-}
+export const metadata = buildMetadata({
+  title: 'Las Vegas 55+ Guide | Communities, Gated, Pickleball | Dr. Jan Duffy',
+  description:
+    'Guide to Las Vegas 55+ living: community overview, gated neighborhoods, pickleball courts, maps, and tours. Dr. Jan Duffy, (702) 996-3758, 28 Lake Oasis St, Henderson, NV 89011.',
+  path: '/las-vegas-55-guide',
+  image: siteImages.heroHome,
+  keywords: ['Las Vegas 55+ guide', 'active adult communities Las Vegas', 'gated 55+ Las Vegas'],
+})
 
 export default function LasVegas55GuidePage() {
   const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 6)
@@ -45,19 +55,39 @@ export default function LasVegas55GuidePage() {
     },
   ]
 
-  return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Las Vegas 55+ Guide | Your Complete Resource for Active Adult Living</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Your comprehensive guide to Las Vegas 55+ active adult communities. Discover the best communities, amenities, lifestyle options, and everything you need to know about active adult living in Las Vegas and Henderson. This guide provides detailed information to help you make informed decisions about your retirement lifestyle.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Whether you're beginning your search or narrowing down options, this guide offers comprehensive insights into Las Vegas 55+ communities, helping you understand what makes each community unique and find the perfect match for your active retirement years.
-        </p>
-      </div>
+  const pageGraph = generatePageGraph({
+    pageType: 'CollectionPage',
+    name: 'Las Vegas 55+ Guide',
+    description:
+      'Guide to 55+ communities, gated neighborhoods, pickleball, and maps across Las Vegas, Henderson, and Summerlin.',
+    path: '/las-vegas-55-guide',
+    image: siteImages.heroHome,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Las Vegas 55+ Guide', url: '/las-vegas-55-guide' },
+    ],
+    faqs: guideFaqs,
+    extra: [
+      generateItemListSchema({
+        name: 'Las Vegas 55+ guide sections',
+        description: 'Guides for 55+ homebuyers in the Las Vegas Valley.',
+        items: guideLinks.map((link) => ({ name: link.title, url: link.href })),
+      }),
+    ],
+  })
 
-      <div className="max-w-6xl space-y-12 mb-12">
+  return (
+    <div>
+      <JsonLd id="guide-page-graph" data={pageGraph} />
+      <PageHero
+        image={siteImages.heroHome}
+        title="Las Vegas 55+ Guide"
+        subtitle="Compare communities, gated entries, pickleball courts, and locations across Las Vegas, Henderson, and Summerlin. Call (702) 996-3758."
+        breadcrumbs={[{ label: 'Las Vegas 55+ Guide' }]}
+        primaryCTA={{ text: 'Browse Communities', href: '/communities' }}
+        secondaryCTA={{ text: 'Search Homes', href: '/homes-for-sale' }}
+      />
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section>
           <h2 className="text-3xl font-bold mb-6">Why Use This Las Vegas 55+ Guide?</h2>
           <div className="space-y-4 text-muted-foreground mb-8">
@@ -239,7 +269,8 @@ export default function LasVegas55GuidePage() {
             </Button>
           </div>
         </section>
-      </div>
+      <FaqSection faqs={guideFaqs} />
+    </div>
     </div>
   )
 }

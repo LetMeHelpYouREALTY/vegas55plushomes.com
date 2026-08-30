@@ -1,8 +1,17 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Home, MapPin, Calendar, Users, Trophy, Shield, Heart, CheckCircle } from 'lucide-react'
+import { MapPin, CheckCircle, Trophy, Users, Heart, Shield } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import PageHero from '@/components/page-hero'
+import JsonLd from '@/components/json-ld'
+import FaqSection from '@/components/faq-section'
+import { getCommunityImage } from '@/lib/site-images'
+import { buildMetadata } from '@/lib/page-metadata'
+import {
+  generatePageGraph,
+  generateResidenceCommunitySchema,
+} from '@/lib/structured-data'
 
 export async function generateStaticParams() {
   return lasVegasCommunities.map((community) => ({
@@ -20,11 +29,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  return {
-    title: `${community.name} | Las Vegas 55+ Real Estate | Vegas 55 Plus Homes`,
-    description: community.longDescription,
-    keywords: [`${community.name}`, `${community.name} homes for sale`, `55+ community ${community.city}`, `${community.name} real estate`],
-  }
+  const image = getCommunityImage(community)
+
+  return buildMetadata({
+    title: `${community.name} 55+ Homes | ${community.city}, NV | Dr. Jan Duffy`,
+    description: community.longDescription.slice(0, 155),
+    path: `/communities/${community.slug}`,
+    image,
+    keywords: [
+      `${community.name}`,
+      `${community.name} homes for sale`,
+      `55+ community ${community.city}`,
+      `${community.name} Las Vegas`,
+    ],
+  })
 }
 
 export default async function CommunityPage({
@@ -39,21 +57,63 @@ export default async function CommunityPage({
     notFound()
   }
 
+  const image = getCommunityImage(community)
+  const faqs = [
+    {
+      question: `Where is ${community.name} located?`,
+      answer: `${community.name} is a 55+ community in ${community.location}. Dr. Jan Duffy represents buyers here. Call (702) 996-3758 to tour homes.`,
+    },
+    {
+      question: `What amenities does ${community.name} offer?`,
+      answer: `${community.name} includes ${community.amenities.slice(0, 4).join(', ')}${community.amenities.length > 4 ? ', and more' : ''}.`,
+    },
+  ]
+
+  const pageGraph = generatePageGraph({
+    pageType: 'ItemPage',
+    name: `${community.name} 55+ Homes | ${community.city}, NV`,
+    description: community.longDescription,
+    path: `/communities/${community.slug}`,
+    image,
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Las Vegas 55+ Communities', url: '/communities' },
+      { name: community.name, url: `/communities/${community.slug}` },
+    ],
+    faqs,
+    extra: [
+      generateResidenceCommunitySchema({
+        name: community.name,
+        description: community.longDescription,
+        url: `/communities/${community.slug}`,
+        image,
+        city: community.city,
+        amenities: community.amenities,
+      }),
+    ],
+  })
+
   return (
+    <div>
+      <JsonLd id={`${community.slug}-page-graph`} data={pageGraph} />
+      <PageHero
+        image={image}
+        title={`${community.name} | ${community.city} 55+ Homes`}
+        subtitle={community.longDescription}
+        breadcrumbs={[
+          { label: 'Communities', href: '/communities' },
+          { label: community.name },
+        ]}
+        primaryCTA={{ text: 'View Homes For Sale', href: `/homes-for-sale?community=${slug}` }}
+        secondaryCTA={{ text: 'Schedule a Tour', href: '/contact' }}
+      />
+
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Hero Section */}
       <div className="mb-12">
-        <div className="aspect-video bg-muted rounded-lg mb-6 flex items-center justify-center">
-          <Home className="h-24 w-24 text-muted-foreground" />
-        </div>
         <div className="flex items-center gap-2 text-muted-foreground mb-4">
           <MapPin className="h-5 w-5" />
           <span className="text-lg">{community.location}</span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{community.name} | Premier Las Vegas 55+ Community</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          {community.longDescription}
-        </p>
         {community.priceRange && (
           <p className="text-lg font-semibold text-primary">Price Range: {community.priceRange}</p>
         )}
@@ -261,6 +321,8 @@ export default async function CommunityPage({
           </div>
         </div>
       </div>
+      <FaqSection title={`${community.name} questions`} faqs={faqs} />
+    </div>
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { MapPin, Home, Search, Compass, Info } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import SitePhoto from '@/components/site-photo'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata = {
   title: 'Las Vegas 55+ Communities Map | Interactive Map of Active Adult Communities | Location Guide',
@@ -28,7 +30,7 @@ export default function MapPage() {
     { 
       title: 'Henderson Area', 
       communities: hendersonCommunities,
-      description: 'Safe, family-friendly environment with numerous 55+ communities'
+      description: 'Henderson 55+ communities including Sun City Anthem, Del Webb at Lake Las Vegas, and Heritage at Cadence'
     },
     { 
       title: 'Las Vegas Area', 
@@ -60,13 +62,12 @@ export default function MapPage() {
       <div className="max-w-6xl space-y-12 mb-12">
         <section>
           <div className="rounded-lg border bg-card p-8 mb-8">
-            <div className="aspect-video bg-muted rounded-lg flex flex-col items-center justify-center">
-              <MapPin className="h-16 w-16 text-primary mb-4 opacity-50" />
-              <p className="text-lg text-muted-foreground font-medium mb-2">Interactive Map Coming Soon</p>
-              <p className="text-sm text-muted-foreground max-w-md text-center">
-                A detailed interactive map showing all Las Vegas 55+ communities with clickable markers, community information, and filtering options will be available here soon.
-              </p>
-            </div>
+            <SitePhoto
+              image={siteImages.summerlin}
+              alt="Aerial-style view of Summerlin Las Vegas 55+ neighborhood streets and mountain views"
+              className="aspect-video rounded-lg"
+              sizes="100vw"
+            />
           </div>
         </section>
 
