@@ -85,7 +85,7 @@ export default function HomePage() {
       <PageHero
         image={siteImages.lake}
         title="Del Webb Lake Las Vegas 55+ buyer representation"
-        subtitle={`Dr. Jan Duffy works from ${FULL_ADDRESS}. She represents buyers at Del Webb — 461 planned homes on Lake Las Vegas. Call ${PHONE_DISPLAY}.`}
+        subtitle={`Dr. Jan Duffy represents buyers at Del Webb — 461 planned homes on Lake Las Vegas. Call ${PHONE_DISPLAY}.`}
         primaryCTA={{ text: `Call ${PHONE_DISPLAY}`, href: `tel:${PHONE_TEL}` }}
         secondaryCTA={{ text: 'Tour Del Webb', href: '/communities/del-webb-lake-las-vegas' }}
         priority
