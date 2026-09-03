@@ -18,6 +18,7 @@ import {
 import { siteImages } from '@/lib/site-images'
 import { toPublicSrc } from '@/lib/image-cdn'
 import { REALSCOUT_SCRIPT_SRC } from '@/lib/realscout'
+import { SITE_NAME } from '@/lib/site-config'
 import './globals.css'
 
 const geistSans = Geist({
@@ -40,7 +41,7 @@ const siteUrl = 'https://www.vegas55plushomes.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Del Webb Lake Las Vegas 55+ Buyer’s Agent | Dr. Jan Duffy',
+  title: SITE_NAME,
   description:
     'Buyer representation for Del Webb at Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011. Dr. Jan Duffy, Nevada license S.0197614. Call (702) 996-3758.',
   keywords: ['Del Webb Lake Las Vegas 55+', 'Dr. Jan Duffy realtor', 'Las Vegas 55+ homes', 'Las Vegas 55+ communities', 'Las Vegas real estate', '55+ communities Las Vegas', 'retirement homes Las Vegas', 'Sun City Summerlin', 'Sun City Anthem', 'active adult communities Las Vegas', 'Las Vegas senior living', 'Las Vegas realtor 55+'],
@@ -54,8 +55,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
-    title: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
+    siteName: SITE_NAME,
+    title: SITE_NAME,
     description: 'Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist. Expert guidance for active adults seeking homes in premier 55+ communities.',
     images: [
       {
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy',
+    title: SITE_NAME,
     description: 'Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist. Expert guidance for active adults seeking homes in premier 55+ communities.',
     images: [siteImages.og.src],
   },

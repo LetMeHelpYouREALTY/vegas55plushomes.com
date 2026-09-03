@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import { SITE_NAME } from '@/lib/site-config'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -145,7 +146,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t">
           <div className="text-center space-y-4">
             <div className="space-y-2">
-              <p className="font-semibold text-foreground">Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy</p>
+              <p className="font-semibold text-foreground">{SITE_NAME}</p>
               <p className="text-sm text-muted-foreground">28 Lake Oasis St, Henderson, NV 89011</p>
               <p className="text-sm">
                 <a 

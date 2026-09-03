@@ -2,7 +2,7 @@
  * Single source of truth for NAP, URLs, and entity IDs used in visible copy and JSON-LD.
  */
 export const SITE_URL = 'https://www.vegas55plushomes.com'
-export const SITE_NAME = 'Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy'
+export const SITE_NAME = 'Del Webb at Lake Las Vegas | Homes by Dr. Jan Duffy'
 export const SITE_SHORT_NAME = 'Vegas 55 Plus Homes'
 export const AGENT_NAME = 'Dr. Jan Duffy'
 export const LICENSE = 'S.0197614'

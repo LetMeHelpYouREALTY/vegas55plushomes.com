@@ -22,10 +22,11 @@ import {
   LICENSE,
   PHONE_DISPLAY,
   PHONE_TEL,
+  SITE_NAME,
 } from '@/lib/site-config'
 
 export const metadata = buildMetadata({
-  title: 'Del Webb Lake Las Vegas 55+ Buyer’s Agent | Dr. Jan Duffy',
+  title: SITE_NAME,
   description:
     'Dr. Jan Duffy represents 55+ buyers at Del Webb Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011. Nevada license S.0197614. Call (702) 996-3758.',
   path: '/',
@@ -42,7 +43,7 @@ export default function HomePage() {
   const delWebb = lasVegasCommunities.find((c) => c.slug === 'del-webb-lake-las-vegas')
   const pageGraph = generatePageGraph({
     pageType: 'WebPage',
-    name: 'Del Webb Lake Las Vegas 55+ Buyer’s Agent | Dr. Jan Duffy',
+    name: SITE_NAME,
     description:
       'Buyer representation for Del Webb at Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011.',
     path: '/',
