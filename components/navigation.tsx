@@ -21,20 +21,22 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-gold/35 bg-background/90 backdrop-blur">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="flex min-h-20 items-center justify-between py-3">
+          <Link href="/" className="flex min-w-0 items-center gap-3">
             <Image
               src={siteImages.headshotNav.src}
               alt={siteImages.headshotNav.alt}
               width={48}
               height={48}
-              className="h-12 w-12 rounded-full object-cover ring-1 ring-gold"
+              className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-gold"
               priority
             />
             <span className="leading-tight">
-              <span className="block font-serif text-xl text-foreground">Dr. Jan Duffy</span>
-              <span className="block text-[11px] uppercase tracking-[0.2em] text-bronze">
-                Lake Las Vegas
+              <span className="block font-serif text-lg text-foreground md:text-xl">
+                Del Webb Lake Las Vegas
+              </span>
+              <span className="block font-serif italic text-sm text-bronze">
+                Homes By Dr. Jan Duffy
               </span>
             </span>
           </Link>

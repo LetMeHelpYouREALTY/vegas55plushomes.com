@@ -14,7 +14,10 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Dr. Jan Duffy</h3>
+              <h3 className="font-serif text-xl font-medium text-foreground">
+                Del Webb Lake Las Vegas
+              </h3>
+              <p className="mb-3 font-serif italic text-sm text-bronze">Homes By Dr. Jan Duffy</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Del Webb Lake Las Vegas 55+ buyer’s representative. 28 Lake Oasis St, Henderson, NV
                 89011. Call (702) 996-3758.
