@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Cormorant_Garamond, Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
@@ -30,12 +30,19 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const display = Cormorant_Garamond({
+  variable: '--font-display',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+})
+
 const siteUrl = 'https://www.vegas55plushomes.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Del Webb Lake Las Vegas 55+ REALTOR® | Award-Winning Realtor Dr. Jan Duffy',
-  description: 'Award-winning realtor Dr. Jan Duffy - Your trusted Las Vegas 55+ real estate specialist and buyer\'s representative. Expert guidance for active adults seeking homes in premier 55+ communities including Sun City Summerlin, Sun City Anthem, Del Webb Lake Las Vegas, and more.',
+  title: 'Del Webb Lake Las Vegas 55+ Buyer’s Agent | Dr. Jan Duffy',
+  description:
+    'Buyer representation for Del Webb at Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011. Dr. Jan Duffy, Nevada license S.0197614. Call (702) 996-3758.',
   keywords: ['Del Webb Lake Las Vegas 55+', 'Dr. Jan Duffy realtor', 'Las Vegas 55+ homes', 'Las Vegas 55+ communities', 'Las Vegas real estate', '55+ communities Las Vegas', 'retirement homes Las Vegas', 'Sun City Summerlin', 'Sun City Anthem', 'active adult communities Las Vegas', 'Las Vegas senior living', 'Las Vegas realtor 55+'],
   authors: [{ name: 'Dr. Jan Duffy' }],
   creator: 'Dr. Jan Duffy',
@@ -135,7 +142,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

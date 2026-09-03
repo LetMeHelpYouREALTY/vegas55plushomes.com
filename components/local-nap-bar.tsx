@@ -3,47 +3,47 @@ import { GOOGLE_MAPS_URL, PHONE_TEL, PHONE_DISPLAY, FULL_ADDRESS, SITE_NAME } fr
 
 export default function LocalNapBar() {
   return (
-    <section className="border-y bg-muted/40">
+    <section className="border-y border-gold/40 bg-primary text-primary-foreground">
       <div className="container mx-auto grid grid-cols-1 gap-4 px-4 py-6 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div className="flex items-start gap-3">
-          <MapPin className="mt-0.5 h-5 w-5 text-primary" />
+          <MapPin className="mt-0.5 h-5 w-5 text-gold" />
           <div>
             <p className="text-sm font-semibold">{SITE_NAME}</p>
-            <address className="text-sm not-italic text-muted-foreground">{FULL_ADDRESS}</address>
+            <address className="text-sm not-italic text-primary-foreground/80">{FULL_ADDRESS}</address>
           </div>
         </div>
         <a
           href={`tel:${PHONE_TEL}`}
-          className="flex items-start gap-3 hover:text-primary"
+          className="flex items-start gap-3 hover:text-gold"
         >
-          <Phone className="mt-0.5 h-5 w-5 text-primary" />
+          <Phone className="mt-0.5 h-5 w-5 text-gold" />
           <div>
             <p className="text-sm font-semibold">Call</p>
-            <p className="text-sm text-muted-foreground">{PHONE_DISPLAY}</p>
+            <p className="text-sm text-primary-foreground/80">{PHONE_DISPLAY}</p>
           </div>
         </a>
         <a
           href={GOOGLE_MAPS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-start gap-3 hover:text-primary"
+          className="flex items-start gap-3 hover:text-gold"
         >
-          <Navigation className="mt-0.5 h-5 w-5 text-primary" />
+          <Navigation className="mt-0.5 h-5 w-5 text-gold" />
           <div>
             <p className="text-sm font-semibold">Directions</p>
-            <p className="text-sm text-muted-foreground">Google Maps to Henderson office</p>
+            <p className="text-sm text-primary-foreground/80">Google Maps to Henderson office</p>
           </div>
         </a>
         <a
           href="https://www.google.com/search?q=Dr+Jan+Duffy+Vegas+55+Plus+Homes+reviews"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-start gap-3 hover:text-primary"
+          className="flex items-start gap-3 hover:text-gold"
         >
-          <Star className="mt-0.5 h-5 w-5 text-primary" />
+          <Star className="mt-0.5 h-5 w-5 text-gold" />
           <div>
             <p className="text-sm font-semibold">View Google Reviews</p>
-            <p className="text-sm text-muted-foreground">Hours: Mon–Fri 9–6, Sat 10–4</p>
+            <p className="text-sm text-primary-foreground/80">Hours: Mon–Fri 9–6, Sat 10–4</p>
           </div>
         </a>
       </div>

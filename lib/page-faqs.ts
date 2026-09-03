@@ -1,23 +1,23 @@
 export const homeFaqs = [
   {
-    question: 'What 55+ communities are in Las Vegas?',
+    question: 'Where is Dr. Jan Duffy’s office for Del Webb Lake Las Vegas?',
     answer:
-      'Las Vegas Valley 55+ communities include Sun City Summerlin, Sun City Anthem, Del Webb at Lake Las Vegas, Siena, Solera at Anthem, Heritage at Cadence, and more than a dozen other active adult neighborhoods in Las Vegas, Henderson, Summerlin, and North Las Vegas.',
+      'The office is at 28 Lake Oasis St, Henderson, NV 89011. Call (702) 996-3758. Hours are Monday–Friday 9–6 and Saturday 10–4.',
   },
   {
-    question: 'How much do Las Vegas 55+ homes cost in 2026?',
+    question: 'Does Dr. Jan Duffy represent buyers at Del Webb Lake Las Vegas?',
     answer:
-      'Listed 55+ homes in the Las Vegas Valley commonly range from about $300,000 in value-oriented communities to $1,000,000+ in golf and waterfront neighborhoods such as Siena and Del Webb at Lake Las Vegas. Exact asking prices change with inventory, so verify current listings before making an offer.',
+      'Yes. She represents 55+ buyers at Del Webb Lake Las Vegas (461 planned homes) and nearby Henderson inventory. Nevada license S.0197614, BHHS Nevada Properties.',
   },
   {
-    question: 'Who is Dr. Jan Duffy?',
+    question: 'Do I need a buyer’s agent if I visit the Del Webb sales desk?',
     answer:
-      'Dr. Jan Duffy is a Nevada REALTOR® (license S.0197614) with BHHS Nevada Properties. She represents buyers of 55+ and new-construction homes in Las Vegas, Henderson, and Summerlin, with a focus on Del Webb at Lake Las Vegas and Sun City Summerlin. Call (702) 996-3758.',
+      'The on-site sales desk represents the builder. A buyer’s agent reviews the contract, inspections, options, and credits. In standard builder co-op transactions, that representation does not add a separate buyer-paid commission.',
   },
   {
-    question: 'Do 55+ homebuyers need a buyer’s agent for new construction?',
+    question: 'What do Del Webb Lake Las Vegas homes cost?',
     answer:
-      'Yes. The builder’s on-site representative works for the builder. A buyer’s agent reviews the contract, coordinates inspections, and negotiates credits or upgrades. Dr. Jan Duffy specializes in new-construction 55+ purchases at no extra cost to the buyer in standard builder co-op transactions.',
+      'Listed homes commonly sit in a higher Henderson 55+ range, with plans from about 1,500 to 3,000+ sq ft. Exact asking prices change with inventory. Verify the current list price before you offer.',
   },
 ]
 

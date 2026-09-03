@@ -46,7 +46,7 @@ export default function PageHero({
               <Breadcrumbs items={breadcrumbs} />
             </div>
           )}
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+          <h1 className="max-w-4xl font-serif text-4xl font-medium leading-[1.1] text-white md:text-5xl lg:text-6xl">
             {title}
           </h1>
           {subtitle && (
@@ -60,7 +60,7 @@ export default function PageHero({
           {(primaryCTA || secondaryCTA) && (
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               {primaryCTA && (
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="gold">
                   <Link href={primaryCTA.href}>{primaryCTA.text}</Link>
                 </Button>
               )}
@@ -69,7 +69,7 @@ export default function PageHero({
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white bg-white/10 text-white hover:bg-white hover:text-foreground"
+                  className="border-gold bg-transparent text-white hover:bg-gold hover:text-gold-foreground"
                 >
                   <Link href={secondaryCTA.href}>{secondaryCTA.text}</Link>
                 </Button>

@@ -196,7 +196,7 @@ export const lasVegasCommunities: Community[] = [
     ],
     floorplans: ['Mediterranean-style homes', 'Waterfront options', 'Homes from 1,500 to 3,000+ sq ft'],
     homesForSale: 3,
-    featured: false,
+    featured: true,
     yearBuilt: '2023',
     homeCount: 461,
     priceRange: '$400,000 - $1,000,000+',

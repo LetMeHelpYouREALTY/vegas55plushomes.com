@@ -7,7 +7,7 @@ export default function Footer() {
   const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 4)
 
   return (
-    <footer className="border-t bg-gradient-to-b from-background to-muted/30">
+    <footer className="border-t border-gold/35 bg-gradient-to-b from-background to-muted/40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -15,7 +15,8 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-bold text-foreground mb-3">Dr. Jan Duffy</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Del Webb Lake Las Vegas 55+ REALTOR®. Your trusted Las Vegas 55+ real estate specialist.
+                Del Webb Lake Las Vegas 55+ buyer’s representative. 28 Lake Oasis St, Henderson, NV
+                89011. Call (702) 996-3758.
               </p>
             </div>
           </div>
