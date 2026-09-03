@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/success-stories', 'weekly', 0.7, absoluteImageUrl(siteImages.interior)),
     entry('/reviews', 'weekly', 0.7, absoluteImageUrl(siteImages.interior)),
     entry('/contact', 'monthly', 0.7, absoluteImageUrl(siteImages.lake)),
+    entry('/image-license', 'yearly', 0.3, absoluteImageUrl(siteImages.logo)),
     entry('/blog/google-trends-insights', 'monthly', 0.6, absoluteImageUrl(siteImages.golf)),
   ]
 

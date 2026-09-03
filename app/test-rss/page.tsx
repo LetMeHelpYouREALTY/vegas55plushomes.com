@@ -1,4 +1,17 @@
+import type { Metadata } from 'next'
 import RSSFeed from '@/components/rss-feed'
+
+export const metadata: Metadata = {
+  title: 'RSS Feed Test',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+}
 
 export default function TestRSSPage() {
   return (

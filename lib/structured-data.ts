@@ -8,6 +8,7 @@ import {
   FULL_ADDRESS,
   GEO,
   GOOGLE_MAPS_URL,
+  IMAGE_LICENSE_URL,
   LICENSE,
   OPENING_HOURS,
   ORG_ID,
@@ -18,6 +19,7 @@ import {
   SITE_URL,
   STREET_ADDRESS,
   WEBSITE_ID,
+  getImageCopyrightNotice,
 } from '@/lib/site-config'
 import { absoluteImageUrl, siteImages, type SiteImage } from '@/lib/site-images'
 
@@ -66,7 +68,9 @@ export function generateImageObjectSchema(image: SiteImage) {
       '@id': ORG_ID,
       name: SITE_NAME,
     },
+    copyrightNotice: getImageCopyrightNotice(),
     creditText: SITE_NAME,
+    license: IMAGE_LICENSE_URL,
     acquireLicensePage: `${SITE_URL}/contact`,
     contentLocation: {
       '@type': 'Place',

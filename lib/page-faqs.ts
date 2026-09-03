@@ -214,6 +214,19 @@ export const whySunCityFaqs = [
   },
 ]
 
+export const imageLicenseFaqs = [
+  {
+    question: 'Who owns the photographs on Vegas 55 Plus Homes?',
+    answer:
+      'Site photography, the logo, and related graphics on vegas55plushomes.com are copyrighted by Dr. Jan Duffy / Vegas 55 Plus Homes. Listing photos supplied by MLS or builders remain the property of those sources and are used under their display rules.',
+  },
+  {
+    question: 'How do I request permission to use a site photograph?',
+    answer:
+      'Email DrDuffySells@Vegas55PlusHomes.com or call (702) 996-3758. Include the image URL, the intended use, and the publication date. Written permission is required before reuse.',
+  },
+]
+
 export const sunCityHomesFaqs = [
   {
     question: 'How do I see current Sun City Summerlin homes for sale?',
