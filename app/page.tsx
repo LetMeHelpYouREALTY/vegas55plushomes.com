@@ -25,9 +25,9 @@ const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
 })
 
 export const metadata = buildMetadata({
-  title: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
+  title: 'Las Vegas 55+ Communities & Homes for Sale | Dr. Jan Duffy',
   description:
-    'Dr. Jan Duffy represents buyers of 55+ homes in Las Vegas, Henderson, and Summerlin — Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and more. Call (702) 996-3758.',
+    'Compare 55+ and active adult communities in Las Vegas, Henderson, and Summerlin — Sun City Summerlin, Sun City Anthem, Siena, and Del Webb Lake Las Vegas. Call (702) 996-3758.',
   path: '/',
   image: siteImages.heroHome,
   keywords: [

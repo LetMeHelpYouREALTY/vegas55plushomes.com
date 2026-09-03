@@ -29,6 +29,14 @@ export const AGENT_ID = `${SITE_URL}#realestateagent`
 export const WEBSITE_ID = `${SITE_URL}#website`
 export const PERSON_ID = `${SITE_URL}#dr-jan-duffy`
 
+/** Google Image Metadata: license must be a URL to a crawlable rights page, not the Nevada real-estate license number. */
+export const IMAGE_LICENSE_PATH = '/image-license'
+export const IMAGE_LICENSE_URL = `${SITE_URL}${IMAGE_LICENSE_PATH}`
+
+export function getImageCopyrightNotice(year = new Date().getFullYear()): string {
+  return `© ${year} Dr. Jan Duffy / Vegas 55 Plus Homes. All rights reserved.`
+}
+
 export const OPENING_HOURS = [
   { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
   { days: ['Saturday'], opens: '10:00', closes: '16:00' },

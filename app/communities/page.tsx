@@ -11,9 +11,9 @@ import { generateItemListSchema, generatePageGraph } from '@/lib/structured-data
 import { communityIndexFaqs } from '@/lib/page-faqs'
 
 export const metadata = buildMetadata({
-  title: 'Las Vegas 55+ Communities | Sun City, Del Webb, Siena | Dr. Jan Duffy',
+  title: 'Las Vegas 55+ Communities | Active Adult Neighborhoods | Dr. Jan Duffy',
   description:
-    'Compare Las Vegas 55+ communities including Sun City Summerlin, Sun City Anthem, Siena, and Del Webb Lake Las Vegas. Single-story homes, golf, pickleball, and HOA amenities.',
+    'Compare over-55 and active adult communities in Las Vegas, Henderson, and Summerlin: Sun City Summerlin, Sun City Anthem, Siena, and Del Webb Lake Las Vegas. Single-story homes, golf, pickleball, and HOA amenities.',
   path: '/communities',
   image: siteImages.heroHome,
   keywords: ['Las Vegas 55+ communities', 'active adult communities Las Vegas', 'Sun City Summerlin', 'Del Webb Lake Las Vegas'],

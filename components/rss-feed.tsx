@@ -42,6 +42,10 @@ export default async function RSSFeed({ limit = 5, title = 'Latest News & Market
       {showTitle && title && (
         <h2 className="text-3xl font-bold mb-6">{title}</h2>
       )}
+      <p className="mb-6 text-sm text-muted-foreground">
+        Headlines below are syndicated from Simplifying the Market and open on that publisher&apos;s
+        site. Dr. Jan Duffy does not republish full third-party articles on vegas55plushomes.com.
+      </p>
       <div className="space-y-6">
         {feedData.items.map((item, index) => (
           <RSSFeedItem key={item.guid || item.link || index} item={item} />
@@ -59,7 +63,7 @@ function RSSFeedItem({ item }: { item: RSSFeedItem }) {
     <Link
       href={item.link}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer nofollow"
       className="block rounded-lg border bg-card p-6 hover:shadow-lg transition-shadow group"
     >
       <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">

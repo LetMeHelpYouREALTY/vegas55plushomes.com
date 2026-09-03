@@ -40,6 +40,12 @@ export default function PageHero({
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
+        <Link
+          href="/image-license"
+          className="absolute right-4 top-4 z-20 rounded bg-black/45 px-2 py-1 text-xs text-white/85 hover:bg-black/60 hover:text-white hover:underline"
+        >
+          Image license
+        </Link>
         <div className="relative z-10 container mx-auto flex min-h-[420px] flex-col justify-end px-4 py-16 sm:px-6 lg:min-h-[520px] lg:px-8 lg:py-24">
           {breadcrumbs && breadcrumbs.length > 0 && (
             <div className="mb-4 text-white/80 [&_a]:text-white/80 [&_a:hover]:text-white [&_span]:text-white">
