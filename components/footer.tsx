@@ -1,21 +1,26 @@
 import Link from 'next/link'
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import { SITE_NAME } from '@/lib/site-config'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const featuredCommunities = lasVegasCommunities.filter(c => c.featured).slice(0, 4)
 
   return (
-    <footer className="border-t bg-gradient-to-b from-background to-muted/30">
+    <footer className="border-t border-gold/35 bg-gradient-to-b from-background to-muted/40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Dr. Jan Duffy</h3>
+              <h3 className="font-serif text-xl font-medium text-foreground">
+                Del Webb Lake Las Vegas
+              </h3>
+              <p className="mb-3 font-serif italic text-sm text-bronze">Homes By Dr. Jan Duffy</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Del Webb Lake Las Vegas 55+ REALTOR®. Your trusted Las Vegas 55+ real estate specialist.
+                Del Webb Lake Las Vegas 55+ buyer’s representative. 28 Lake Oasis St, Henderson, NV
+                89011. Call (702) 996-3758.
               </p>
             </div>
           </div>
@@ -144,7 +149,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t">
           <div className="text-center space-y-4">
             <div className="space-y-2">
-              <p className="font-semibold text-foreground">Del Webb Lake Las Vegas 55+ REALTOR® | Homes Dr. Jan Duffy</p>
+              <p className="font-semibold text-foreground">{SITE_NAME}</p>
               <p className="text-sm text-muted-foreground">28 Lake Oasis St, Henderson, NV 89011</p>
               <p className="text-sm">
                 <a 

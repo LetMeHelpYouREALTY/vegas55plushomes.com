@@ -154,7 +154,7 @@ export const siteImages = {
     width: 512,
     height: 512,
     name: 'Vegas 55 Plus Homes Logo',
-    caption: 'Logo for Dr. Jan Duffy, Del Webb Lake Las Vegas 55+ REALTOR®',
+    caption: 'Logo for Del Webb at Lake Las Vegas | Homes by Dr. Jan Duffy',
     description: 'Navy and gold mountain-and-home mark for Vegas 55 Plus Homes.',
   },
 } as const satisfies Record<string, SiteImage>

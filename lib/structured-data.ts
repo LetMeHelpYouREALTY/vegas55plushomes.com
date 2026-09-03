@@ -123,7 +123,7 @@ export function generateRealEstateAgentSchema() {
   return {
     '@type': 'RealEstateAgent',
     '@id': AGENT_ID,
-    name: `${AGENT_NAME} - Del Webb Lake Las Vegas 55+ REALTOR®`,
+    name: SITE_NAME,
     legalName: SITE_NAME,
     description:
       'Dr. Jan Duffy represents buyers of 55+ homes in Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and other Las Vegas Valley active adult communities. Nevada license S.0197614.',

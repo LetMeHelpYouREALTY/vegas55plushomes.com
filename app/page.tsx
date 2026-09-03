@@ -1,105 +1,78 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
-import { Home, Shield, Users, MapPin, Heart, Trophy, CheckCircle } from 'lucide-react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 import { lasVegasCommunities } from '@/lib/communities-data'
-import CommunityCard from '@/components/community-card'
-import PageHero from '@/components/page-hero'
 import JsonLd from '@/components/json-ld'
 import FaqSection from '@/components/faq-section'
+import PageHero from '@/components/page-hero'
 import { siteImages } from '@/lib/site-images'
 import { buildMetadata } from '@/lib/page-metadata'
-import { generateItemListSchema, generateHowToSchema, generatePageGraph } from '@/lib/structured-data'
+import { generateHowToSchema, generatePageGraph, generateServiceSchema } from '@/lib/structured-data'
 import { homeFaqs } from '@/lib/page-faqs'
-
-// Lazy load RSS feed (below the fold, non-critical)
-const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
-  loading: () => (
-    <div className="rounded-lg border bg-card p-6">
-      <div className="animate-pulse space-y-4">
-        <div className="h-4 bg-muted rounded w-3/4"></div>
-        <div className="h-4 bg-muted rounded w-1/2"></div>
-      </div>
-    </div>
-  ),
-})
+import {
+  FULL_ADDRESS,
+  LICENSE,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  SITE_NAME,
+} from '@/lib/site-config'
 
 export const metadata = buildMetadata({
-  title: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
+  title: SITE_NAME,
   description:
-    'Dr. Jan Duffy represents buyers of 55+ homes in Las Vegas, Henderson, and Summerlin — Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and more. Call (702) 996-3758.',
+    'Dr. Jan Duffy represents 55+ buyers at Del Webb Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011. Nevada license S.0197614. Call (702) 996-3758.',
   path: '/',
-  image: siteImages.heroHome,
+  image: siteImages.lake,
   keywords: [
-    'Las Vegas 55+ homes',
-    'Sun City Summerlin',
     'Del Webb Lake Las Vegas',
-    'Henderson 55+ homes',
-    'Dr. Jan Duffy realtor',
+    'Lake Las Vegas 55+ homes',
+    'Henderson 55+ buyer’s agent',
+    'Dr. Jan Duffy',
   ],
 })
 
 export default function HomePage() {
-  const featuredCommunities = lasVegasCommunities
-    .filter(c => c.featured)
-    .slice(0, 3)
-
-  const services = [
-    {
-      icon: <Home className="h-8 w-8" />,
-      title: 'Advanced Home Search',
-      description: 'Access comprehensive search tools to find your perfect Las Vegas 55+ home with filters for price, location, amenities, and more',
-    },
-    {
-      icon: <Shield className="h-8 w-8" />,
-      title: 'Expert Real Estate Guidance',
-      description: 'Work with experienced 55+ real estate specialists who possess deep knowledge of Las Vegas communities and market trends',
-    },
-    {
-      icon: <Users className="h-8 w-8" />,
-      title: 'Community Insights & Expertise',
-      description: 'Benefit from extensive local knowledge of Las Vegas 55+ communities, their unique amenities, lifestyles, and neighborhood characteristics',
-    },
-    {
-      icon: <MapPin className="h-8 w-8" />,
-      title: 'Comprehensive Market Understanding',
-      description: 'Gain insights from professionals with thorough understanding of Las Vegas real estate market trends, pricing, and investment potential',
-    },
-  ]
-
+  const delWebb = lasVegasCommunities.find((c) => c.slug === 'del-webb-lake-las-vegas')
   const pageGraph = generatePageGraph({
     pageType: 'WebPage',
-    name: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
+    name: SITE_NAME,
     description:
-      'Dr. Jan Duffy represents buyers of 55+ homes in Las Vegas, Henderson, and Summerlin, including Sun City Summerlin, Del Webb Lake Las Vegas, and Sun City Anthem.',
+      'Buyer representation for Del Webb at Lake Las Vegas from 28 Lake Oasis St, Henderson, NV 89011.',
     path: '/',
-    image: siteImages.heroHome,
+    image: siteImages.lake,
     breadcrumbs: [{ name: 'Home', url: '/' }],
     faqs: homeFaqs,
     extra: [
-      generateItemListSchema({
-        name: 'Featured Las Vegas 55+ Communities',
-        description: 'Premier 55+ communities in Las Vegas, Henderson, and Summerlin represented by Dr. Jan Duffy.',
-        items: featuredCommunities.map((community) => ({
-          name: community.name,
-          url: `/communities/${community.slug}`,
-        })),
+      generateServiceSchema({
+        name: 'Del Webb Lake Las Vegas buyer representation',
+        description:
+          'Contract review, tours, and offer strategy for 55+ buyers at Del Webb Lake Las Vegas and nearby Henderson 55+ communities.',
+        areaServed: ['Henderson', 'Lake Las Vegas', 'Las Vegas'],
+        serviceType: 'Real Estate Buyer Representation',
       }),
       generateHowToSchema({
-        name: 'How to start a Las Vegas 55+ home search',
-        description: 'Three steps to tour 55+ communities in Las Vegas, Henderson, and Summerlin with a buyer\'s representative.',
+        name: 'How to tour Del Webb Lake Las Vegas with a buyer’s agent',
+        description: 'Three steps to start a 55+ purchase at Lake Las Vegas with Dr. Jan Duffy.',
         steps: [
           {
-            name: 'Explore communities',
-            text: 'Compare 55+ communities online, including amenities, home types, and locations in Las Vegas, Henderson, and Summerlin.',
+            name: 'Call the Henderson office',
+            text: `Call ${PHONE_DISPLAY} or visit 28 Lake Oasis St, Henderson, NV 89011.`,
           },
           {
-            name: 'Schedule tours',
-            text: 'Book a virtual or in-person tour with Dr. Jan Duffy at (702) 996-3758.',
+            name: 'Tour Del Webb inventory',
+            text: 'Walk new-construction and resale 55+ homes at Del Webb Lake Las Vegas with a buyer’s representative.',
           },
           {
-            name: 'Write an offer with buyer representation',
-            text: 'Use a dedicated buyer\'s agent for contract review, inspections, and negotiations on resale or new construction.',
+            name: 'Review the contract before you sign',
+            text: 'A buyer’s agent reviews builder or resale contracts, inspections, and credits. The on-site sales desk represents the builder.',
           },
         ],
       }),
@@ -110,273 +83,145 @@ export default function HomePage() {
     <div className="flex flex-col">
       <JsonLd id="home-page-graph" data={pageGraph} />
       <PageHero
-        image={siteImages.heroHome}
-        title="Find Your Las Vegas 55+ Home"
-        subtitle="Dr. Jan Duffy represents buyers in Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and 20+ active adult communities. Call (702) 996-3758."
-        primaryCTA={{ text: 'Search Homes For Sale', href: '/homes-for-sale' }}
-        secondaryCTA={{ text: 'Explore All Communities', href: '/communities' }}
+        image={siteImages.lake}
+        title="Del Webb Lake Las Vegas 55+ buyer representation"
+        subtitle={`Dr. Jan Duffy represents buyers at Del Webb — 461 planned homes on Lake Las Vegas. Call ${PHONE_DISPLAY}.`}
+        primaryCTA={{ text: `Call ${PHONE_DISPLAY}`, href: `tel:${PHONE_TEL}` }}
+        secondaryCTA={{ text: 'Tour Del Webb', href: '/communities/del-webb-lake-las-vegas' }}
         priority
       />
 
-      {/* Introduction Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Why Las Vegas is the Perfect Destination for 55+ Living</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Las Vegas has emerged as one of America's premier destinations for active adults seeking an exceptional retirement lifestyle. Beyond the world-famous Strip, the Las Vegas Valley offers an ideal combination of year-round sunshine, world-class amenities, vibrant cultural scene, and outstanding value that makes it perfect for 55+ living.
+      <section className="bg-background py-20 lg:py-28">
+        <div className="container mx-auto grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_1.1fr] lg:px-8">
+          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-full ring-1 ring-gold ring-offset-8 ring-offset-background">
+            <Image
+              src={siteImages.headshot.src}
+              alt={siteImages.headshot.alt}
+              fill
+              sizes="(max-width: 1024px) 80vw, 420px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="max-w-xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-bronze">
+              Buyer’s representative · Henderson NV 89011
             </p>
-            <p className="text-lg text-muted-foreground mb-6">
-              The Las Vegas metropolitan area, including Henderson and North Las Vegas, is home to some of the nation's finest 55+ active adult communities. These master-planned communities are specifically designed for residents 55 and better, offering resort-style amenities, championship golf courses, state-of-the-art fitness centers, and endless opportunities for social engagement and active living.
+            <h2 className="mb-4 text-4xl md:text-5xl">One agent. One lake. Your contract.</h2>
+            <Separator className="mb-6 max-w-24 bg-gold" />
+            <p className="answer-first mb-4 text-lg leading-relaxed text-muted-foreground" data-speakable="true">
+              Dr. Jan Duffy (Nevada license {LICENSE}) represents 55+ buyers at Del Webb Lake Las
+              Vegas. The builder’s desk works for the builder. She works for you.
             </p>
-            <p className="text-lg text-muted-foreground mb-6">
-              Whether you're seeking a luxury lifestyle in a gated community like <Link href="/communities/siena" className="text-primary hover:underline">Siena</Link>, an active retirement in <Link href="/communities/sun-city-summerlin" className="text-primary hover:underline">Sun City Summerlin</Link>, or a peaceful haven in Henderson's <Link href="/communities/sun-city-anthem" className="text-primary hover:underline">Sun City Anthem</Link>, Las Vegas offers diverse options to match every preference and budget. Our team specializes exclusively in helping active adults find their perfect home in these exceptional communities. Learn more in our <Link href="/las-vegas-55-guide" className="text-primary hover:underline">comprehensive Las Vegas 55+ guide</Link>.
+            <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+              Office at {FULL_ADDRESS}. Tours, contract review, and inspections start from that
+              street — not a valley-wide call center.
             </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" variant="gold">
+                <a href={`tel:${PHONE_TEL}`}>Call {PHONE_DISPLAY}</a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/why-hire-an-agent">What a buyer’s agent does</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="border-y border-gold/30 bg-card py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Award-Winning Buyer's Representative Dr. Jan Duffy</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              As an award-winning realtor and dedicated buyer's representative, Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in Las Vegas 55+ communities. Our specialized expertise ensures you receive personalized, expert guidance throughout your home search journey, protecting your interests and saving you money.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {services.map((service, index) => (
-              <div key={index} className="text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow">
-                <div className="flex justify-center mb-4 text-primary">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Service Details */}
-          <div className="max-w-4xl mx-auto mt-12">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Comprehensive Real Estate Services for Active Adults</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-lg border bg-card">
-                <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  Community Expertise
-                </h4>
-                <p className="text-muted-foreground">
-                  We possess intimate knowledge of each Las Vegas 55+ community's unique characteristics, from amenity packages and lifestyle offerings to homeowner association structures and investment potential. <Link href="/communities" className="text-primary hover:underline">Explore all communities</Link> or learn about <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">gated communities</Link> and <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball communities</Link>.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  Personalized Guidance
-                </h4>
-                <p className="text-muted-foreground">
-                  Every client receives individualized attention tailored to their specific needs, preferences, and budget. We take time to understand your vision for retirement living.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  Market Intelligence
-                </h4>
-                <p className="text-muted-foreground">
-                  Stay informed with current market trends, pricing data, and investment insights specific to Las Vegas 55+ real estate to make confident decisions.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  Smooth Transaction Process
-                </h4>
-                <p className="text-muted-foreground">
-                  From initial search through closing and beyond, we ensure a seamless, stress-free experience with clear communication every step of the way.
-                </p>
-              </div>
-            </div>
+          <h2 className="mb-3 max-w-2xl text-3xl md:text-4xl">Realtor service, not a community catalog</h2>
+          <Separator className="mb-12 max-w-24 bg-gold" />
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card>
+              <CardHeader>
+                <p className="font-serif text-5xl text-bronze">01</p>
+                <CardTitle>New-construction contracts</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  She reads Del Webb purchase agreements, options, and credits before you sign.
+                  Standard builder co-op covers her fee on most new homes.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <p className="font-serif text-5xl text-bronze">02</p>
+                <CardTitle>Tours from Lake Oasis</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  Start at 28 Lake Oasis St. Then walk 1,500–3,000+ sq ft Mediterranean plans along
+                  the shoreline.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <p className="font-serif text-5xl text-bronze">03</p>
+                <CardTitle>Resale and inspections</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  For resale 55+ homes in 89011, she coordinates inspections and writes offers
+                  against current comps — not a brochure price.
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Featured Communities */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Las Vegas 55+ Communities</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-              Explore premier active adult communities designed for your ideal retirement lifestyle. Each community offers unique amenities, architectural styles, and social opportunities.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {featuredCommunities.map((community) => (
-              <CommunityCard key={community.slug} community={community} featured={true} />
-            ))}
-          </div>
-
-          {/* Community Details */}
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Discover What Makes Las Vegas 55+ Communities Exceptional</h3>
-            <div className="space-y-6 text-muted-foreground">
-              <p>
-                Las Vegas 55+ communities represent the pinnacle of active adult living, offering residents an unparalleled combination of luxury amenities, social engagement opportunities, and low-maintenance lifestyles. These master-planned communities are designed specifically for active adults who want to maximize their retirement years through fitness, recreation, social connections, and cultural enrichment.
+      {delWebb && (
+        <section className="bg-background py-20 lg:py-28">
+          <div className="container mx-auto grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+            <div className="relative aspect-[4/3] overflow-hidden ring-1 ring-gold/50">
+              <Image
+                src={siteImages.lake.src}
+                alt={siteImages.lake.alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-bronze">
+                Hyper-local focus
               </p>
-              <p>
-                From championship golf courses to state-of-the-art fitness centers, from <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball courts</Link> to arts and crafts studios, Las Vegas 55+ communities provide everything you need to maintain an active, fulfilling lifestyle. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">premier gated communities</Link> offering enhanced security and exclusive amenities. Many communities feature multiple recreation centers, swimming pools, restaurants, libraries, and computer labs, all within walking distance or a short golf cart ride from your home.
+              <h2 className="mb-4 text-4xl">{delWebb.name}</h2>
+              <Separator className="mb-6 max-w-24 bg-gold" />
+              <p className="mb-4 text-lg text-muted-foreground">
+                {delWebb.homeCount} planned homes. 10,000 sq ft clubhouse. Waterfront lots on Lake Las
+                Vegas in Henderson.
               </p>
-              <p>
-                The architectural diversity across Las Vegas 55+ communities is equally impressive. Whether you prefer single-story attached villas for maintenance-free living, spacious detached homes for entertaining, or luxury estate-style residences, you'll find options to match your preferences. Many communities offer homes designed with accessibility in mind, featuring single-level living, wide doorways, and thoughtful layouts that accommodate changing needs.
+              <p className="mb-8 text-muted-foreground">
+                Listed range {delWebb.priceRange}. Confirm the current ask on any home before you
+                offer. Dr. Duffy also covers nearby Henderson 55+ inventory when it fits the same
+                single-story, HOA-maintained search.
               </p>
+              <Button asChild size="lg" variant="gold">
+                <Link href={`/communities/${delWebb.slug}`}>Del Webb details</Link>
+              </Button>
             </div>
           </div>
+        </section>
+      )}
 
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg">
-              <Link href="/communities">View All Las Vegas 55+ Communities</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 lg:py-24 bg-muted/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">The Benefits of Las Vegas 55+ Community Living</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="p-6 rounded-lg border bg-card">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <Trophy className="h-6 w-6 text-primary" />
-                  World-Class Amenities
-                </h3>
-                <p className="text-muted-foreground">
-                  Las Vegas 55+ communities feature amenities that rival luxury resorts, including multiple golf courses, fitness centers with personal trainers, swimming pools, tennis and pickleball courts, and spas. These facilities are typically included with your homeowner association fees, providing exceptional value.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <Users className="h-6 w-6 text-primary" />
-                  Active Social Scene
-                </h3>
-                <p className="text-muted-foreground">
-                  Join hundreds of clubs and organizations based on your interests, from book clubs and gardening groups to travel clubs and volunteer organizations. The social calendar is always full with activities, events, and outings designed to help you meet like-minded neighbors.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <Heart className="h-6 w-6 text-primary" />
-                  Low-Maintenance Lifestyle
-                </h3>
-                <p className="text-muted-foreground">
-                  Say goodbye to yard work, exterior maintenance, and home repairs. Most Las Vegas 55+ communities handle landscaping, exterior painting, roof maintenance, and common area upkeep, allowing you to focus on enjoying your retirement rather than maintaining a property.
-                </p>
-              </div>
-              <div className="p-6 rounded-lg border bg-card">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <Shield className="h-6 w-6 text-primary" />
-                  Security & Peace of Mind
-                </h3>
-                <p className="text-muted-foreground">
-                  Gated communities provide 24/7 security, controlled access, and a sense of safety that allows you to travel worry-free. Many communities also feature security patrols and emergency response systems for added peace of mind.
-                </p>
-              </div>
-            </div>
-
-            <h3 className="text-2xl font-semibold mb-6 text-center">Why Las Vegas Offers Unmatched Value for Active Adults</h3>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Las Vegas consistently ranks as one of the most affordable major metropolitan areas for retirees, particularly when compared to coastal California communities. The state of Nevada offers favorable tax benefits for retirees, including no state income tax, no inheritance tax, and property tax exemptions for qualified seniors.
-              </p>
-              <p>
-                The cost of living in Las Vegas is significantly lower than in many other retirement destinations, making your retirement savings go further. Healthcare facilities are world-class, with numerous hospitals, specialty clinics, and medical centers throughout the valley. The Las Vegas area is also home to excellent shopping, dining, and entertainment options, all while maintaining that small-community feel within your 55+ community.
-              </p>
-              <p>
-                Climate is another major advantage of Las Vegas living. With over 300 days of sunshine annually and mild winters, you can enjoy outdoor activities year-round. This makes the golf courses, walking trails, outdoor pools, and patio living spaces that are hallmarks of 55+ communities particularly enjoyable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* RSS Feed Section - Latest Market News */}
-      <section className="py-16 lg:py-24 bg-muted/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <RSSFeed limit={3} title="Latest Real Estate News & Market Insights" showTitle={true} />
-          </div>
-        </div>
-      </section>
-
-      {/* Getting Started Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Getting Started: Your Journey to Las Vegas 55+ Living</h2>
-            <div className="space-y-6 mb-8">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Explore Communities Online</h3>
-                  <p className="text-muted-foreground">
-                    Begin by browsing our <Link href="/las-vegas-55-guide" className="text-primary hover:underline">comprehensive guide to Las Vegas 55+ communities</Link>. Learn about amenities, home types, locations, and pricing. Our <Link href="/communities" className="text-primary hover:underline">detailed community pages</Link> provide virtual tours, floor plans, and market updates to help you narrow your search.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Schedule Virtual or In-Person Tours</h3>
-                  <p className="text-muted-foreground">
-                    Once you've identified communities of interest, schedule personalized tours with our team. We offer both virtual tours for out-of-state buyers and in-person tours for local buyers, always prioritizing your convenience and safety.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Work with Our Expert Team</h3>
-                  <p className="text-muted-foreground">
-                    Our Las Vegas 55+ real estate specialists will guide you through every step, from initial search through closing and beyond. We handle negotiations, inspections, paperwork, and ensure a smooth transaction process.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-lg border bg-primary/5 p-8 text-center">
-              <h3 className="text-2xl font-semibold mb-4">Ready to Begin Your Search?</h3>
-              <p className="text-lg text-muted-foreground mb-6">
-                Our team is here to help you find your perfect Las Vegas 55+ home. Contact us today to schedule a consultation and start your journey toward an exceptional active adult lifestyle.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg">
-                  <Link href="/contact">Contact Our Team</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/homes-for-sale">Search Available Homes</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FaqSection title="Las Vegas 55+ homebuyer questions" faqs={homeFaqs} />
-
-      {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Find Your Las Vegas 55+ Dream Home?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Contact our Las Vegas 55+ real estate specialists today to start your home search journey. We're committed to helping you find the perfect active adult community that matches your lifestyle, budget, and preferences.
+      <section className="border-y border-gold/40 bg-primary py-20 text-primary-foreground lg:py-24">
+        <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl md:text-4xl">Start at the office, not a search bar</h2>
+          <p className="mx-auto mb-8 max-w-xl text-lg text-primary-foreground/90">
+            {FULL_ADDRESS}. Monday–Friday 9–6, Saturday 10–4. Call {PHONE_DISPLAY}.
           </p>
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/contact">Get Started Today</Link>
+          <Button asChild size="lg" variant="gold">
+            <Link href="/contact">Book a Del Webb consultation</Link>
           </Button>
         </div>
       </section>
+
+      <FaqSection title="Del Webb and Lake Las Vegas buyer questions" faqs={homeFaqs} />
     </div>
   )
 }
