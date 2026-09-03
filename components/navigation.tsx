@@ -1,10 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import { siteImages } from '@/lib/site-images'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -58,7 +60,15 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src={siteImages.headshot.src}
+                alt={siteImages.headshot.alt}
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-full border border-primary/40 object-cover"
+                priority
+              />
               <span className="text-xl font-bold text-foreground">
                 Dr. Jan Duffy
               </span>

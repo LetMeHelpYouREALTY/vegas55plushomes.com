@@ -16,6 +16,7 @@ import {
   generateWebSiteSchema,
 } from '@/lib/structured-data'
 import { siteImages } from '@/lib/site-images'
+import { toPublicSrc } from '@/lib/image-cdn'
 import { REALSCOUT_SCRIPT_SRC } from '@/lib/realscout'
 import './globals.css'
 
@@ -74,6 +75,14 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  icons: {
+    icon: [
+      { url: toPublicSrc('/favicon.png'), type: 'image/png', sizes: '192x192' },
+      { url: toPublicSrc('/favicon-32.png'), type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [{ url: toPublicSrc('/apple-touch-icon.png'), sizes: '180x180', type: 'image/png' }],
+    shortcut: toPublicSrc('/favicon.png'),
   },
   verification: {
     // Add your Google Search Console verification code here

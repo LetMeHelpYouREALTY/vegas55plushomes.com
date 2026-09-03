@@ -111,6 +111,27 @@ export const siteImages = {
     description:
       'Single-story homes along a Summerlin street with Red Rock Canyon visible beyond the neighborhood.',
   }),
+  headshot: {
+    src: toPublicSrc('/images/dr-jan-duffy.png'),
+    localSrc: '/images/dr-jan-duffy.png',
+    alt: 'Dr. Jan Duffy, Las Vegas 55+ buyer’s representative, on a phone call',
+    width: 1270,
+    height: 1270,
+    name: 'Dr. Jan Duffy',
+    caption: 'Dr. Jan Duffy, Nevada REALTOR® S.0197614',
+    description:
+      'Portrait of Dr. Jan Duffy, 55+ buyer’s representative with BHHS Nevada Properties in Henderson, Nevada.',
+  },
+  favicon: {
+    src: toPublicSrc('/favicon.png'),
+    localSrc: '/favicon.png',
+    alt: 'Dr. Jan Duffy favicon portrait',
+    width: 192,
+    height: 192,
+    name: 'Vegas 55 Plus Homes Favicon',
+    caption: 'Favicon portrait of Dr. Jan Duffy',
+    description: 'Square portrait used as the vegas55plushomes.com favicon.',
+  },
   logo: {
     src: toPublicSrc('/logo.png'),
     localSrc: '/logo.png',

@@ -76,12 +76,17 @@ const files = walk(publicDir).filter((file) => {
   return (
     rel.startsWith('images/') ||
     rel === 'og-image.jpg' ||
-    rel === 'logo.png'
+    rel === 'logo.png' ||
+    rel === 'favicon.png' ||
+    rel === 'favicon-32.png' ||
+    rel === 'apple-touch-icon.png'
   )
 })
 
 if (files.length === 0) {
-  console.error('No image files found under public/images, public/og-image.jpg, or public/logo.png')
+  console.error(
+    'No image files found under public/images, public/og-image.jpg, public/logo.png, or favicon PNGs',
+  )
   process.exit(1)
 }
 

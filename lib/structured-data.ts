@@ -113,6 +113,7 @@ export function generatePersonSchema() {
     telephone: PHONE_SCHEMA,
     email: EMAIL,
     url: `${SITE_URL}/about`,
+    image: generateImageObjectSchema(siteImages.headshot),
     worksFor: { '@id': ORG_ID },
     address: postalAddress,
   }
