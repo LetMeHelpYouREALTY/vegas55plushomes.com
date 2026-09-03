@@ -80,6 +80,7 @@ export const metadata: Metadata = {
     icon: [
       { url: toPublicSrc('/favicon.png'), type: 'image/png', sizes: '192x192' },
       { url: toPublicSrc('/favicon-32.png'), type: 'image/png', sizes: '32x32' },
+      { url: toPublicSrc('/favicon.ico'), type: 'image/x-icon', sizes: 'any' },
     ],
     apple: [{ url: toPublicSrc('/apple-touch-icon.png'), sizes: '180x180', type: 'image/png' }],
     shortcut: toPublicSrc('/favicon.png'),

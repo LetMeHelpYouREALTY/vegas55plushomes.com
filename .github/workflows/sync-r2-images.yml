@@ -10,6 +10,7 @@ on:
       - 'public/favicon.png'
       - 'public/favicon-32.png'
       - 'public/apple-touch-icon.png'
+      - 'public/favicon.ico'
       - 'scripts/sync-images-to-r2.mjs'
       - '.github/workflows/sync-r2-images.yml'
   workflow_dispatch:

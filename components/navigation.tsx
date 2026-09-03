@@ -62,8 +62,8 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src={siteImages.headshot.src}
-                alt={siteImages.headshot.alt}
+                src={siteImages.headshotNav.src}
+                alt={siteImages.headshotNav.alt}
                 width={40}
                 height={40}
                 className="h-10 w-10 rounded-full border border-primary/40 object-cover"

@@ -20,6 +20,7 @@ const CONTENT_TYPES = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
+  '.ico': 'image/x-icon',
   '.webp': 'image/webp',
   '.avif': 'image/avif',
   '.gif': 'image/gif',
@@ -79,7 +80,8 @@ const files = walk(publicDir).filter((file) => {
     rel === 'logo.png' ||
     rel === 'favicon.png' ||
     rel === 'favicon-32.png' ||
-    rel === 'apple-touch-icon.png'
+    rel === 'apple-touch-icon.png' ||
+    rel === 'favicon.ico'
   )
 })
 

@@ -122,6 +122,21 @@ export const siteImages = {
     description:
       'Portrait of Dr. Jan Duffy, 55+ buyer’s representative with BHHS Nevada Properties in Henderson, Nevada.',
   },
+  /**
+   * Smaller headshot variation for tight UI slots (nav avatar).
+   * Kept as a separate file so we can serve an optimized variant from the image CDN.
+   */
+  headshotNav: {
+    src: toPublicSrc('/images/dr-jan-duffy-256.png'),
+    localSrc: '/images/dr-jan-duffy-256.png',
+    alt: 'Dr. Jan Duffy, Las Vegas 55+ buyer’s representative, on a phone call',
+    width: 256,
+    height: 256,
+    name: 'Dr. Jan Duffy (Nav)',
+    caption: 'Nav avatar portrait of Dr. Jan Duffy',
+    description:
+      'Square portrait used as the vegas55plushomes.com navigation avatar for Dr. Jan Duffy.',
+  },
   favicon: {
     src: toPublicSrc('/favicon.png'),
     localSrc: '/favicon.png',
