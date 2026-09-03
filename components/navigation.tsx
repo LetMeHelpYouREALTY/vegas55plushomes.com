@@ -33,7 +33,7 @@ export default function Navigation() {
             />
             <span className="leading-tight">
               <span className="block font-serif text-xl text-foreground">Dr. Jan Duffy</span>
-              <span className="block text-[11px] uppercase tracking-[0.2em] text-gold">
+              <span className="block text-[11px] uppercase tracking-[0.2em] text-bronze">
                 Lake Las Vegas
               </span>
             </span>
@@ -44,7 +44,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm tracking-wide text-muted-foreground hover:text-gold"
+                className="text-sm tracking-wide text-muted-foreground hover:text-bronze"
               >
                 {link.label}
               </Link>

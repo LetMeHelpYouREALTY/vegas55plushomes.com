@@ -104,7 +104,7 @@ export default function HomePage() {
             />
           </div>
           <div className="max-w-xl">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-bronze">
               Buyer’s representative · Henderson NV 89011
             </p>
             <h2 className="mb-4 text-4xl md:text-5xl">One agent. One lake. Your contract.</h2>
@@ -136,7 +136,7 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <p className="font-serif text-5xl text-gold">01</p>
+                <p className="font-serif text-5xl text-bronze">01</p>
                 <CardTitle>New-construction contracts</CardTitle>
               </CardHeader>
               <CardContent>
@@ -148,7 +148,7 @@ export default function HomePage() {
             </Card>
             <Card>
               <CardHeader>
-                <p className="font-serif text-5xl text-gold">02</p>
+                <p className="font-serif text-5xl text-bronze">02</p>
                 <CardTitle>Tours from Lake Oasis</CardTitle>
               </CardHeader>
               <CardContent>
@@ -160,7 +160,7 @@ export default function HomePage() {
             </Card>
             <Card>
               <CardHeader>
-                <p className="font-serif text-5xl text-gold">03</p>
+                <p className="font-serif text-5xl text-bronze">03</p>
                 <CardTitle>Resale and inspections</CardTitle>
               </CardHeader>
               <CardContent>
@@ -187,7 +187,7 @@ export default function HomePage() {
               />
             </div>
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-bronze">
                 Hyper-local focus
               </p>
               <h2 className="mb-4 text-4xl">{delWebb.name}</h2>
