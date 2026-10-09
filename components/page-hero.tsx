@@ -43,6 +43,7 @@ export default function PageHero({
           alt={image.alt}
           fill
           priority={priority}
+          fetchPriority={priority ? 'high' : 'auto'}
           sizes="100vw"
           className="object-cover"
         />

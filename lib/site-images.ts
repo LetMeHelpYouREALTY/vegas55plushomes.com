@@ -15,7 +15,7 @@ export type SiteImage = {
   description: string
 }
 
-const PHOTO = { width: 1536, height: 1024 } as const
+const PHOTO = { width: 1280, height: 720 } as const
 
 function photo(
   localSrc: string,
@@ -31,9 +31,9 @@ function photo(
 
 export const siteImages = {
   heroHome: photo('/images/las-vegas-55-plus-homes-hero.jpg', {
-    alt: 'Single-story 55+ homes and a golf clubhouse in a Las Vegas active adult community with Spring Mountains at golden hour',
+    alt: 'Single-story stucco and stone homes with tile roofs on a quiet Las Vegas Valley street, desert landscaping, and red rock mountains',
     name: 'Las Vegas 55+ Homes for Sale',
-    caption: 'Single-story homes in a Las Vegas 55+ community with mountain views',
+    caption: 'Single-story homes on a quiet Las Vegas Valley street with red rock mountains',
     description:
       'Photorealistic view of single-story 55+ homes, desert landscaping, and a golf clubhouse in the Las Vegas Valley for active adult homebuyers.',
   }),
@@ -98,7 +98,7 @@ export const siteImages = {
       'Street view of a newly built single-story 55+ home with desert landscaping in Las Vegas, Nevada.',
   }),
   interior: photo('/images/las-vegas-55-home-interior.jpg', {
-    alt: 'Open-plan great room and kitchen in a single-story Las Vegas 55+ home with mountain views through large windows',
+    alt: 'Limestone great room with a stone fireplace and mountain views in a single-story Las Vegas home',
     name: 'Las Vegas 55+ Home Interior',
     caption: 'Single-story open floor plan designed for 55+ living in Las Vegas',
     description:

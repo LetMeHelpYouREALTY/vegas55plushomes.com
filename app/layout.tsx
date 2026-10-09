@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
@@ -23,11 +23,8 @@ import './globals.css'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
 })
 
 const siteUrl = 'https://www.vegas55plushomes.com'
@@ -101,14 +98,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to Google Analytics for faster loading */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://em.realscout.com" />
         <link rel="preconnect" href="https://www.realscout.com" />
-        {/* Native module tag: next/script only preloads this UMD in Next 16 and the
-            custom element never upgrades. Load once here, not per page. */}
-        <script src={REALSCOUT_SCRIPT_SRC} type="module" async />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-JCQTZFS0DN"
           strategy="lazyOnload"
@@ -134,9 +125,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -145,12 +134,15 @@ export default function RootLayout({
           storageKey="theme"
         >
           <Navigation />
-          {children}
+          <main>{children}</main>
           <LocalNapBar />
           <Footer />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
+        {/* Native module tag: next/script only preloads this UMD in Next 16 and the
+            custom element never upgrades. Load once, after the hero image. */}
+        <script src={REALSCOUT_SCRIPT_SRC} type="module" async />
       </body>
     </html>
   )

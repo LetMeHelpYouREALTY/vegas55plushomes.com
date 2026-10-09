@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
@@ -12,7 +13,8 @@ import { buildMetadata } from '@/lib/page-metadata'
 import { generateItemListSchema, generateHowToSchema, generatePageGraph } from '@/lib/structured-data'
 import { homeFaqs } from '@/lib/page-faqs'
 import FeaturedListingsSection from '@/components/featured-listings-section'
-import { featuredListings, listingPath } from '@/lib/featured-listings'
+import { featuredListings, formatUsd, listingPath } from '@/lib/featured-listings'
+import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/site-config'
 
 // Lazy load RSS feed (below the fold, non-critical)
 const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
@@ -45,6 +47,7 @@ export default function HomePage() {
   const featuredCommunities = lasVegasCommunities
     .filter(c => c.featured)
     .slice(0, 3)
+  const featuredListing = featuredListings[0]
 
   const services = [
     {
@@ -123,8 +126,13 @@ export default function HomePage() {
         image={siteImages.heroHome}
         title="Find Your Las Vegas 55+ Home"
         subtitle="Dr. Jan Duffy represents buyers in Sun City Summerlin, Del Webb Lake Las Vegas, Sun City Anthem, and 20+ active adult communities. Call (702) 996-3758."
-        primaryCTA={{ text: 'Search Homes For Sale', href: '/homes-for-sale' }}
-        secondaryCTA={{ text: 'Explore All Communities', href: '/communities' }}
+        primaryCTA={{ text: `Call ${PHONE_DISPLAY}`, href: `tel:${PHONE_TEL}` }}
+        secondaryCTA={{
+          text: featuredListing
+            ? `${featuredListing.streetAddress} · ${formatUsd(featuredListing.price)}`
+            : 'Search Homes For Sale',
+          href: featuredListing ? listingPath(featuredListing) : '/homes-for-sale',
+        }}
         priority
       />
 
@@ -135,6 +143,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Why Las Vegas is the Perfect Destination for 55+ Living</h2>
+            <Image
+              src={siteImages.lake.src}
+              alt={siteImages.lake.alt}
+              width={siteImages.lake.width}
+              height={siteImages.lake.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mb-8 h-auto w-full rounded-lg object-cover"
+            />
             <p className="text-lg text-muted-foreground mb-6">
               Las Vegas has emerged as one of America's premier destinations for active adults seeking an exceptional retirement lifestyle. Beyond the world-famous Strip, the Las Vegas Valley offers an ideal combination of year-round sunshine, world-class amenities, vibrant cultural scene, and outstanding value that makes it perfect for 55+ living.
             </p>
@@ -153,6 +169,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Award-Winning Buyer's Representative Dr. Jan Duffy</h2>
+            <Image
+              src={siteImages.interior.src}
+              alt={siteImages.interior.alt}
+              width={siteImages.interior.width}
+              height={siteImages.interior.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mx-auto mb-8 h-auto w-full max-w-4xl rounded-lg object-cover"
+            />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               As an award-winning realtor and dedicated buyer's representative, Dr. Jan Duffy specializes exclusively in representing buyers purchasing new construction homes in Las Vegas 55+ communities. Our specialized expertise ensures you receive personalized, expert guidance throughout your home search journey, protecting your interests and saving you money.
             </p>
@@ -172,6 +196,14 @@ export default function HomePage() {
           {/* Additional Service Details */}
           <div className="max-w-4xl mx-auto mt-12">
             <h3 className="text-2xl font-semibold mb-6 text-center">Comprehensive Real Estate Services for Active Adults</h3>
+            <Image
+              src={siteImages.newConstruction.src}
+              alt={siteImages.newConstruction.alt}
+              width={siteImages.newConstruction.width}
+              height={siteImages.newConstruction.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mx-auto mb-8 h-auto w-full max-w-4xl rounded-lg object-cover"
+            />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-lg border bg-card">
                 <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -219,6 +251,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Las Vegas 55+ Communities</h2>
+            <Image
+              src={siteImages.gated.src}
+              alt={siteImages.gated.alt}
+              width={siteImages.gated.width}
+              height={siteImages.gated.height}
+              sizes="(min-width: 1024px) 1100px, 100vw"
+              className="mx-auto mb-8 h-auto w-full max-w-5xl rounded-lg object-cover"
+            />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Explore premier active adult communities designed for your ideal retirement lifestyle. Each community offers unique amenities, architectural styles, and social opportunities.
             </p>
@@ -232,6 +272,14 @@ export default function HomePage() {
           {/* Community Details */}
           <div className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold mb-6 text-center">Discover What Makes Las Vegas 55+ Communities Exceptional</h3>
+            <Image
+              src={siteImages.golf.src}
+              alt={siteImages.golf.alt}
+              width={siteImages.golf.width}
+              height={siteImages.golf.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mb-8 h-auto w-full rounded-lg object-cover"
+            />
             <div className="space-y-6 text-muted-foreground">
               <p>
                 Las Vegas 55+ communities represent the pinnacle of active adult living, offering residents an unparalleled combination of luxury amenities, social engagement opportunities, and low-maintenance lifestyles. These master-planned communities are designed specifically for active adults who want to maximize their retirement years through fitness, recreation, social connections, and cultural enrichment.
@@ -258,6 +306,14 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">The Benefits of Las Vegas 55+ Community Living</h2>
+            <Image
+              src={siteImages.clubhouse.src}
+              alt={siteImages.clubhouse.alt}
+              width={siteImages.clubhouse.width}
+              height={siteImages.clubhouse.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mb-8 h-auto w-full rounded-lg object-cover"
+            />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="p-6 rounded-lg border bg-card">
                 <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
@@ -298,6 +354,14 @@ export default function HomePage() {
             </div>
 
             <h3 className="text-2xl font-semibold mb-6 text-center">Why Las Vegas Offers Unmatched Value for Active Adults</h3>
+            <Image
+              src={siteImages.henderson.src}
+              alt={siteImages.henderson.alt}
+              width={siteImages.henderson.width}
+              height={siteImages.henderson.height}
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="mb-8 h-auto w-full rounded-lg object-cover"
+            />
             <div className="space-y-4 text-muted-foreground">
               <p>
                 Las Vegas consistently ranks as one of the most affordable major metropolitan areas for retirees, particularly when compared to coastal California communities. The state of Nevada offers favorable tax benefits for retirees, including no state income tax, no inheritance tax, and property tax exemptions for qualified seniors.
