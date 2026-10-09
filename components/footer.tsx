@@ -174,6 +174,13 @@ export default function Footer() {
                 >
                   Accessibility
                 </Link>
+                <span className="text-muted-foreground">|</span>
+                <Link
+                  href="/image-license"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Image License
+                </Link>
               </div>
             </div>
           </div>

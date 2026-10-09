@@ -15,6 +15,7 @@ import {
   PHONE_SCHEMA,
   POSTAL_CODE,
   SITE_NAME,
+  SITE_SHORT_NAME,
   SITE_URL,
   STREET_ADDRESS,
   WEBSITE_ID,
@@ -67,6 +68,8 @@ export function generateImageObjectSchema(image: SiteImage) {
       name: SITE_NAME,
     },
     creditText: SITE_NAME,
+    copyrightNotice: `© 2026 ${AGENT_NAME}, ${SITE_SHORT_NAME}`,
+    license: `${SITE_URL}/image-license`,
     acquireLicensePage: `${SITE_URL}/contact`,
     contentLocation: {
       '@type': 'Place',
