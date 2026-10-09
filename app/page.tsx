@@ -252,10 +252,10 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Las Vegas 55+ Communities</h2>
             <Image
-              src={siteImages.gated.src}
-              alt={siteImages.gated.alt}
-              width={siteImages.gated.width}
-              height={siteImages.gated.height}
+              src={siteImages.summerlin.src}
+              alt={siteImages.summerlin.alt}
+              width={siteImages.summerlin.width}
+              height={siteImages.summerlin.height}
               sizes="(min-width: 1024px) 1100px, 100vw"
               className="mx-auto mb-8 h-auto w-full max-w-5xl rounded-lg object-cover"
             />
