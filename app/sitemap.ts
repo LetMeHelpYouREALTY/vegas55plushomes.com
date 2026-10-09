@@ -9,10 +9,11 @@ function entry(
   changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'],
   priority: number,
   imageSrc?: string,
+  lastModified?: string,
 ): MetadataRoute.Sitemap[number] {
   return {
     url: path.startsWith('http') ? path : `${SITE_URL}${path}`,
-    lastModified: new Date(),
+    ...(lastModified ? { lastModified } : {}),
     changeFrequency,
     priority,
     images: [imageSrc ?? absoluteImageUrl(siteImages.heroHome)],
@@ -33,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/success-stories', 'weekly', 0.7, absoluteImageUrl(siteImages.interior)),
     entry('/reviews', 'weekly', 0.7, absoluteImageUrl(siteImages.interior)),
     entry('/contact', 'monthly', 0.7, absoluteImageUrl(siteImages.lake)),
-    entry('/image-license', 'yearly', 0.3, absoluteImageUrl(siteImages.logo)),
+    entry('/image-license', 'yearly', 0.3, absoluteImageUrl(siteImages.logo), '2026-10-09'),
     entry('/blog/google-trends-insights', 'monthly', 0.6, absoluteImageUrl(siteImages.golf)),
   ]
 
@@ -55,7 +56,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   )
 
   const featuredListingPages = featuredListings.map((listing) =>
-    entry(listingPath(listing), 'daily', 0.9, absoluteImageUrl(siteImages.summerlin)),
+    entry(
+      listingPath(listing),
+      'daily',
+      0.9,
+      absoluteImageUrl(siteImages.summerlin),
+      listing.listingDate,
+    ),
   )
 
   const sunCitySummerlinPages: MetadataRoute.Sitemap = [
