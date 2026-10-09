@@ -12,6 +12,8 @@ import {
   generatePageGraph,
   generateResidenceCommunitySchema,
 } from '@/lib/structured-data'
+import FeaturedListingsSection from '@/components/featured-listings-section'
+import { featuredListingsForCommunity } from '@/lib/featured-listings'
 
 export async function generateStaticParams() {
   return lasVegasCommunities.map((community) => ({
@@ -58,6 +60,7 @@ export default async function CommunityPage({
   }
 
   const image = getCommunityImage(community)
+  const communityListings = featuredListingsForCommunity(community.slug)
   const faqs = [
     {
       question: `Where is ${community.name} located?`,
@@ -107,6 +110,14 @@ export default async function CommunityPage({
         primaryCTA={{ text: 'View Homes For Sale', href: `/homes-for-sale?community=${slug}` }}
         secondaryCTA={{ text: 'Schedule a Tour', href: '/contact' }}
       />
+
+      {communityListings.length > 0 && (
+        <FeaturedListingsSection
+          title={`Featured home in ${community.name}`}
+          intro={`${communityListings[0]?.streetAddress ?? community.name} is a current listing in this 55+ community. Call (702) 996-3758 to tour it with a buyer's representative.`}
+          listings={communityListings}
+        />
+      )}
 
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">

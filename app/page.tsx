@@ -11,6 +11,8 @@ import { siteImages } from '@/lib/site-images'
 import { buildMetadata } from '@/lib/page-metadata'
 import { generateItemListSchema, generateHowToSchema, generatePageGraph } from '@/lib/structured-data'
 import { homeFaqs } from '@/lib/page-faqs'
+import FeaturedListingsSection from '@/components/featured-listings-section'
+import { featuredListings, listingPath } from '@/lib/featured-listings'
 
 // Lazy load RSS feed (below the fold, non-critical)
 const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
@@ -85,6 +87,14 @@ export default function HomePage() {
           url: `/communities/${community.slug}`,
         })),
       }),
+      generateItemListSchema({
+        name: 'Featured 55+ home',
+        description: 'A current Heritage at Stonebridge listing for 55+ buyers.',
+        items: featuredListings.map((listing) => ({
+          name: `${listing.streetAddress}, ${listing.city}`,
+          url: listingPath(listing),
+        })),
+      }),
       generateHowToSchema({
         name: 'How to start a Las Vegas 55+ home search',
         description: 'Three steps to tour 55+ communities in Las Vegas, Henderson, and Summerlin with a buyer\'s representative.',
@@ -117,6 +127,8 @@ export default function HomePage() {
         secondaryCTA={{ text: 'Explore All Communities', href: '/communities' }}
         priority
       />
+
+      <FeaturedListingsSection />
 
       {/* Introduction Section */}
       <section className="py-16 lg:py-24 bg-background">

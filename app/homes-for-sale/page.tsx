@@ -10,6 +10,7 @@ import { siteImages } from '@/lib/site-images'
 import { buildMetadata } from '@/lib/page-metadata'
 import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
 import { homesForSaleFaqs } from '@/lib/page-faqs'
+import FeaturedListingsSection from '@/components/featured-listings-section'
 
 export const metadata = buildMetadata({
   title: 'Las Vegas 55+ Homes For Sale | Sun City, Del Webb, Henderson',
@@ -56,6 +57,10 @@ export default function HomesForSalePage() {
         breadcrumbs={[{ label: 'Homes For Sale' }]}
         primaryCTA={{ text: 'Contact a Buyer\'s Agent', href: '/contact' }}
         secondaryCTA={{ text: 'Browse Communities', href: '/communities' }}
+      />
+      <FeaturedListingsSection
+        title="Featured Summerlin 55+ home"
+        intro="894 Heritage Bend Drive in Heritage at Stonebridge is active at $539,888. Two beds, two baths, 1,234 square feet. Call (702) 996-3758."
       />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 

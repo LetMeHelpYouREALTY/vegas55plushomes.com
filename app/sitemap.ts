@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { lasVegasCommunities } from '@/lib/communities-data'
 import { absoluteImageUrl, getCommunityImage, siteImages } from '@/lib/site-images'
 import { SITE_URL } from '@/lib/site-config'
+import { featuredListings, listingPath } from '@/lib/featured-listings'
 
 function entry(
   path: string,
@@ -52,6 +53,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   )
 
+  const featuredListingPages = featuredListings.map((listing) =>
+    entry(listingPath(listing), 'daily', 0.9, absoluteImageUrl(siteImages.summerlin)),
+  )
+
   const sunCitySummerlinPages: MetadataRoute.Sitemap = [
     entry('/communities/sun-city-summerlin/homes-for-sale', 'daily', 0.8, absoluteImageUrl(siteImages.newConstruction)),
     entry('/communities/sun-city-summerlin/floorplans', 'monthly', 0.7, absoluteImageUrl(siteImages.interior)),
@@ -62,5 +67,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/communities/sun-city-summerlin/faq', 'monthly', 0.6, absoluteImageUrl(siteImages.golf)),
   ]
 
-  return [...mainPages, ...guidePages, ...communityPages, ...sunCitySummerlinPages]
+  return [...mainPages, ...featuredListingPages, ...guidePages, ...communityPages, ...sunCitySummerlinPages]
 }

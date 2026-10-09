@@ -9,6 +9,10 @@ import type { SiteImage } from '@/lib/site-images'
 
 type Cta = { text: string; href: string }
 
+function isExternalHref(href: string): boolean {
+  return href.startsWith('http://') || href.startsWith('https://') || href.startsWith('tel:')
+}
+
 type PageHeroProps = {
   image: SiteImage
   title: string
@@ -17,6 +21,8 @@ type PageHeroProps = {
   primaryCTA?: Cta
   secondaryCTA?: Cta
   priority?: boolean
+  /** Office listing grid sits under the hero on marketing pages. Listing detail pages turn it off. */
+  showOfficeListings?: boolean
 }
 
 export default function PageHero({
@@ -27,6 +33,7 @@ export default function PageHero({
   primaryCTA,
   secondaryCTA,
   priority = false,
+  showOfficeListings = true,
 }: PageHeroProps) {
   return (
     <>
@@ -61,7 +68,11 @@ export default function PageHero({
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               {primaryCTA && (
                 <Button asChild size="lg">
-                  <Link href={primaryCTA.href}>{primaryCTA.text}</Link>
+                  {isExternalHref(primaryCTA.href) ? (
+                    <a href={primaryCTA.href}>{primaryCTA.text}</a>
+                  ) : (
+                    <Link href={primaryCTA.href}>{primaryCTA.text}</Link>
+                  )}
                 </Button>
               )}
               {secondaryCTA && (
@@ -71,14 +82,20 @@ export default function PageHero({
                   variant="outline"
                   className="border-white bg-white/10 text-white hover:bg-white hover:text-foreground"
                 >
-                  <Link href={secondaryCTA.href}>{secondaryCTA.text}</Link>
+                  {isExternalHref(secondaryCTA.href) ? (
+                    <a href={secondaryCTA.href} target="_blank" rel="noopener noreferrer">
+                      {secondaryCTA.text}
+                    </a>
+                  ) : (
+                    <Link href={secondaryCTA.href}>{secondaryCTA.text}</Link>
+                  )}
                 </Button>
               )}
             </div>
           )}
         </div>
       </section>
-      <RealScoutOfficeListings />
+      {showOfficeListings ? <RealScoutOfficeListings /> : null}
     </>
   )
 }

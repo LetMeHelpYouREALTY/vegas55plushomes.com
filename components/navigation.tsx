@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { lasVegasCommunities } from '@/lib/communities-data'
+import { featuredListings, listingPath } from '@/lib/featured-listings'
 import { siteImages } from '@/lib/site-images'
 
 export default function Navigation() {
@@ -24,6 +25,13 @@ export default function Navigation() {
     {
       label: 'Homes For Sale',
       href: '/homes-for-sale',
+      dropdown: [
+        ...featuredListings.map((listing) => ({
+          label: listing.streetAddress,
+          href: listingPath(listing),
+        })),
+        { label: 'All Homes For Sale', href: '/homes-for-sale' },
+      ],
     },
     {
       label: 'Las Vegas 55+ Guide',

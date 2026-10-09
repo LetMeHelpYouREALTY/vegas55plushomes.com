@@ -9,6 +9,7 @@ import { siteImages } from '@/lib/site-images'
 import { buildMetadata } from '@/lib/page-metadata'
 import { generatePageGraph, generateItemListSchema } from '@/lib/structured-data'
 import { summerlinFaqs } from '@/lib/page-faqs'
+import FeaturedListingsSection from '@/components/featured-listings-section'
 
 export const metadata = buildMetadata({
   title: 'Summerlin 55+ Homes For Sale | Sun City Summerlin, Siena | Dr. Jan Duffy',
@@ -59,6 +60,10 @@ export default function Summerlin55HomesPage() {
         breadcrumbs={[{ label: 'Summerlin 55+ Homes' }]}
         primaryCTA={{ text: 'Search Homes', href: '/homes-for-sale' }}
         secondaryCTA={{ text: 'Sun City Summerlin', href: '/communities/sun-city-summerlin' }}
+      />
+      <FeaturedListingsSection
+        title="Featured home in Summerlin West"
+        intro="894 Heritage Bend Drive is a 2025 Lennar Claremont in guard-gated Heritage at Stonebridge. Listed at $539,888. Call (702) 996-3758."
       />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 

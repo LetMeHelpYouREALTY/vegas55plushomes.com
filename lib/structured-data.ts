@@ -557,6 +557,130 @@ export function generatePageGraph({
   }
 }
 
+export function generateFeaturedHomeListingSchema({
+  name,
+  description,
+  url,
+  datePosted,
+  image,
+  price,
+  streetAddress,
+  addressLocality,
+  addressRegion,
+  postalCode,
+  beds,
+  baths,
+  roomsTotal,
+  livingSqft,
+  yearBuilt,
+  mlsNumber,
+}: {
+  name: string
+  description: string
+  url: string
+  datePosted: string
+  image: SiteImage
+  price: number
+  streetAddress: string
+  addressLocality: string
+  addressRegion: string
+  postalCode: string
+  beds: number
+  baths: number
+  roomsTotal: number
+  livingSqft: number
+  yearBuilt: number
+  mlsNumber: string
+}) {
+  const pageUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`
+  const address = {
+    '@type': 'PostalAddress',
+    streetAddress,
+    addressLocality,
+    addressRegion,
+    postalCode,
+    addressCountry: 'US',
+  }
+
+  return {
+    '@type': 'RealEstateListing',
+    '@id': `${pageUrl}#listing`,
+    name,
+    description,
+    url: pageUrl,
+    datePosted,
+    identifier: mlsNumber,
+    image: generateImageObjectSchema(image),
+    mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+    offers: {
+      '@type': 'Offer',
+      url: pageUrl,
+      price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+    },
+    itemOffered: {
+      '@type': 'SingleFamilyResidence',
+      name,
+      description,
+      numberOfBedrooms: beds,
+      numberOfBathroomsTotal: baths,
+      numberOfRooms: roomsTotal,
+      yearBuilt,
+      floorSize: {
+        '@type': 'QuantitativeValue',
+        value: livingSqft,
+        unitCode: 'FTK',
+      },
+      address,
+    },
+  }
+}
+
+export function generateOpenHouseEventSchema({
+  name,
+  startDate,
+  endDate,
+  streetAddress,
+  addressLocality,
+  addressRegion,
+  postalCode,
+  url,
+}: {
+  name: string
+  startDate: string
+  endDate: string
+  streetAddress: string
+  addressLocality: string
+  addressRegion: string
+  postalCode: string
+  url: string
+}) {
+  const pageUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`
+  return {
+    '@type': 'Event',
+    name,
+    startDate,
+    endDate,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    url: pageUrl,
+    location: {
+      '@type': 'Place',
+      name: streetAddress,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress,
+        addressLocality,
+        addressRegion,
+        postalCode,
+        addressCountry: 'US',
+      },
+    },
+  }
+}
+
 export const NAP = {
   name: SITE_NAME,
   agent: AGENT_NAME,
