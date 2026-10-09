@@ -103,8 +103,8 @@ export default function VideosPage() {
       />
       <PageHero
         image={siteImages.clubhouse}
-        title="Las Vegas 55+ Community Videos"
-        subtitle="Photo tours of clubhouses, golf, and homes. Use them to shortlist communities, then walk the property with Dr. Jan Duffy at (702) 996-3758."
+        title="Las Vegas 55+ Community Photo Tours"
+        subtitle="Photos of clubhouses, golf, and homes. Use them to shortlist communities, then walk the property with Dr. Jan Duffy at (702) 996-3758."
         breadcrumbs={[
           { label: 'Las Vegas 55+ Guide', href: '/las-vegas-55-guide' },
           { label: 'Videos' },
@@ -115,10 +115,7 @@ export default function VideosPage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
         <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-          Explore Las Vegas 55+ communities through our comprehensive video collection. Watch community tours, home walkthroughs, and lifestyle videos to help you find your perfect active adult community. Our video library provides detailed insights into communities, amenities, and the active adult lifestyle.
-        </p>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Whether you're beginning your research or narrowing down your options, our videos offer an immersive way to explore Las Vegas 55+ communities from anywhere. These virtual tours and community showcases help you understand what makes each community unique before scheduling in-person visits.
+          These are photo tours, not a video library. Each card links to a community page with that neighborhood&apos;s home count, price range, and amenities. Call (702) 996-3758 when you want a live walk-through.
         </p>
       </div>
 

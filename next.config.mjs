@@ -34,6 +34,22 @@ const nextConfig = {
   },
   // Compression
   compress: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [{ type: 'host', value: 'vegas55plushomes.com' }],
+        destination: 'https://www.vegas55plushomes.com/',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'vegas55plushomes.com' }],
+        destination: 'https://www.vegas55plushomes.com/:path*',
+        permanent: true,
+      },
+    ]
+  },
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-*'],
@@ -41,6 +57,15 @@ const nextConfig = {
   // Headers for better caching
   async headers() {
     return [
+      {
+        source: '/favicon.ico',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
+          },
+        ],
+      },
       {
         source: '/:path*',
         headers: [

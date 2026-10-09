@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Dr. Jan Duffy' }],
   creator: 'Dr. Jan Duffy',
   publisher: 'Dr. Jan Duffy',
-  alternates: {
-    canonical: siteUrl,
-  },
+  // Do not set alternates.canonical here. App Router inherits it onto every
+  // child route that does not override it, which makes Google treat those
+  // URLs as alternates of the homepage.
   openGraph: {
     type: 'website',
     locale: 'en_US',

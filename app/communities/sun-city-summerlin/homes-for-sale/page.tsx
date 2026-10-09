@@ -11,6 +11,7 @@ import {
   generateServiceSchema,
 } from '@/lib/structured-data'
 import { sunCityHomesFaqs } from '@/lib/page-faqs'
+import { lasVegasCommunities } from '@/lib/communities-data'
 
 export const metadata = buildMetadata({
   title: 'Sun City Summerlin Homes for Sale | Las Vegas 55+ | Dr. Jan Duffy',
@@ -22,6 +23,7 @@ export const metadata = buildMetadata({
 })
 
 export default function SunCitySummerlinHomesForSalePage() {
+  const community = lasVegasCommunities.find((entry) => entry.slug === 'sun-city-summerlin')
   return (
     <div>
       <JsonLd
@@ -104,6 +106,26 @@ export default function SunCitySummerlinHomesForSalePage() {
                 className="aspect-video rounded-lg"
               />
             </div>
+            {community && (
+              <dl className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                <div className="rounded-lg border bg-card p-4">
+                  <dt className="text-sm text-muted-foreground">Published range</dt>
+                  <dd className="mt-1 font-semibold">{community.priceRange}</dd>
+                </div>
+                <div className="rounded-lg border bg-card p-4">
+                  <dt className="text-sm text-muted-foreground">Homes in the community</dt>
+                  <dd className="mt-1 font-semibold">{community.homeCount?.toLocaleString()}</dd>
+                </div>
+                <div className="rounded-lg border bg-card p-4">
+                  <dt className="text-sm text-muted-foreground">Snapshot for sale</dt>
+                  <dd className="mt-1 font-semibold">{community.homesForSale}</dd>
+                </div>
+                <div className="rounded-lg border bg-card p-4">
+                  <dt className="text-sm text-muted-foreground">Started</dt>
+                  <dd className="mt-1 font-semibold">{community.yearBuilt}</dd>
+                </div>
+              </dl>
+            )}
             <p className="text-muted-foreground">
               List prices, days on market, and HOA dues must be verified on each listing. Contact Dr. Duffy at (702) 996-3758 or{' '}
               <Link href="/contact" className="text-primary hover:underline">

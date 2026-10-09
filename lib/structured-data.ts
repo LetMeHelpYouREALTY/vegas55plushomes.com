@@ -166,14 +166,6 @@ export function generateWebSiteSchema() {
     url: SITE_URL,
     publisher: { '@id': ORG_ID },
     inLanguage: 'en-US',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/homes-for-sale?search={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   }
 }
 
