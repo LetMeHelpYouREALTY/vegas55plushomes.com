@@ -285,7 +285,7 @@ export default function HomePage() {
                 Las Vegas 55+ communities represent the pinnacle of active adult living, offering residents an unparalleled combination of luxury amenities, social engagement opportunities, and low-maintenance lifestyles. These master-planned communities are designed specifically for active adults who want to maximize their retirement years through fitness, recreation, social connections, and cultural enrichment.
               </p>
               <p>
-                From championship golf courses to state-of-the-art fitness centers, from <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball courts</Link> to arts and crafts studios, Las Vegas 55+ communities provide everything you need to maintain an active, fulfilling lifestyle. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">premier gated communities</Link> offering enhanced security and exclusive amenities. Many communities feature multiple recreation centers, swimming pools, restaurants, libraries, and computer labs, all within walking distance or a short golf cart ride from your home.
+                From championship golf courses to state-of-the-art fitness centers, from <Link href="/las-vegas-55-guide/top-10-pickleball" className="text-primary hover:underline">pickleball courts</Link> to arts and crafts studios, Las Vegas 55+ communities provide everything you need to maintain an active, fulfilling lifestyle. Discover <Link href="/las-vegas-55-guide/top-10-gated" className="text-primary hover:underline">gated communities</Link> with controlled entries and the amenities listed on each community page. Many communities feature multiple recreation centers, swimming pools, restaurants, libraries, and computer labs, all within walking distance or a short golf cart ride from your home.
               </p>
               <p>
                 The architectural diversity across Las Vegas 55+ communities is equally impressive. Whether you prefer single-story attached villas for maintenance-free living, spacious detached homes for entertaining, or luxury estate-style residences, you'll find options to match your preferences. Many communities offer homes designed with accessibility in mind, featuring single-level living, wide doorways, and thoughtful layouts that accommodate changing needs.
@@ -345,10 +345,10 @@ export default function HomePage() {
               <div className="p-6 rounded-lg border bg-card">
                 <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
                   <Shield className="h-6 w-6 text-primary" />
-                  Security & Peace of Mind
+                  Controlled-Access Entries
                 </h3>
                 <p className="text-muted-foreground">
-                  Gated communities provide 24/7 security, controlled access, and a sense of safety that allows you to travel worry-free. Many communities also feature security patrols and emergency response systems for added peace of mind.
+                  Many communities use a gate or staffed entry, guest check-in, and on-site patrol. Ask what the HOA fee covers, how guests are admitted, and whether the entry is staffed before you tour.
                 </p>
               </div>
             </div>
@@ -406,7 +406,7 @@ export default function HomePage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Schedule Virtual or In-Person Tours</h3>
                   <p className="text-muted-foreground">
-                    Once you've identified communities of interest, schedule personalized tours with our team. We offer both virtual tours for out-of-state buyers and in-person tours for local buyers, always prioritizing your convenience and safety.
+                    Once you've identified communities of interest, schedule personalized tours with our team. We offer virtual tours for out-of-state buyers and in-person tours in the Las Vegas Valley.
                   </p>
                 </div>
               </div>

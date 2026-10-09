@@ -128,8 +128,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          forcedTheme="light"
           disableTransitionOnChange
           storageKey="theme"
         >

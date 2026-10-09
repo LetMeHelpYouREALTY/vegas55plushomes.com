@@ -105,25 +105,25 @@
 :root {
   --radius: 0.625rem;
   /* Navy and antique gold from the logo. Gold is decorative only; body text stays navy on ivory. */
-  --background: #f6f1e8;
-  --foreground: #0a1428;
-  --card: #fffdf8;
-  --card-foreground: #0a1428;
-  --popover: #fffdf8;
-  --popover-foreground: #0a1428;
-  --primary: #16294b;
+  --background: #f6f3ee;
+  --foreground: #142033;
+  --card: #fffcf8;
+  --card-foreground: #142033;
+  --popover: #fffcf8;
+  --popover-foreground: #142033;
+  --primary: #142a4a;
   --primary-foreground: #f7f4ef;
-  --secondary: #efe7da;
-  --secondary-foreground: #16294b;
-  --muted: #efe7da;
-  --muted-foreground: #4e4943;
-  --accent: #efe7da;
-  --accent-foreground: #16294b;
-  --gold: #b08d3f;
+  --secondary: #efe9e0;
+  --secondary-foreground: #142a4a;
+  --muted: #efe9e0;
+  --muted-foreground: #5c564e;
+  --accent: #efe9e0;
+  --accent-foreground: #142a4a;
+  --gold: #a07f3d;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e3d9cc;
-  --input: #e3d9cc;
-  --ring: #16294b;
+  --input: #8c8378;
+  --ring: #142a4a;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -146,15 +146,15 @@
   --card-foreground: #f6f1e8;
   --popover: #162033;
   --popover-foreground: #f6f1e8;
-  --primary: #c4a36a;
-  --primary-foreground: #0e1828;
+  --primary: #142a4a;
+  --primary-foreground: #f7f4ef;
   --secondary: #1c2a42;
   --secondary-foreground: #f6f1e8;
   --muted: #1c2a42;
   --muted-foreground: #d4cdc2;
   --accent: #1c2a42;
   --accent-foreground: #f6f1e8;
-  --gold: #c4a36a;
+  --gold: #a07f3d;
   --destructive: oklch(0.62 0.245 27.325);
   --border: oklch(0.26 0 0);
   --input: oklch(0.26 0 0);
@@ -183,6 +183,10 @@
   }
   html {
     font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+  main a.text-primary {
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
   }
 }
 

@@ -40,27 +40,27 @@ export const siteImages = {
   og: {
     src: toPublicSrc('/og-image.jpg'),
     localSrc: '/og-image.jpg',
-    alt: 'Mediterranean-style 55+ home overlooking Lake Las Vegas in Henderson, Nevada at sunset',
+    alt: 'Mediterranean-style single-story homes along a desert lake in the Las Vegas Valley at sunset',
     width: 1200,
     height: 630,
-    name: 'Del Webb Lake Las Vegas 55+ Homes',
-    caption: 'Waterfront 55+ home at Lake Las Vegas, Henderson, Nevada',
+    name: 'Las Vegas Valley lake homes',
+    caption: 'Representative lake view for Vegas 55 Plus Homes',
     description:
-      'A single-story Mediterranean-style home on Lake Las Vegas used as the site social preview for Dr. Jan Duffy, 55+ buyer’s representative.',
+      'A representative photo of single-story homes along a desert lake, used as the social preview for Dr. Jan Duffy.',
   },
   golf: photo('/images/sun-city-summerlin-golf.jpg', {
-    alt: 'Championship golf fairway lined with single-story 55+ homes in Sun City Summerlin, Las Vegas',
-    name: 'Sun City Summerlin Golf Community',
-    caption: 'Golf course living in Sun City Summerlin, a 55+ community in Summerlin, Las Vegas',
+    alt: 'Golf fairway lined with single-story tile-roof homes and desert mountains in the Las Vegas Valley',
+    name: 'Las Vegas Valley golf fairway and single-story homes',
+    caption: 'Representative golf-course view used for Las Vegas Valley 55+ communities',
     description:
-      'A championship golf fairway winding past single-story homes in Sun City Summerlin against the Spring Mountains.',
+      'A representative golf fairway past single-story homes, with desert mountains behind.',
   }),
   lake: photo('/images/del-webb-lake-las-vegas.jpg', {
-    alt: 'Mediterranean-style Del Webb 55+ homes along the shoreline at Lake Las Vegas in Henderson, Nevada',
-    name: 'Del Webb at Lake Las Vegas Homes',
-    caption: 'Waterfront 55+ homes at Del Webb Lake Las Vegas in Henderson',
+    alt: 'Mediterranean-style single-story homes along a desert lake in the Las Vegas Valley',
+    name: 'Desert lake homes in the Las Vegas Valley',
+    caption: 'Representative lake view used for Las Vegas Valley 55+ communities',
     description:
-      'Mediterranean-style single-story homes along Lake Las Vegas, a 55+ community in Henderson, Nevada.',
+      'Representative photo of Mediterranean-style single-story homes along a desert lake.',
   }),
   gated: photo('/images/gated-55-plus-community-las-vegas.jpg', {
     alt: 'Gated entrance to a Las Vegas 55+ community with desert landscaping and Red Rock Canyon mountains',
@@ -77,11 +77,11 @@ export const siteImages = {
       'Blue and green outdoor pickleball courts next to a clubhouse, a common amenity in Las Vegas 55+ communities.',
   }),
   henderson: photo('/images/henderson-55-plus-homes.jpg', {
-    alt: 'Resort-style pool and single-story 55+ homes in Henderson, Nevada with desert mountain views',
-    name: 'Henderson 55+ Homes and Amenities',
-    caption: 'Pool, clubhouse, and single-story homes in a Henderson 55+ community',
+    alt: 'Single-story homes on a Las Vegas Valley hillside with desert landscaping and mountains',
+    name: 'Las Vegas Valley hillside homes',
+    caption: 'Representative hillside view used for Las Vegas Valley 55+ communities',
     description:
-      'A lap pool and recreation patio overlooking a Henderson, Nevada 55+ neighborhood of single-story homes.',
+      'Representative photo of single-story homes on a Las Vegas Valley hillside.',
   }),
   clubhouse: photo('/images/las-vegas-55-clubhouse-pool.jpg', {
     alt: 'Resort-style clubhouse pool at a Las Vegas 55+ community with desert mountains in the background',
@@ -102,14 +102,14 @@ export const siteImages = {
     name: 'Las Vegas 55+ Home Interior',
     caption: 'Single-story open floor plan designed for 55+ living in Las Vegas',
     description:
-      'Bright great room with an open kitchen and mountain views, typical of single-story 55+ homes in Las Vegas.',
+      'Representative photo of a limestone great room with a stone fireplace and mountain views.',
   }),
   summerlin: photo('/images/summerlin-55-plus-homes.jpg', {
-    alt: 'Single-story 55+ homes on a residential street in Summerlin, Las Vegas with Red Rock Canyon in the distance',
-    name: 'Summerlin 55+ Homes',
-    caption: 'Residential street of 55+ homes in Summerlin, Las Vegas',
+    alt: 'Single-story homes on a quiet Las Vegas Valley street with mountains in the distance',
+    name: 'Las Vegas Valley single-story homes',
+    caption: 'Representative street view used for Las Vegas Valley 55+ communities',
     description:
-      'Single-story homes along a Summerlin street with Red Rock Canyon visible beyond the neighborhood.',
+      'Representative photo of single-story homes on a Las Vegas Valley street.',
   }),
   headshot: {
     src: toPublicSrc('/images/dr-jan-duffy.png'),

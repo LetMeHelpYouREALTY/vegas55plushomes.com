@@ -29,7 +29,7 @@ export default function CommunityCard({ community, featured = false }: Community
       <div className="aspect-video relative overflow-hidden">
         <Image
           src={image.src}
-          alt={`${community.name} 55+ homes in ${community.city}, Nevada — ${image.alt}`}
+          alt={`Representative photo for ${community.name} in ${community.city}, Nevada. ${image.alt}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
