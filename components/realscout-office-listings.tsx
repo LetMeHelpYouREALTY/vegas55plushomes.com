@@ -25,8 +25,7 @@ export default function RealScoutOfficeListings() {
           Homes for sale from Dr. Jan Duffy&apos;s office
         </h2>
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          Newest for-sale listings from Berkshire Hathaway HomeServices Nevada
-          Properties. Call{' '}
+          Newest for-sale listings. Call{' '}
           <a
             href={`tel:${PHONE_TEL}`}
             className="font-semibold text-primary underline-offset-2 hover:underline"

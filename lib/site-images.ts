@@ -118,9 +118,9 @@ export const siteImages = {
     width: 1270,
     height: 1270,
     name: 'Dr. Jan Duffy',
-    caption: 'Dr. Jan Duffy, Nevada REALTOR® S.0197614',
+    caption: 'Dr. Jan Duffy, Nevada REALTOR®',
     description:
-      'Portrait of Dr. Jan Duffy, 55+ buyer’s representative with BHHS Nevada Properties in Henderson, Nevada.',
+      'Portrait of Dr. Jan Duffy, 55+ buyer’s representative in Henderson, Nevada.',
   },
   /**
    * Smaller headshot variation for tight UI slots (nav avatar).

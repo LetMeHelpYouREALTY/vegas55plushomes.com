@@ -155,7 +155,7 @@ export default function Footer() {
                   (702) 996-3758
                 </a>
               </p>
-              <p className="text-sm text-muted-foreground">Licensed for all of Nevada S.0197614</p>
+              <p className="text-sm text-muted-foreground">Berkshire Hathaway HomeServices Nevada Properties since September 2008 · License S.0197614.LLC</p>
             </div>
             
             <div className="flex flex-col items-center gap-3 pt-4">

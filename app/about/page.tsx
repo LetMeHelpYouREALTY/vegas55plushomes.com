@@ -12,7 +12,7 @@ import { aboutFaqs } from '@/lib/page-faqs'
 export const metadata = buildMetadata({
   title: 'About Dr. Jan Duffy | Las Vegas 55+ Buyer\'s Representative',
   description:
-    'Dr. Jan Duffy (Nevada license S.0197614) represents buyers of new-construction and resale 55+ homes at Del Webb Lake Las Vegas, Sun City Summerlin, and Henderson communities. Office: 28 Lake Oasis St, Henderson, NV 89011.',
+    'Dr. Jan Duffy, REALTOR® in real estate since 1983, represents buyers of new-construction and resale 55+ homes at Del Webb Lake Las Vegas, Sun City Summerlin, and Henderson communities. Office: 28 Lake Oasis St, Henderson, NV 89011.',
   path: '/about',
   image: siteImages.interior,
   keywords: ['Dr. Jan Duffy', 'Del Webb Lake Las Vegas buyer\'s agent', 'Las Vegas 55+ realtor'],
@@ -46,7 +46,7 @@ export default function AboutPage() {
       <PageHero
         image={siteImages.interior}
         title="About Dr. Jan Duffy"
-        subtitle="Nevada REALTOR® S.0197614. Dedicated buyer’s representative for Del Webb Lake Las Vegas and Las Vegas Valley 55+ communities. 28 Lake Oasis St, Henderson, NV 89011."
+        subtitle="Top 1% Las Vegas REALTOR®, in real estate since 1983. Dedicated buyer’s representative for Del Webb Lake Las Vegas and Las Vegas Valley 55+ communities. 28 Lake Oasis St, Henderson, NV 89011."
         breadcrumbs={[{ label: 'About' }]}
         primaryCTA={{ text: 'Contact Dr. Duffy', href: '/contact' }}
         secondaryCTA={{ text: 'Why Hire a Buyer\'s Agent', href: '/why-hire-an-agent' }}

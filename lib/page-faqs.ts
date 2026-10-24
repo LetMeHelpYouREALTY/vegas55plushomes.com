@@ -12,7 +12,7 @@ export const homeFaqs = [
   {
     question: 'Who is Dr. Jan Duffy?',
     answer:
-      'Dr. Jan Duffy is a Nevada REALTOR® (license S.0197614) with BHHS Nevada Properties. She represents buyers of 55+ and new-construction homes in Las Vegas, Henderson, and Summerlin, with a focus on Del Webb at Lake Las Vegas and Sun City Summerlin. Call (702) 996-3758.',
+      'Dr. Jan Duffy is a Nevada REALTOR®, in real estate since 1983. She represents buyers of 55+ and new-construction homes in Las Vegas, Henderson, and Summerlin, with a focus on Del Webb at Lake Las Vegas and Sun City Summerlin. Call (702) 996-3758.',
   },
   {
     question: 'Do 55+ homebuyers need a buyer’s agent for new construction?',
