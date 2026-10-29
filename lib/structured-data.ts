@@ -257,13 +257,6 @@ export function generateReviewSchema({
     '@type': 'Organization',
     '@id': ORG_ID,
     name: SITE_NAME,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: ratingValue.toString(),
-      reviewCount: reviewCount.toString(),
-      bestRating: bestRating.toString(),
-      worstRating: worstRating.toString(),
-    },
   }
 }
 
