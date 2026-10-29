@@ -165,9 +165,9 @@ export default function Summerlin55HomesPage() {
             <p>
               Summerlin's amenities extend far beyond individual neighborhoods, including over 250 parks, 150+ miles of trails, multiple golf courses, shopping centers, dining establishments, medical facilities, and cultural venues. This comprehensive infrastructure means that Summerlin 55+ community residents have access to extensive resources and amenities beyond what's available within their specific active adult communities.
             </p>
-            <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Quality Schools and Services</h3>
+            <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Nearby Public Schools and Services</h3>
             <p>
-              While 55+ communities don't focus on schools externally, Summerlin's commitment to quality education and community services reflects the overall commitment to excellence that benefits all residents. The presence of quality schools, libraries, and community services contributes to the area's desirability and property values, making it an excellent long-term investment location.
+              While 55+ communities don't focus on schools externally, Summerlin's commitment to quality education and community services reflects the overall commitment to excellence that benefits all residents. The presence of nearby public schools, libraries, and community services contributes to the area's desirability and property values, making it an excellent long-term investment location.
             </p>
             <h3 className="text-2xl font-semibold text-foreground mt-6 mb-4">Location Advantages</h3>
             <p>
