@@ -425,7 +425,7 @@ export const lasVegasCommunities: Community[] = [
     location: 'Las Vegas, NV',
     city: 'Las Vegas',
     description: 'Waterfront community with lake views and golf courses',
-    longDescription: 'Desert Shores offers a unique waterfront lifestyle in Las Vegas with stunning lake views, private beaches, and resort-style amenities. This established community features a mix of architectural styles and provides residents with an active, social lifestyle with golf, water activities, and community events.',
+    longDescription: 'Desert Shores offers an unique waterfront lifestyle in Las Vegas with stunning lake views, private beaches, and resort-style amenities. This community features a mix of architectural styles and provides residents with an active, social lifestyle with golf, water activities, and community events.',
     amenities: [
       'Lakefront properties with beach access',
       'Private beaches and water activities',
