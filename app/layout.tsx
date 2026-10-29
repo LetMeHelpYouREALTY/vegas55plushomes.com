@@ -19,7 +19,6 @@ import { siteImages } from '@/lib/site-images'
 import { toPublicSrc } from '@/lib/image-cdn'
 import { REALSCOUT_SCRIPT_SRC } from '@/lib/realscout'
 import './globals.css'
-import WidgetTracker from './widget-tracker'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -144,7 +143,6 @@ export default function RootLayout({
         {/* Native module tag: next/script only preloads this UMD in Next 16 and the
             custom element never upgrades. Load once, after the hero image. */}
         <script src={REALSCOUT_SCRIPT_SRC} type="module" async />
-        <WidgetTracker />
       </body>
     </html>
   )
