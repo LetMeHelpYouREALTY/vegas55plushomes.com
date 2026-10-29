@@ -88,7 +88,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: [
-              // RealScout: em.realscout.com (widget script) + www.realscout.com (API). Both in script-src https://widgetbe.com https://d1buiexcd5gara.cloudfront.net and connect-src https://widgetbe.com https://d1buiexcd5gara.cloudfront.net.
+              // RealScout: em.realscout.com (widget script) + www.realscout.com (API). Both in script-src and connect-src.
               // cdn.tailwindcss.com: used by the generated-app preview iframe (srcdoc inherits this CSP).
               "script-src https://widgetbe.com https://d1buiexcd5gara.cloudfront.net 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://va.vercel-analytics.com https://vitals.vercel-insights.com https://vercel.live https://em.realscout.com https://www.realscout.com https://cdn.tailwindcss.com",
               "connect-src https://widgetbe.com https://d1buiexcd5gara.cloudfront.net 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://va.vercel-scripts.com https://vitals.vercel-insights.com https://vercel.live wss://ws-us3.pusher.com https://em.realscout.com https://www.realscout.com https://*.realscout.com https://cdn.tailwindcss.com https://api.mapbox.com",
