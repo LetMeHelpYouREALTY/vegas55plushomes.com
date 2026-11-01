@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import RSSFeed from '@/components/rss-feed'
+
+// Internal test page: keep it out of the search index.
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+}
 
 export default function TestRSSPage() {
   return (
