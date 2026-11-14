@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Home, Shield, Users, MapPin, Heart, Trophy, CheckCircle } from 'lucide-react'
 import { lasVegasCommunities } from '@/lib/communities-data'
@@ -16,17 +15,6 @@ import FeaturedListingsSection from '@/components/featured-listings-section'
 import { featuredListings, formatUsd, listingPath } from '@/lib/featured-listings'
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/site-config'
 
-// Lazy load RSS feed (below the fold, non-critical)
-const RSSFeed = dynamic(() => import('@/components/rss-feed'), {
-  loading: () => (
-    <div className="rounded-lg border bg-card p-6">
-      <div className="animate-pulse space-y-4">
-        <div className="h-4 bg-muted rounded w-3/4"></div>
-        <div className="h-4 bg-muted rounded w-1/2"></div>
-      </div>
-    </div>
-  ),
-})
 
 export const metadata = buildMetadata({
   title: 'Las Vegas 55+ Homes for Sale | Buyer\'s Representative Dr. Jan Duffy',
@@ -377,14 +365,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RSS Feed Section - Latest Market News */}
-      <section className="py-16 lg:py-24 bg-muted/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <RSSFeed limit={3} title="Latest Real Estate News & Market Insights" showTitle={true} />
-          </div>
-        </div>
-      </section>
 
       {/* Getting Started Section */}
       <section className="py-16 lg:py-24 bg-background">

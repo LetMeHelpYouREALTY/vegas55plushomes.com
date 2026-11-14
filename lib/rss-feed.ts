@@ -31,78 +31,12 @@ const parser = new Parser({
  * Fetches and parses the RSS feed with caching
  * Uses Next.js fetch cache with revalidation
  */
-export async function fetchRSSFeed(limit: number = 10): Promise<RSSFeedData | null> {
-  try {
-    // Use Next.js fetch with caching - revalidates every hour
-    const response = await fetch(RSS_FEED_URL, {
-      next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; RSS Feed Reader)',
-        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-      },
-    })
-
-    if (!response.ok) {
-      console.error(`RSS feed fetch failed: ${response.status} ${response.statusText}`)
-      return null
-    }
-
-    const xml = await response.text()
-    
-    if (!xml || xml.trim().length === 0) {
-      console.error('RSS feed returned empty content')
-      return null
-    }
-
-    const feed = await parser.parseString(xml)
-
-    if (!feed || !feed.items || feed.items.length === 0) {
-      console.error('RSS feed has no items')
-      return null
-    }
-
-    // Transform the feed to our interface
-    const feedData: RSSFeedData = {
-      title: feed.title || undefined,
-      description: feed.description || undefined,
-      link: feed.link || undefined,
-      items: feed.items
-        .slice(0, limit)
-        .map((item) => {
-          // Handle description field with proper type checking
-          const itemDescription = (item as any).description || undefined
-          const contentEncoded = item['content:encoded'] || undefined
-          
-          return {
-            title: item.title || 'Untitled',
-            link: item.link || '#',
-            pubDate: item.pubDate || item.isoDate || new Date().toISOString(),
-            contentSnippet: item.contentSnippet || itemDescription || undefined,
-            content: item.content || contentEncoded || itemDescription || undefined,
-            categories: item.categories || undefined,
-            guid: item.guid || (item as any).id || undefined,
-            isoDate: item.isoDate || undefined,
-          }
-        }),
-    }
-
-    return feedData
-  } catch (error) {
-    console.error('Error fetching RSS feed:', error)
-    // Log more details in development
-    if (process.env.NODE_ENV === 'development') {
-      console.error('RSS Feed Error Details:', {
-        url: RSS_FEED_URL,
-        error: error instanceof Error ? error.message : String(error),
-      })
-    }
-    return null
-  }
+// The Keeping Current Matters articles were removed on 2026-11-14: their terms
+// allow them on a website only during a paid membership, which has ended.
+export async function fetchRSSFeed(_limit: number = 10): Promise<RSSFeedData | null> {
+  return null
 }
 
-/**
- * Format date from RSS feed for display
- */
 export function formatRSSDate(dateString: string): string {
   try {
     const date = new Date(dateString)

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
-import RSSFeed from '@/components/rss-feed'
 import PageHero from '@/components/page-hero'
 import JsonLd from '@/components/json-ld'
 import FaqSection from '@/components/faq-section'
@@ -123,10 +122,6 @@ export default function BlogPage() {
         <section>
           <h2 className="text-3xl font-bold mb-6">Latest Articles and Insights</h2>
           
-          {/* RSS Feed Integration */}
-          <div className="mb-12">
-            <RSSFeed limit={5} title="" showTitle={false} className="mb-8" />
-          </div>
           
           <h3 className="text-2xl font-bold mb-6 mt-12">Featured Community Guides</h3>
           <div className="space-y-8">
