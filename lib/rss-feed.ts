@@ -1,6 +1,6 @@
 import Parser from 'rss-parser'
 
-const RSS_FEED_URL = 'https://www.simplifyingthemarket.com/en/feed?a=956758-ef2edda2f940e018328655620ea05f18'
+const RSS_FEED_URL = 'https://www.simplifyingthemarket.com/en/feed/'
 
 export interface RSSFeedItem {
   title: string

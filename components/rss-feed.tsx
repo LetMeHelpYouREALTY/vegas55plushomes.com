@@ -27,7 +27,7 @@ export default async function RSSFeed({ limit = 5, title = 'Latest News & Market
             RSS Feed: No articles available at this time.
           </p>
           <p className="text-xs text-muted-foreground text-center">
-            Check console for errors. Feed URL: https://www.simplifyingthemarket.com/en/feed?a=956758-ef2edda2f940e018328655620ea05f18
+            Check console for errors. Feed URL: https://www.simplifyingthemarket.com/en/feed/
           </p>
         </div>
       )
