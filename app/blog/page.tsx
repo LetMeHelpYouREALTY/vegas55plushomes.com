@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LocalMarketPost from '@/components/local-market-post'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
 import PageHero from '@/components/page-hero'
 import JsonLd from '@/components/json-ld'
@@ -121,6 +122,9 @@ export default function BlogPage() {
       <div className="max-w-4xl space-y-12 mb-12">
         <section>
           <h2 className="text-3xl font-bold mb-6">Latest Articles and Insights</h2>
+          <div className="mb-12">
+            <LocalMarketPost />
+          </div>
           
           
           <h3 className="text-2xl font-bold mb-6 mt-12">Featured Community Guides</h3>
